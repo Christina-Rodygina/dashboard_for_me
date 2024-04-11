@@ -1,0 +1,145 @@
+/*FF7800 - рыжий*/
+
+.header__container {
+    width: 100%;
+    max-width: 100%;
+    min-height: 76px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 50%, rgba(0,232,255,1) 100%);
+}
+
+.header__row {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+
+.header__logo-and-title {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+}
+
+.header__logo {
+    width: 50px;
+    border-radius: 18px;
+    margin-right: 20px;
+    border: 4px solid white;
+}
+
+.header__title {
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.header__search-and-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*search*/
+
+.header__search {
+    display: flex;
+    flex-direction: row;
+    margin-right: 12px;
+    margin-top: -3px;
+}
+
+.header__search > div {
+    display: inline-block;
+    position: relative;
+    filter: drop-shadow(0 1px #0091c2);
+}
+
+.header__search > div:after {
+    content: "";
+    background: white;
+    width: 4px;
+    height: 14px;
+    position: absolute;
+    top: 20px;
+    right: -3px;
+    transform: rotate(135deg);
+}
+
+.header__search > div > input {
+    color: white;
+    font-size: 16px;
+    background: transparent;
+    width: 27px;
+    height: 27px;
+    padding: 10px;
+    border: solid 3px white;
+    outline: none;
+    border-radius: 35px;
+    transition: width 0.5s;
+    cursor: pointer;
+}
+
+.header__search > div > input::placeholder {
+    color: #efefef;
+    opacity: 0;
+    transition: opacity 150ms ease-out;
+}
+
+.header__search > div > input:focus::placeholder {
+    opacity: 1;
+}
+
+.header__search > div > input:focus,
+.header__search > div > input:not(:placeholder-shown) {
+    width: 250px;
+}
+
+.header__search-and-btns button {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    margin: 0 6px -6px;
+}
+
+.header__settings-btn img {
+    width: 30px;
+    height: 30px;
+}
+
+.header__settings-btn:hover img {
+    animation: rotateImage 5s linear infinite;
+}
+
+.header__notifications-btn:hover img {
+    animation: notification 1.3s infinite;
+}
+
+@keyframes rotateImage {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes notification {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    33% {
+        transform: rotate(30deg);
+    }
+
+    66% {
+        transform: rotate(-30deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
