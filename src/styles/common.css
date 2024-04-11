@@ -1,3 +1,7 @@
+/*orange FF7800*/
+/*blue rgba(2,0,36,1)*/
+/*green rgba(11,68,70,1)*/
+
 .container {
     max-width: 1400px;
     margin: 0 auto;
@@ -8,5 +12,6 @@
 
 body {
     font-family: "Rubik", sans-serif;
-    color: black;
+    color: white;
+    background-color: rgba(222, 222, 222, 0.71);
 }
