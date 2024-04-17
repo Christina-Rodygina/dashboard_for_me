@@ -2,16 +2,34 @@ import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme, VictoryTooltip} fr
 import React from "react";
 import "./InfoBloc.css"
 
-const InfoBloc = ({data, uniqueLabels, type}) => {
+const InfoBloc = ({ data, uniqueLabels, type, id }) => {
+
+    const intervalBtn = (index, container) => {
+        const buttons = container.querySelectorAll('.interval__btn');
+        buttons.forEach((button, i) => {
+            if (i === index) {
+                if (!button.classList.contains('active')) {
+                    button.classList.add('active');
+                }
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+
+    const handleIntervalBtnClick = (index) => {
+        const container = document.getElementById(id); // получаем контейнер блока
+        intervalBtn(index, container); // вызываем функцию intervalBtn с передачей контейнера
+    }
 
     const open_info = () => {
-        const section = document.querySelector(`.cpu__statistics.${type}`);
+        const section = document.getElementById(id);
         if (section.classList.contains("open")) {
             section.classList.remove("open");
         } else {
-            section.classList.add("open")
+            section.classList.add("open");
         }
-    }
+    };
 
     return (
         <>
@@ -38,12 +56,17 @@ const InfoBloc = ({data, uniqueLabels, type}) => {
                         <span className="item__info-date">Update date:</span>
                         <span className="item__info-time">24.06.23 18:00</span>
                     </div>
-                    <div className="item__info-status">
+                    <div className="item__info-status-container">
                         <span>Status:</span>
                         <span className="item__info-status offline">Offline</span>
                     </div>
                 </button>
-                <div className={`cpu__statistics ${type}`}>
+                <div className={`cpu__statistics ${type}`} id={id}>
+                    <div className="interval__btns">
+                        <button onClick={() => handleIntervalBtnClick(0)} className="interval__btn">Month</button>
+                        <button onClick={() => handleIntervalBtnClick(1)} className="interval__btn">Week</button>
+                        <button onClick={() => handleIntervalBtnClick(2)} className="interval__btn active">Day</button>
+                    </div>
                     <VictoryChart
                         width={500}
                         height={300}

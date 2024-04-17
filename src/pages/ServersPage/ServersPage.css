@@ -1,0 +1,161 @@
+.servers__column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: white;
+    /*padding: 0 20px;*/
+    border-radius: 10px; /* Закругленные углы контейнера */
+    overflow: hidden; /* Обрезание контента за пределами контейнера */
+    /*background-color: #FF7800; !* Цвет фона контейнера *!*/
+    padding: 10px; /* Отступ вокруг таблицы */
+}
+
+.servers__table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.servers__table tbody td,
+.servers__table tbody tr,
+.servers__table thead th {
+    padding: 20px;
+    /*background-color: rgba(2,0,36,0.6);*/
+}
+
+.servers__table tbody td,
+.servers__table tbody th {
+    border: 1px solid rgba(2, 0, 36, 0.4);
+    padding: 14px 8px;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.servers__table tbody td:first-of-type {
+    border-left: 0;
+}
+
+.servers__table tbody td:last-of-type {
+    border-right: 0;
+}
+
+.servers__table tbody:before {
+    content: '';
+    display: block;
+    /*height: 10px;*/
+}
+
+.servers__table thead th {
+    font-size: 24px;
+    color: white;
+    padding: 10px;
+    /*color: #FF7800;*/
+}
+
+.servers__table tbody tr {
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+}
+
+/*.servers__table tbody tr:before {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    height: 10px;*/
+/*}*/
+
+.servers__table tbody tr {
+    background-color: rgba(2, 0, 36, 0.6);
+}
+
+.random-blob {
+    width: 100%;
+    height: 100%;
+    cursor: default;
+    /*padding: 14px;*/
+    /*border-radius: 30px;*/
+    /*border: 2px solid rgba(2, 0, 36, 1);*/
+    /*background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(11, 68, 70, 1) 160%);*/
+}
+
+.servers__table tbody tr td span {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.password span {
+    margin-left: 10px;
+}
+
+.password img {
+    width: 26px;
+    cursor: pointer;
+}
+
+.password img:hover {
+    scale: 1.1;
+}
+
+.span__buttons img {
+    width: 26px;
+    margin: 0 8px;
+}
+
+.span__buttons button:hover {
+    scale: 1.1;
+}
+
+.confirmation-deletion.open {
+    position: fixed;
+    color: black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+}
+
+.confirmation-deletion span {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.confirmation-deletion__btns {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    column-gap: 20px;
+}
+
+.confirmation-deletion__btns button {
+    border-radius: 30px;
+    padding: 6px 20px;
+    color: white;
+    border: 2px solid rgba(2, 0, 36, 1);
+    transition: all .3s ease;
+    background: rgba(2, 0, 36, 1);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(11, 68, 70, 1) 160%);
+}
+
+.confirmation-deletion__btns button:hover {
+    background: #FF7800;
+    border-color: #a84e00;
+    color: #a84e00;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 6px 12px;
+}
+
+.confirmation-deletion {
+    display: none;
+}

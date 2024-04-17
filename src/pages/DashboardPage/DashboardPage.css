@@ -1,3 +1,5 @@
+.server-info,
+.servers,
 .homepage {
     padding-left: 315px;
     width: 100%;
@@ -5,6 +7,8 @@
     color: black;
 }
 
+.server-info__container,
+.servers__container,
 .homepage__container {
     display: flex;
     flex-direction: column;
@@ -12,6 +16,7 @@
     align-items: center; /* Центрируем содержимое по горизонтали */
 }
 
+.servers h2,
 .homepage h2 {
     width: 100%;
     text-align: start;
@@ -22,28 +27,16 @@
 
 .homepage__row {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
     /*padding: 0 30px;*/
     width: 100%;
 }
 
 .servers__list-item {
-    margin: 0 15px;
+    margin: 30px 15px;
 }
 
-.servers__list-item__title {
-    padding-left: 10px;
-    padding-bottom: 10px;
-    font-size: 18px;
-    font-weight: 500;
-}
 
-.servers__list-item__row {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    column-gap: 20px;
-}
 
 

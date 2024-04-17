@@ -3,7 +3,7 @@
 .servers__list-item__cpu {
     display: flex;
     flex-direction: column;
-    min-width: 300px;
+    max-width: 500px;
     box-shadow: none;
     /*margin-top: -10px;*/
     transition: all .3s ease-in-out;
@@ -13,6 +13,7 @@
 
 .servers__list-item__cpu-info {
     width: 100%;
+    border: 2px solid rgba(2,0,36,1);
     border-radius: 12px;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);
     padding: 10px;
@@ -81,7 +82,7 @@
     font-size: 40px;
 }
 
-.item__info-status,
+.item__info-status-container,
 .item__info-date-time {
     width: 100%;
     display: flex;
@@ -90,12 +91,12 @@
 
 .item__info-status.online {
     color: greenyellow;
-    width: max-content;
+    font-weight: normal;
 }
 
 .item__info-status.offline {
     color: red;
-    width: max-content;
+    font-weight: normal;
 }
 
 .cpu__statistics {
@@ -113,10 +114,32 @@
 }
 
 .cpu__statistics.open {
-    height: 300px;
+    height: 400px;
     transition: height .4s linear;
 }
 
+.interval__btns {
+    display: flex;
+    padding: 30px 10px 0 10px;
+    justify-content: space-around;
+}
+
+.interval__btn {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+.interval__btn.active,
+.interval__btn:active {
+    background: rgba(255, 120, 0, 0.44);
+    color: #FF7800;
+    transition: all .3s linear;
+}
+
 .VictoryContainer {
-    min-height: 300px;
+    margin-top: -40px;
+    min-height: 400px;
 }

@@ -4,7 +4,11 @@
     width: 100%;
     max-width: 100%;
     min-height: 76px;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 50%, rgba(0,232,255,1) 100%);
+    /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 50%, rgba(0,232,255,1) 100%);*/
+    background: transparent;
+    position: fixed;
+    z-index: 100;
+    transition: background-color .6s linear;
 }
 
 .header__row {
@@ -47,8 +51,8 @@
 .header__search {
     display: flex;
     flex-direction: row;
-    margin-right: 12px;
-    margin-top: -3px;
+    margin-right: 14px;
+    margin-top: -1px;
 }
 
 .header__search > div {
@@ -98,15 +102,14 @@
 }
 
 .header__search-and-btns button {
-    width: 34px;
-    height: 34px;
+    width: 35px;
+    height: 35px;
     background: transparent;
     margin: 0 6px -6px;
 }
 
 .header__settings-btn img {
-    width: 30px;
-    height: 30px;
+    width: 32px;
 }
 
 .header__settings-btn:hover img {

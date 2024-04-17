@@ -1,25 +1,57 @@
-import "./Header.css"
+import "./Header.css";
+import React, {useEffect, useState} from "react";
 
-function Header () {
+const Header = () => {
+    const [bell, setBell] = useState(true)
+
+
+    const scroll_header = () => {
+        const section = document.querySelector(".header__container");
+        if (window.scrollY > section.style.height) {
+            section.style.backgroundColor = "rgba(2, 0, 36, 0.64)";
+        } else {
+            section.style.backgroundColor = "transparent"
+        }
+    }
+
+    const bellOff = () => {
+        setBell(!bell)
+    }
+
+    useEffect(() => {
+        scroll_header()
+        // Вызывается при скролле
+        window.addEventListener("scroll", scroll_header);
+
+        // Очистка слушателя при размонтировании
+        return () => {
+            window.removeEventListener("scroll", scroll_header);
+        };
+    })
+
     return (
         <header className="header">
             <div className="container header__container">
                 <div className="header__row">
                     <div className="header__logo-and-title">
                         <img src="/logo.jpg" alt="Logo" className="header__logo"/>
-                        <h1 className="header__title">K&S WebDev</h1>
+                        <h1 className="header__title">KaS WebDev</h1>
                     </div>
                     <div className="header__search-and-btns">
                         <div className="header__search">
                             <div>
-                                <input type="text" placeholder="Search . . ." />
+                                <input type="text" placeholder="Search . . ."/>
                             </div>
                         </div>
-                        <button className="header__notifications-btn">
-                            <img src="/notifications.svg" alt="Notification"/>
+                        <button onClick={bellOff} className="header__notifications-btn">
+                            {bell ? (
+                                <img src="/bell-svgrepo-com.svg" alt="Notification"/>
+                            ) : (
+                                <img src="/bell-slash-svgrepo-com.svg" alt="Not notification"/>
+                            )}
                         </button>
                         <button className="header__settings-btn">
-                            <img src="/settings.svg" alt="Settings"/>
+                            <img src="/settings-2-svgrepo-com.svg" alt="Settings"/>
                         </button>
                     </div>
                 </div>

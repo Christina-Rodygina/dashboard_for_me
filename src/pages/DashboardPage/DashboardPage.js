@@ -1,10 +1,8 @@
-import "./HomePage.css"
-import {VictoryAxis, VictoryBar, VictoryChart, VictoryLine, VictoryTheme, VictoryTooltip} from 'victory';
-import InfoBloc from "../../components/InfoBloc/InfoBloc";
+import "./DashboardPage.css"
 import React from "react";
+import InfoLine from "./InfoLine/InfoLine";
 
-const HomePage = () => {
-
+const DashboardPage = () => {
     const data = [
         {x: '1', y: 2, label: "(1, 2)"},
         {x: '2', y: 3, label: "(2, 3)"},
@@ -44,12 +42,16 @@ const HomePage = () => {
                     <div className="homepage__row">
                         <ul className="servers__list">
                             <li className="servers__list-item">
-                                <h3 className="servers__list-item__title">VinylDiscount</h3>
-                                <div className="servers__list-item__row">
-                                    <InfoBloc data={data} uniqueLabels={uniqueLabels} type={"cpu"}/>
-                                    <InfoBloc data={data} uniqueLabels={uniqueLabels} type={"op"}/>
-                                    <InfoBloc data={data} uniqueLabels={uniqueLabels} type={"disc"}/>
-                                </div>
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VinylDiscount"} id={1}/>
+                            </li>
+                            <li className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"MetricaFX"} id={2}/>
+                            </li>
+                            <li className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"Neurology"} id={3}/>
+                            </li>
+                            <li className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VictoryaBonya"} id={4}/>
                             </li>
                         </ul>
                     </div>
@@ -59,6 +61,6 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+export default DashboardPage
 
 //cpu, оперативная память, диск

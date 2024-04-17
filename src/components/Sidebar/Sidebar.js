@@ -1,6 +1,17 @@
 import "./Sidebar.css"
 
-const Sidebar = () => {
+const Sidebar = ({ updateSidebarData }) => {
+
+    const handleClick = (event, data) => {
+        // Вызываем функцию обновления состояния с данными
+        updateSidebarData(data);
+        const buttons = document.querySelectorAll(".sidebar__list li button");
+        buttons.forEach(button => {
+            button.classList.remove("active");
+        });
+        event.target.classList.add("active");
+    };
+
     return (
         <>
             <div className="sidebar">
@@ -9,51 +20,28 @@ const Sidebar = () => {
                         <h2 className="sidebar__title">User Panel</h2>
                         <ul className="sidebar__list">
                             <li>
-                                <button><img src="/Dashboard.svg" alt="Dashboard"/>
+                                <button className="active" onClick={(event) => handleClick(event, "Dashboard")}>
+                                    <img src="/Dashboard.svg" alt="Dashboard"/>
                                     <span>Dashboard</span>
                                 </button>
                             </li>
                             <li>
-                                <button>
-                                    <img src="/Portfolio.svg" alt="Portfolio"/>
-                                    <span>Portfolio</span>
+                                <button onClick={(event) => handleClick(event,"Servers")}>
+                                    <img style={{maxWidth: "20px", marginLeft: "-1px"}} src="/server-free-material-svgrepo-com.svg" alt="Servers"/>
+                                    <span>Servers</span>
                                 </button>
                             </li>
                             <li>
-                                <button>
-                                    <img src="/Trading%20&%20Market.svg" alt="Trading&Market"/>
-                                    <span>Trading & Market</span>
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <img src="/Reasearch%20Portal.svg" alt="Reasearch Portal"/>
-                                    <span>Reasearch Portal</span>
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <img src="/Wallet%20Transfer%20Pay.svg" alt="Wallet Transfer Pay"/>
-                                    <span>Wallet Transfer Pay</span>
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <img src="/Reporting%20&%20Transaction.svg" alt="Reporting&Transaction"/>
-                                    <span>Reporting & Transaction</span>
-                                </button>
-                            </li>
-                            <li>
-                                <button>
-                                    <img src="/Tutorial.svg" alt="Tutorial"/>
-                                    <span>Tutorial</span>
+                                <button onClick={(event) => handleClick(event,"Services")}>
+                                    <img style={{marginLeft: "-3px"}} src="/services-20px-svgrepo-com.svg" alt="Services"/>
+                                    <span>Services</span>
                                 </button>
                             </li>
                         </ul>
                         <div className="sidebar__info">
                             <img src="/Group%201223.svg" alt="Thoughts Time"/>
                         </div>
-                        <button className="sidebar__logout">
+                        <button onClick={(event) => handleClick(event,"Logout")} className="sidebar__logout">
                             <img src="/Frame%201274.svg" alt="Logout"/>
                             <span>Logout</span>
                         </button>
