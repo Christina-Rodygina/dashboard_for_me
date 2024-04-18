@@ -110,14 +110,19 @@
 
 .header__settings-btn img {
     width: 32px;
+    transition: transform 6s ease;
 }
 
 .header__settings-btn:hover img {
-    animation: rotateImage 5s linear infinite;
+    transform: rotate(360deg);
+}
+
+.header__notifications-btn img {
+    transition: transform 0.3s ease;
 }
 
 .header__notifications-btn:hover img {
-    animation: notification 1.3s infinite;
+    animation: notification 1s ease;
 }
 
 @keyframes rotateImage {

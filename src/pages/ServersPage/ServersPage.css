@@ -153,9 +153,99 @@
     background: #FF7800;
     border-color: #a84e00;
     color: #a84e00;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 6px 12px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 6px 12px;
 }
 
 .confirmation-deletion {
     display: none;
+}
+
+.log-btn {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding: 30px 20px 0;
+}
+
+.log-btn button {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    column-gap: 6px;
+    padding: 4px 8px;
+    border: 3px solid white;
+    border-radius: 8px;
+}
+
+.log-btn button:active {
+    scale: 1.03;
+}
+
+.box {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.box b {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: url("/public/perecaty-pole.png");
+    background-size: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*position: absolute;*/
+    /*animation: moveX 3.4s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate, rotateImage 4s linear 0s infinite;*/
+    position: absolute;
+    -webkit-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+    -moz-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+    -o-animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+    animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate;
+}
+
+/*@keyframes moveX {*/
+/*    from { left: 0; }*/
+/*    to { left: calc(100% - 100px); } !* Используем calc для вычисления конечной позиции относительно ширины контейнера *!*/
+/*}*/
+
+/*@keyframes moveY {*/
+/*    from { top: 0; }*/
+/*    to { top: calc(100% - 100px); } !* Аналогично для высоты *!*/
+/*}*/
+
+
+
+@-webkit-keyframes moveX {
+    from { left: 0; } to { left: 480px; }
+}
+@-moz-keyframes moveX {
+    from { left: 0; } to { left: 480px; }
+}
+@-o-keyframes moveX {
+    from { left: 0; } to { left: 480px; }
+}
+@keyframes moveX {
+    from { left: 0; } to { left: 480px; }
+}
+@-webkit-keyframes moveY {
+    from { top: 0; } to { top: 280px; }
+}
+@-moz-keyframes moveY {
+    from { top: 0; } to { top: 280px; }
+}
+@-o-keyframes moveY {
+    from { top: 0; } to { top: 280px; }
+}
+@keyframes moveY {
+    from { top: 0; } to { top: 280px; }
+}
+
+@keyframes rotateImage {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
