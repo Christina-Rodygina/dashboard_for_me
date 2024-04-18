@@ -188,10 +188,10 @@
 }
 .box b {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    background-image: url("/public/perecaty-pole.png");
+    background-image: url("/public/border-none-svgrepo-com.svg");
     background-size: 200px;
     background-position: center;
     background-repeat: no-repeat;
@@ -217,28 +217,28 @@
 
 
 @-webkit-keyframes moveX {
-    from { left: 0; } to { left: 480px; }
+    from { left: 0; } to { left: 100%; }
 }
 @-moz-keyframes moveX {
-    from { left: 0; } to { left: 480px; }
+    from { left: 0; } to { left: 100%; }
 }
 @-o-keyframes moveX {
-    from { left: 0; } to { left: 480px; }
+    from { left: 0; } to { left:100%; }
 }
 @keyframes moveX {
-    from { left: 0; } to { left: 480px; }
+    from { left: 0; } to { left: 100%; }
 }
 @-webkit-keyframes moveY {
-    from { top: 0; } to { top: 280px; }
+    from { top: 0; } to { top: 100%; }
 }
 @-moz-keyframes moveY {
-    from { top: 0; } to { top: 280px; }
+    from { top: 0; } to { top: 100%; }
 }
 @-o-keyframes moveY {
-    from { top: 0; } to { top: 280px; }
+    from { top: 0; } to { top: 100%; }
 }
 @keyframes moveY {
-    from { top: 0; } to { top: 280px; }
+    from { top: 0; } to { top: 100%; }
 }
 
 @keyframes rotateImage {
