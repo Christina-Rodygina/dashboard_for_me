@@ -113,6 +113,10 @@ const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
                                 <div className="log-btn">
                                     <button onClick={() => functions_buttons('clear')}>Clear</button>
                                 </div>
+                            ) : functions?.includes('add') ? (
+                                <div className="add-btn">
+                                    <button onClick={() => functions_buttons('+')}>Clear</button>
+                                </div>
                             ) : null}
                                 <table className="servers__table">
                                     <thead>
