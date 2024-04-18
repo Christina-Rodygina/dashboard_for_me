@@ -217,28 +217,28 @@
 
 
 @-webkit-keyframes moveX {
-    from { left: 0; } to { left: 1100px; }
+    from { left: 0; } to { left: 900px; }
 }
 @-moz-keyframes moveX {
-    from { left: 0; } to { left: 1100px; }
+    from { left: 0; } to { left: 900px; }
 }
 @-o-keyframes moveX {
-    from { left: 0; } to { left:1100px; }
+    from { left: 0; } to { left:900px; }
 }
 @keyframes moveX {
-    from { left: 0; } to { left: 1100px; }
+    from { left: 0; } to { left: 900px; }
 }
 @-webkit-keyframes moveY {
-    from { top: 0; } to { top: 716px; }
+    from { top: 0; } to { top: 516px; }
 }
 @-moz-keyframes moveY {
-    from { top: 0; } to { top: 716px; }
+    from { top: 0; } to { top: 516px; }
 }
 @-o-keyframes moveY {
-    from { top: 0; } to { top: 716px; }
+    from { top: 0; } to { top: 516px; }
 }
 @keyframes moveY {
-    from { top: 0; } to { top: 716px; }
+    from { top: 0; } to { top: 516px; }
 }
 
 @keyframes rotateImage {
