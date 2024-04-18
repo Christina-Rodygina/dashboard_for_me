@@ -35,7 +35,7 @@ const Header = () => {
                 <div className="header__row">
                     <div className="header__logo-and-title">
                         <img src="/logo.jpg" alt="Logo" className="header__logo"/>
-                        <h1 className="header__title">KaS WebDev</h1>
+                        <h1 className="header__title">KRIanSE Admin</h1>
                     </div>
                     <div className="header__search-and-btns">
                         <div className="header__search">
