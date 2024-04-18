@@ -84,7 +84,7 @@ const Sidebar = ({updateSidebarData, meta}) => {
                                 <img src="/Frame%201274.svg" alt="Logout"/>
                                 <span>Logout</span>
                             </button>
-                            <button onClick={() => setWebTheme(WebTheme === 'Cocktail' ? 'Light' : WebTheme === 'Light' ? 'Dark' : null)} className="sidebar__logout">
+                            <button onClick={() => setWebTheme(WebTheme === 'Cocktail' ? 'Light' : WebTheme === 'Light' ? 'Dark' : WebTheme === 'Dark' ? 'Cocktail' : null)} className="sidebar__logout">
                                 {WebTheme === 'Cocktail' ? (
                                         <img src="/cocktail-svgrepo-com.svg" alt="CoctailTheme"/>
                                     ) : WebTheme === 'Light' ? (
