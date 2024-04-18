@@ -1,0 +1,25 @@
+/*orange FF7800*/
+/*blue rgba(2,0,36,1)*/
+/*green rgba(11,68,70,1)*/
+/*grey 84828A*/
+
+.authorization__white-container {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);
+    border: 2px solid rgba(2,0,36,1);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.authorization__white-container input {
+    background: white;
+    color: black;
+}
+
+.authorization__white-container button {
+    background-color: #FF7800;
+}
+
+.authorization__white-container button:active,
+.authorization__white-container button:hover {
+    background-color: rgba(255, 120, 0, 0.27);
+    color: #FF7800;
+}

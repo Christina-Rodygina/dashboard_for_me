@@ -1,0 +1,49 @@
+.server-info {
+    color: white;
+}
+
+.server-info__white-container {
+    background-color: rgba(2, 0, 36, 0.6);
+    border: 1px solid rgba(2, 0, 36, 0.4);
+}
+
+.server-info__title2-and-btns {
+    border-bottom: 1px solid rgba(2,0,36,0.3);
+}
+
+.server-info__btns button {
+    border: 3px solid white;
+}
+
+.server-info__btn-edit:hover {
+    background-color: green;
+}
+
+.server-info__btn-delete:hover {
+    background-color: red;
+}
+
+.server-info__search {
+    border-bottom: 1px solid rgba(2,0,36,0.3);
+}
+
+.server-info__search-input {
+    border: 3px solid white;
+}
+
+.server-info__search-input::placeholder {
+    color: white;
+}
+
+.server-info__table-container {
+    border-bottom: 1px solid rgba(2,0,36,0.3);
+}
+
+.info-table thead tr {
+    background-color: rgba(2,0,36,0.3);
+}
+
+.info-table tbody tr th,
+.info-table thead tr th {
+    border: 1px solid rgba(2,0,36,0.3);
+}

@@ -1,0 +1,15 @@
+.info-table tbody tr:focus-within {
+    box-shadow: 0 0 8px rgba(255, 120, 0, 1);
+}
+
+.server-edit__btns button {
+    border: 3px solid white;
+}
+
+.server-edit__cancel {
+    background-color: red;
+}
+
+.server-edit__save {
+    background-color: green;
+}

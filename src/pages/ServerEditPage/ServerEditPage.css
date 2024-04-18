@@ -3,9 +3,9 @@
     font-size: 16px;
 }
 
-.info-table tbody tr:focus-within {
-    box-shadow: 0 0 8px rgba(255, 120, 0, 1);
-}
+/*.info-table tbody tr:focus-within {*/
+/*    box-shadow: 0 0 8px rgba(255, 120, 0, 1);*/
+/*}*/
 
 .server-edit__btns {
     width: 100%;
@@ -22,7 +22,7 @@
     font-size: 20px;
     column-gap: 6px;
     padding: 4px 8px;
-    border: 3px solid white;
+    /*border: 3px solid white;*/
     border-radius: 8px;
 }
 
@@ -30,10 +30,10 @@
     scale: 1.03;
 }
 
-.server-edit__cancel {
-    background-color: red;
-}
+/*.server-edit__cancel {*/
+/*    background-color: red;*/
+/*}*/
 
-.server-edit__save {
-    background-color: green;
-}
+/*.server-edit__save {*/
+/*    background-color: green;*/
+/*}*/

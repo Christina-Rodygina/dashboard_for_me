@@ -1,5 +1,6 @@
 import "./styles/reset.css"
 import "./styles/common.css"
+import "./styles/CocktailTheme/view"
 
 import axios from "axios";
 import Header from "./components/Header/Header";

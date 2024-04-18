@@ -2,12 +2,11 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    color: white;
+    /*color: white;*/
     /*padding: 0 20px;*/
-    border-radius: 10px; /* Закругленные углы контейнера */
-    overflow: hidden; /* Обрезание контента за пределами контейнера */
-    /*background-color: #FF7800; !* Цвет фона контейнера *!*/
-    padding: 10px; /* Отступ вокруг таблицы */
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
 }
 
 .servers__table {
@@ -21,12 +20,11 @@
 .servers__table tbody tr,
 .servers__table thead th {
     padding: 20px;
-    /*background-color: rgba(2,0,36,0.6);*/
 }
 
 .servers__table tbody td,
 .servers__table tbody th {
-    border: 1px solid rgba(2, 0, 36, 0.4);
+    /*border: 1px solid rgba(2, 0, 36, 0.4);*/
     padding: 14px 8px;
     border-top: 0;
     border-bottom: 0;
@@ -48,7 +46,7 @@
 
 .servers__table thead th {
     font-size: 24px;
-    color: white;
+    /*color: white;*/
     padding: 10px;
     /*color: #FF7800;*/
 }
@@ -65,9 +63,9 @@
 /*    height: 10px;*/
 /*}*/
 
-.servers__table tbody tr {
-    background-color: rgba(2, 0, 36, 0.6);
-}
+/*.servers__table tbody tr {*/
+/*    background-color: rgba(2, 0, 36, 0.6);*/
+/*}*/
 
 .random-blob {
     width: 100%;
@@ -115,11 +113,11 @@
 
 .confirmation-deletion.open {
     position: fixed;
-    color: black;
+    /*color: black;*/
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    /*background-color: white;*/
     padding: 20px 40px;
     display: flex;
     flex-direction: column;
@@ -142,19 +140,19 @@
 .confirmation-deletion__btns button {
     border-radius: 30px;
     padding: 6px 20px;
-    color: white;
-    border: 2px solid rgba(2, 0, 36, 1);
+    /*color: white;*/
+    /*border: 2px solid rgba(2, 0, 36, 1);*/
     transition: all .3s ease;
-    background: rgba(2, 0, 36, 1);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(11, 68, 70, 1) 160%);
+    /*background: rgba(2, 0, 36, 1);*/
+    /*background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(11, 68, 70, 1) 160%);*/
 }
 
-.confirmation-deletion__btns button:hover {
-    background: #FF7800;
-    border-color: #a84e00;
-    color: #a84e00;
-    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 6px 12px;
-}
+/*.confirmation-deletion__btns button:hover {*/
+/*    background: #FF7800;*/
+/*    border-color: #a84e00;*/
+/*    color: #a84e00;*/
+/*    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 6px 12px;*/
+/*}*/
 
 .confirmation-deletion {
     display: none;
@@ -174,7 +172,7 @@
     font-size: 20px;
     column-gap: 6px;
     padding: 4px 8px;
-    border: 3px solid white;
+    /*border: 3px solid white;*/
     border-radius: 8px;
 }
 
@@ -182,8 +180,8 @@
     display: flex;
     align-items: center;
     font-size: 20px;
-    background-color: green;
-    border: 3px solid white;
+    /*background-color: green;*/
+    /*border: 3px solid white;*/
     border-radius: 8px;
 }
 

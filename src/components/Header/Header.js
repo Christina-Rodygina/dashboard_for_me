@@ -50,9 +50,6 @@ const Header = () => {
                                 <img src="/bell-slash-svgrepo-com.svg" alt="Not notification"/>
                             )}
                         </button>
-                        <button className="header__settings-btn">
-                            <img src="/settings-2-svgrepo-com.svg" alt="Settings"/>
-                        </button>
                     </div>
                 </div>
             </div>
