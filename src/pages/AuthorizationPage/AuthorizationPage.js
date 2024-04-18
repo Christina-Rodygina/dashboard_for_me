@@ -11,8 +11,8 @@ const AuthorizationPage = () => {
                     <div className="authorization__white-container">
                         <h3>Authorization</h3>
                         <form>
-                            <input placeholder="kreigmenson@mail.ru" type="email" autoComplete="email"/>
-                            <input placeholder="password" type="password" autoComplete="new-password"/>
+                            <input placeholder="KreigMenson@mail.ru" type="email" autoComplete="email"/>
+                            <input placeholder="Password" type="password" autoComplete="new-password"/>
                             <button>Login</button>
                         </form>
                     </div>
