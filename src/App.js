@@ -9,7 +9,7 @@ import {useEffect, useState} from "react";
 import ServersPage from "./pages/ServersPage/ServersPage";
 
 
-export const URL = 'http://79.137.197.104:8000/api'
+export const URL = 'https://krianse.ru/api'
 
 function App() {
     const [sidebarData, setSidebarData] = useState("Dashboard");
