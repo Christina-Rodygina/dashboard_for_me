@@ -217,28 +217,28 @@
 
 
 @-webkit-keyframes moveX {
-    from { left: 0; } to { left: 900px; }
+    from { left: 0; } to { left: calc(100% - 200px); }
 }
 @-moz-keyframes moveX {
-    from { left: 0; } to { left: 900px; }
+    from { left: 0; } to { left: calc(100% - 200px); }
 }
 @-o-keyframes moveX {
-    from { left: 0; } to { left:900px; }
+    from { left: 0; } to { left: calc(100% - 200px); }
 }
 @keyframes moveX {
-    from { left: 0; } to { left: 900px; }
+    from { left: 0; } to { left: calc(100% - 200px); }
 }
 @-webkit-keyframes moveY {
-    from { top: 0; } to { top: 516px; }
+    from { top: 0; } to { top: calc(100% - 200px); }
 }
 @-moz-keyframes moveY {
-    from { top: 0; } to { top: 516px; }
+    from { top: 0; } to { top: calc(100% - 200px); }
 }
 @-o-keyframes moveY {
-    from { top: 0; } to { top: 516px; }
+    from { top: 0; } to { top: calc(100% - 200px); }
 }
 @keyframes moveY {
-    from { top: 0; } to { top: 516px; }
+    from { top: 0; } to { top: calc(100% - 200px); }
 }
 
 @keyframes rotateImage {
