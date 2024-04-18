@@ -7,6 +7,7 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage"
 import Sidebar from "./components/Sidebar/Sidebar";
 import {useEffect, useState} from "react";
 import ServersPage from "./pages/ServersPage/ServersPage";
+import AuthorizationPage from "./pages/AuthorizationPage/AuthorizationPage";
 
 
 export const URL = 'https://krianse.ru/api'
@@ -35,6 +36,8 @@ function App() {
         switch (sidebarData) {
             case "Dashboard":
                 return <DashboardPage/>;
+            case "Logout":
+                return <AuthorizationPage/>
             default:
                 const serversData = meta.find(item => item["table_name"] === sidebarData );
                 // Отображаем ServersPage с найденными данными
