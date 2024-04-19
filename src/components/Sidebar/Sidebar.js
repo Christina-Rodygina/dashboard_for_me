@@ -1,19 +1,10 @@
 import "./Sidebar.css"
-import {useState} from "react";
+import {useEffect, useState} from "react";
+
 
 const Sidebar = ({updateSidebarData, meta}) => {
-    const [WebTheme, setWebTheme] = useState('Cocktail')
-    if (WebTheme === 'Cocktail') {
-        import("../../styles/CocktailTheme/view")
-    } else if (WebTheme === 'Dark') {
-        import("../../styles/DarkTheme/view")
-    } else if (WebTheme === 'Light') {
-        import("../../styles/LightTheme/view")
-    }
-
     const handleClick = (event, data) => {
         // Вызываем функцию обновления состояния с данными
-        console.log(data)
         updateSidebarData(data);
         const buttons = document.querySelectorAll(".sidebar__list li button");
         buttons.forEach(button => {
@@ -83,20 +74,6 @@ const Sidebar = ({updateSidebarData, meta}) => {
                             <button onClick={(event) => handleClick(event, "Logout")} className="sidebar__logout">
                                 <img src="/Frame%201274.svg" alt="Logout"/>
                                 <span>Logout</span>
-                            </button>
-                            <button onClick={() => setWebTheme(WebTheme === 'Cocktail' ? 'Light' : WebTheme === 'Light' ? 'Dark' : WebTheme === 'Dark' ? 'Cocktail' : null)} className="sidebar__logout">
-                                {WebTheme === 'Cocktail' ? (
-                                        <img src="/cocktail-svgrepo-com.svg" alt="CoctailTheme"/>
-                                    ) : WebTheme === 'Light' ? (
-                                    <img
-                                        style={{maxWidth: "33px", marginRight: "4px", marginLeft: "-2px"}}
-                                        src="/sun-svgrepo-com.svg" alt="DarkTheme"/>
-                                    ) : WebTheme === 'Dark' ? (
-                                    <img
-                                        style={{maxWidth: "30px", marginRight: "4px"}}
-                                        src="/moon-svgrepo-com.svg" alt="DarkTheme"/>
-                                ) : null}
-                                <span>{WebTheme} Theme</span>
                             </button>
                         </div>
                     </div>

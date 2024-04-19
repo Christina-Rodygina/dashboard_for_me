@@ -10,7 +10,6 @@ const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
     const headerHeight = document.querySelector(".header__container")?.offsetHeight;
     const tableHeaderHeight = document.querySelector(".servers__table")?.offsetHeight;
     const windowHeight = window.innerHeight;
-    console.log(windowHeight)
 
     const togglePasswordVisibility = (index) => {
         setPasswordVisibility(prevState => ({
@@ -109,41 +108,44 @@ const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
                     <div className="container servers__container">
                         <h2></h2>
                         <div className="servers__column">
-                            {functions?.includes('clear') ? (
+
+                            <div className="server-btns">
+                                {/*{functions?.includes('clear') ? (*/}
                                 <div className="log-btn">
                                     <button onClick={() => functions_buttons('clear')}>Clear</button>
                                 </div>
-                            ) : functions?.includes('add') ? (
+                                {/*// ) : functions?.includes('add') ? (*/}
                                 <div className="add-btn">
-                                    <button onClick={() => functions_buttons('+')}>Clear</button>
+                                    <button onClick={() => functions_buttons('add')}>+</button>
                                 </div>
-                            ) : null}
-                                <table className="servers__table">
-                                    <thead>
-                                    <tr>
-                                        <th>
+                                {/*) : null}*/}
+                            </div>
+                            <table className="servers__table">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <div className="random-blob number">
+                                            <span>BTN</span>
+                                        </div>
+                                    </th>
+                                    {dataColumn.map((item, index) => (
+                                        <th key={index} tabIndex={index}>
                                             <div className="random-blob number">
-                                                <span>BTN</span>
-                                            </div>
-                                        </th>
-                                        {dataColumn.map((item, index) => (
-                                            <th key={index} tabIndex={index}>
-                                                <div className="random-blob number">
                                                 <span>
                                                     {item.name.length > 3 ?
                                                         (item.name[0].toUpperCase() + item.name.slice(1)) :
                                                         (item.name.toUpperCase())}
                                                 </span>
-                                                </div>
-                                            </th>
-                                        ))}
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {data && data[0].length > 0 ? (
-                                        data[0].map((rowData, rowIndex) => (
-                                            <tr key={rowIndex}>
-                                                <td>
+                                            </div>
+                                        </th>
+                                    ))}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {data && data[0].length > 0 ? (
+                                    data[0].map((rowData, rowIndex) => (
+                                        <tr key={rowIndex}>
+                                            <td>
                                                 <span className="span__buttons">
                                                     <button onClick={() => openInfoOrEdit(rowData.id, "watch")}>
                                                         <img src="/view-svgrepo-com.svg" alt="Watch"/>
@@ -166,21 +168,21 @@ const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
                                                         </div>
                                                     </div>
                                                 </span>
+                                            </td>
+                                            {dataColumn.map((column, columnIndex) => (
+                                                <td key={columnIndex}>
+                                                    {column.name !== 'date' ? (
+                                                        <span>{rowData[column.name]}</span>
+                                                    ) : (
+                                                        <span>{date_constructor(rowData[column.name])}</span>
+                                                    )}
                                                 </td>
-                                                {dataColumn.map((column, columnIndex) => (
-                                                    <td key={columnIndex}>
-                                                        {column.name !== 'date' ? (
-                                                            <span>{rowData[column.name]}</span>
-                                                        ) : (
-                                                            <span>{date_constructor(rowData[column.name])}</span>
-                                                        )}
-                                                    </td>
-                                                ))}
-                                            </tr>
-                                        ))
-                                    ) : null}
-                                    </tbody>
-                                </table>
+                                            ))}
+                                        </tr>
+                                    ))
+                                ) : null}
+                                </tbody>
+                            </table>
                             {data && data[0].length === 0 ? (
                                 <div className="box" style={
                                     {
