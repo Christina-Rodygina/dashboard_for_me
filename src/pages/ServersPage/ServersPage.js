@@ -78,24 +78,6 @@ const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
         }
     }
 
-    const rollBall = () => {
-        const ball = document.querySelector('.ball');
-        // Генерируем случайное положение в пределах контейнера
-        const containerWidth = document.querySelector('.no-data').offsetWidth;
-        const containerHeight = document.querySelector('.no-data').offsetHeight;
-        const ballWidth = ball.offsetWidth;
-        const ballHeight = ball.offsetHeight;
-        const maxX = containerWidth - ballWidth;
-        const maxY = containerHeight - ballHeight;
-        const newX = Math.floor(Math.random() * maxX);
-        const newY = Math.floor(Math.random() * maxY);
-
-        // Применяем новое положение к перекатиполе
-        ball.style.left = `${newX}px`;
-        ball.style.top = `${newY}px`;
-    }
-
-
     useEffect(() => {
         get_request(title)
     }, [title])
@@ -110,15 +92,15 @@ const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
                         <div className="servers__column">
 
                             <div className="server-btns">
-                                {/*{functions?.includes('clear') ? (*/}
+                                {functions?.includes('clear') ? (
                                 <div className="log-btn">
                                     <button onClick={() => functions_buttons('clear')}>Clear</button>
                                 </div>
-                                {/*// ) : functions?.includes('add') ? (*/}
+                                ) : functions?.includes('add') ? (
                                 <div className="add-btn">
                                     <button onClick={() => functions_buttons('add')}>+</button>
                                 </div>
-                                {/*) : null}*/}
+                                ) : null}
                             </div>
                             <table className="servers__table">
                                 <thead>
@@ -147,19 +129,23 @@ const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
                                         <tr key={rowIndex}>
                                             <td>
                                                 <span className="span__buttons">
-                                                    <button onClick={() => openInfoOrEdit(rowData.id, "watch")}>
-                                                        <img src="/view-svgrepo-com.svg" alt="Watch"/>
-                                                    </button>
-                                                    <button onClick={() => openInfoOrEdit(rowData.id, "edit")}>
-                                                        <img src="/edit-svgrepo-com.svg" alt="Edit"/>
-                                                    </button>
+                                                    {title !== 'log' ? (
+                                                        <>
+                                                            <button onClick={() => openInfoOrEdit(rowData.id, "watch")}>
+                                                                <img src="/view-svgrepo-com.svg" alt="Watch"/>
+                                                            </button>
+                                                            <button onClick={() => openInfoOrEdit(rowData.id, "edit")}>
+                                                                <img src="/edit-svgrepo-com.svg" alt="Edit"/>
+                                                            </button>
+                                                        </>
+                                                    ) : null}
                                                     <button onClick={() => openDeletion(rowData.id)}>
                                                         <img src="/delete-2-svgrepo-com.svg" alt="Delete"/>
                                                     </button>
                                                     <div id={`confirmation-deletion-${rowData.id}`}
                                                          className="confirmation-deletion">
-                                                        <span>Are you sure you want to delete this server<b
-                                                            style={{marginLeft: "4px"}}>{rowData.name}</b>?</span>
+                                                        <span>Are you sure you want to delete this {title}<b
+                                                            style={{marginLeft: "4px"}}>{title !== 'log' ? rowData.name : rowData.id}</b>?</span>
                                                         <div className="confirmation-deletion__btns">
                                                             <button
                                                                 onClick={() => openDeletion(rowData.id, true)}>Ok</button>

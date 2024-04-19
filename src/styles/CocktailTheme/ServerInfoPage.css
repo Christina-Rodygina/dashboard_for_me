@@ -3,12 +3,12 @@
 }
 
 .server-info__white-container {
-    background-color: rgba(2, 0, 36, 0.6);
-    border: 1px solid rgba(2, 0, 36, 0.4);
+    background-color: var(--background-cocktailTheme-table);
+    border: 1px solid var(--borderColor-cocktailTheme-table);
 }
 
 .server-info__title2-and-btns {
-    border-bottom: 1px solid rgba(2,0,36,0.3);
+    border-bottom: 1px solid var(--borderColor-cocktailTheme-table);
 }
 
 .server-info__btns button {
@@ -16,15 +16,15 @@
 }
 
 .server-info__btn-edit:hover {
-    background-color: green;
+    background-color: var(--color-text-cocktailTheme-block-green);
 }
 
 .server-info__btn-delete:hover {
-    background-color: red;
+    background-color: var(--color-text-cocktailTheme-block-red);
 }
 
 .server-info__search {
-    border-bottom: 1px solid rgba(2,0,36,0.3);
+    border-bottom: 1px solid var(--borderColor-cocktailTheme-table);
 }
 
 .server-info__search-input {
@@ -32,18 +32,18 @@
 }
 
 .server-info__search-input::placeholder {
-    color: white;
+    color: var(--color-text-cocktailTheme-base);
 }
 
 .server-info__table-container {
-    border-bottom: 1px solid rgba(2,0,36,0.3);
+    border-bottom: 1px solid var(--borderColor-cocktailTheme-table);
 }
 
 .info-table thead tr {
-    background-color: rgba(2,0,36,0.3);
+    background-color: var(--background-cocktailTheme-table);
 }
 
 .info-table tbody tr th,
 .info-table thead tr th {
-    border: 1px solid rgba(2,0,36,0.3);
+    border: 1px solid var(--borderColor-cocktailTheme-table);
 }

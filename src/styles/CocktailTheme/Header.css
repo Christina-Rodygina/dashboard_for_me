@@ -1,0 +1,19 @@
+.header__logo {
+    border: 4px solid white;
+}
+
+.header__search > div {
+    filter: drop-shadow(0 1px #0091c2);
+}
+
+.header__search > div:after {
+    background: var(--background-cocktailTheme-input);
+}
+
+.header__search > div > input {
+    border: solid 3px white;
+}
+
+.header__search > div > input::placeholder {
+    color: var(--color-text-cocktailTheme-base);
+}

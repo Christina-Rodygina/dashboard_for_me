@@ -1,54 +1,42 @@
-.server-info,
-.servers,
-.homepage {
-    color: black;
-}
-
 .servers__list-item__cpu-info {
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);
-    border: 2px solid rgba(2,0,36,1);
-    color: white;
+    background: var(--background-cocktailTheme-block);
+    border: 2px solid var(--borderColor-cocktailTheme);
 }
 
 .servers__list-item__disc:hover >.cpu__statistics.open,
 .servers__list-item__op:hover >.cpu__statistics.open ,
 .servers__list-item__cpu:hover > .cpu__statistics.open  {
-    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
+    box-shadow: var(--box-shadow-cocktailTheme);
 }
 
 .item__info-percent.norm,
 .item__info-percent.min {
-    color: greenyellow;
+    color: var(--color-text-cocktailTheme-block-green);
 }
 
 .item__info-percent.max {
-    color: red;
+    color: var(--color-text-cocktailTheme-block-red);
 }
 
 .item__info-status.online {
-    color: greenyellow;
+    color: var(--color-text-cocktailTheme-block-green);
 }
 
 .item__info-status.offline {
-    color: red;
+    color: var(--color-text-cocktailTheme-block-red);
 }
 
 .cpu__statistics {
     background-color: white;
-    border: 4px solid rgba(2,0,36,1);
+    border: 3px solid var(--borderColor-cocktailTheme);
 }
 
 .interval__btn {
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);
-    color: white;
+    background: var(--background-cocktailTheme-block);
 }
 
 .interval__btn.active,
 .interval__btn:active {
-    background: rgba(255, 120, 0, 0.44);
-    color: #FF7800;
-}
-
-.servers__list-item__title {
-    color: white;
+    background: var(--background-cocktailTheme-btn-hover--orange);
+    color: var(--color-text-cocktailTheme-btn--orange);
 }

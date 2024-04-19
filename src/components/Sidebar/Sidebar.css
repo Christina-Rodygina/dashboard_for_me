@@ -1,11 +1,9 @@
 .sidebar {
-    /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);*/
     width: 315px;
     background: transparent;
     height: 100%;
     position: fixed;
     padding: 100px 0;
-    color: white;
     overflow: scroll;
 }
 
@@ -50,7 +48,6 @@
     display: flex;
     justify-content: start;
     border-radius: 8px;
-    color: white;
     transition: background-color .4s linear, color .4s linear;
 }
 
@@ -58,17 +55,6 @@
 .sidebar__list li img {
     margin-right: 10px;
     max-width: 24px;
-}
-
-.sidebar__list li button.active {
-    background-color: rgba(255, 120, 0, 0.27);
-    color: #FF7800;
-}
-
-.sidebar__logout:hover,
-.sidebar__list li button:hover {
-    background-color: rgba(255, 120, 0, 0.27);
-    color: #FF7800;
 }
 
 .sidebar__info {
@@ -84,6 +70,5 @@
     justify-content: start;
     align-items: center;
     border-radius: 8px;
-    color: white;
     transition: background-color .4s linear, color .4s linear;
 }

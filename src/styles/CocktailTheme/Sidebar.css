@@ -1,0 +1,10 @@
+.sidebar__list li button.active {
+    background-color: var(--background-cocktailTheme-btn-hover--orange);
+    color: var(--color-text-cocktailTheme-btn--orange);
+}
+
+.sidebar__logout:hover,
+.sidebar__list li button:hover {
+    background-color: var(--background-cocktailTheme-btn-hover--orange);
+    color: var(--color-text-cocktailTheme-btn--orange);
+}

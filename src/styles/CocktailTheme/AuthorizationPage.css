@@ -4,22 +4,23 @@
 /*grey 84828A*/
 
 .authorization__white-container {
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);
-    border: 2px solid rgba(2,0,36,1);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background: var(--background-cocktailTheme-block);
+    border: 2px solid;
+    border-color: var(--borderColor-cocktailTheme);
+    box-shadow: var(--box-shadow-cocktailTheme);
 }
 
 .authorization__white-container input {
-    background: white;
-    color: black;
+    background-color: var(--background-cocktailTheme-input);
+    color: var(--color-text-cocktailTheme-input);
 }
 
 .authorization__white-container button {
-    background-color: #FF7800;
+    background-color: var(--background-cocktailTheme-btn--orange)
 }
 
 .authorization__white-container button:active,
 .authorization__white-container button:hover {
-    background-color: rgba(255, 120, 0, 0.27);
-    color: #FF7800;
+    background-color: var(--background-cocktailTheme-btn-hover--orange);
+    color: var(--color-text-cocktailTheme-btn--orange);
 }

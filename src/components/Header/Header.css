@@ -31,11 +31,9 @@
     width: 50px;
     border-radius: 18px;
     margin-right: 20px;
-    border: 4px solid white;
 }
 
 .header__title {
-    color: white;
     font-size: 26px;
     font-weight: 600;
 }
@@ -58,12 +56,10 @@
 .header__search > div {
     display: inline-block;
     position: relative;
-    filter: drop-shadow(0 1px #0091c2);
 }
 
 .header__search > div:after {
     content: "";
-    background: white;
     width: 4px;
     height: 14px;
     position: absolute;
@@ -73,13 +69,11 @@
 }
 
 .header__search > div > input {
-    color: white;
     font-size: 16px;
     background: transparent;
     width: 27px;
     height: 27px;
     padding: 10px;
-    border: solid 3px white;
     outline: none;
     border-radius: 35px;
     transition: width 0.5s;
@@ -87,7 +81,6 @@
 }
 
 .header__search > div > input::placeholder {
-    color: #efefef;
     opacity: 0;
     transition: opacity 150ms ease-out;
 }
@@ -123,31 +116,4 @@
 
 .header__notifications-btn:hover img {
     animation: notification 1s ease;
-}
-
-@keyframes rotateImage {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes notification {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    33% {
-        transform: rotate(30deg);
-    }
-
-    66% {
-        transform: rotate(-30deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
 }

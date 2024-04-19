@@ -1,37 +1,27 @@
-.servers__column {
-    color: white;
-}
-
 .servers__table tbody td,
 .servers__table tbody th {
-    border: 1px solid rgba(2, 0, 36, 0.4);
-}
-
-.servers__table thead th {
-    color: white;
+    border: 1px solid var(--borderColor-cocktailTheme-table);
 }
 
 .servers__table tbody tr {
-    background-color: rgba(2, 0, 36, 0.6);
+    background-color: var(--background-cocktailTheme-table);
 }
 
 .confirmation-deletion.open {
-    color: black;
-    background-color: white;
+    color: var(--color-text-cocktailTheme-input);
+    background-color: var(--background-cocktailTheme-input);
 }
 
 .confirmation-deletion__btns button {
+    border: 2px solid var(--borderColor-cocktailTheme);
+    background: var(--background-cocktailTheme-block);
     color: white;
-    border: 2px solid rgba(2, 0, 36, 1);
-    background: rgba(2, 0, 36, 1);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(11, 68, 70, 1) 160%);
 }
 
 .confirmation-deletion__btns button:hover {
-    background: #FF7800;
-    border-color: #a84e00;
-    color: #a84e00;
-    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 6px 12px;
+    background: var(--background-cocktailTheme-btn-hover--orange);
+    color: var(--color-text-cocktailTheme-btn--orange);
+    box-shadow: var(--box-shadow-cocktailTheme);
 }
 
 .log-btn button {
@@ -39,6 +29,10 @@
 }
 
 .add-btn button {
-    background-color: green;
     border: 3px solid white;
+}
+
+.add-btn button:hover {
+    border-color: var(--color-text-cocktailTheme-block-green);
+    color: var(--color-text-cocktailTheme-block-green);
 }

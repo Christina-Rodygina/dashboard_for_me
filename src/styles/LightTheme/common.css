@@ -1,0 +1,8 @@
+:root {
+    --background-lightTheme: #fff;
+}
+
+body {
+    color: white;
+    background: var(--background-lightTheme);
+}
