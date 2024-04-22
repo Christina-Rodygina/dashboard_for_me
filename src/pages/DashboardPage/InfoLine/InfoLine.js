@@ -1,6 +1,6 @@
 import InfoBloc from "../InfoBloc/InfoBloc";
 import React from "react";
-import "./InfoLine.css"
+import "./view"
 
 const InfoLine = ({ data, uniqueLabels, title, id }) => {
     return (

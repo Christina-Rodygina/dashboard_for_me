@@ -1,0 +1,11 @@
+@media (max-width: 700px) {
+    .server-info,
+    .servers,
+    .homepage {
+        padding-left: 90px;
+    }
+
+    .homepage__row {
+        justify-content: center;
+    }
+}

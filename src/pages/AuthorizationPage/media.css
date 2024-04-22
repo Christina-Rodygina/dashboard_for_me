@@ -1,0 +1,20 @@
+@media (max-width: 500px) {
+    .authorization__white-container {
+        max-width: 400px;
+        max-height: 430px;
+    }
+
+    .authorization__white-container h3 {
+        font-size: 2rem;
+    }
+    .authorization__white-container input {
+        width: 100%;
+        font-size: 16px;
+    }
+    .authorization {
+        padding: 100px 0 40px;
+    }
+}
+
+@media (max-height: 650px) {
+}

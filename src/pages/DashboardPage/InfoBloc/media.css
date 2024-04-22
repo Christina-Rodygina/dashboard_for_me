@@ -1,0 +1,31 @@
+@media (max-width: 1000px) {
+    .servers__list-item__disc,
+    .servers__list-item__op,
+    .servers__list-item__cpu {
+        max-width: 400px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .servers__list-item__disc,
+    .servers__list-item__op,
+    .servers__list-item__cpu {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 400px) {
+    .servers__list-item__disc,
+    .servers__list-item__op,
+    .servers__list-item__cpu {
+        max-width: 200px;
+    }
+
+    .item__info-date {
+        text-align: start;
+    }
+    .item__info-time {
+        text-align: end;
+    }
+}

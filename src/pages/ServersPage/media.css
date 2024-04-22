@@ -1,0 +1,9 @@
+@media (max-width: 500px) {
+    .servers__column {
+        width: 100%;
+        overflow-x: auto;
+    }
+    .server-btns {
+        justify-content: normal;
+    }
+}

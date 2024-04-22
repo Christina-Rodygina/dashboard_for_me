@@ -21,6 +21,7 @@
     margin-top: 30px;
     border-collapse: separate;
     border-spacing: 0 10px;
+    overflow-y: scroll;
 }
 
 .servers__table tbody td,

@@ -1,0 +1,19 @@
+@media (max-width: 500px) {
+    .header__title {
+        font-size: 1.3rem;
+    }
+
+    .header__search > div > input {
+        width: 18px;
+        height: 18px;
+        padding: 9px;
+    }
+
+    .header__search > div:after {
+        top: 17px;
+    }
+
+    .header__search > div > input:focus, .header__search > div > input:not(:placeholder-shown) {
+        width: 150px;
+    }
+}

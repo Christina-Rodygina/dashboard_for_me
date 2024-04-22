@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from "react";
-import "./ServersPage.css"
+import "./view"
 import axios from "axios";
 import {URL} from "../../App";
 
 const ServersPage = ({dataColumn, onSidebarUpdate, title, functions}) => {
-    const [passwordVisibility, setPasswordVisibility] = useState({});
+    // const [passwordVisibility, setPasswordVisibility] = useState({});
     const [data, setData] = useState(null)
     const tableWidth = document.querySelector(".servers__table")?.offsetWidth;
     const headerHeight = document.querySelector(".header__container")?.offsetHeight;
     const tableHeaderHeight = document.querySelector(".servers__table")?.offsetHeight;
     const windowHeight = window.innerHeight;
 
-    const togglePasswordVisibility = (index) => {
-        setPasswordVisibility(prevState => ({
-            ...prevState, [index]: !prevState[index] // инвертируем значение видимости пароля
-        }));
-    };
+    // const togglePasswordVisibility = (index) => {
+    //     setPasswordVisibility(prevState => ({
+    //         ...prevState, [index]: !prevState[index] // инвертируем значение видимости пароля
+    //     }));
+    // };
 
     const openDeletion = (itemId, bool) => {
         const section = document.getElementById(`confirmation-deletion-${itemId}`);

@@ -1,0 +1,8 @@
+@media (max-width: 1000px) {
+    .servers__list-item__row {
+        flex-direction: column;
+        justify-content: normal;
+        align-items: start;
+    }
+}
+

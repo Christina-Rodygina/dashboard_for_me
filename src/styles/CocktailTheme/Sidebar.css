@@ -8,3 +8,12 @@
     background-color: var(--background-cocktailTheme-btn-hover--orange);
     color: var(--color-text-cocktailTheme-btn--orange);
 }
+
+.sidebar__title-btn {
+    border: 3px solid var(--color-text-cocktailTheme-base);
+}
+
+.sidebar__title-btn:hover {
+    background-color: var(--background-cocktailTheme-btn-hover--orange);
+    color: var(--color-text-cocktailTheme-btn--orange);
+}

@@ -18,9 +18,33 @@
     --background-cocktailTheme-btn-hover--orange: rgba(255, 120, 0, 0.27);
     --color-text-cocktailTheme-block-green: greenyellow;
     --color-text-cocktailTheme-block-red: red;
+
+    /*scrollbar*/
+    --scrollbarWidth: 12px;
+    --scrollbarBG-cocktailTheme: #FF7800;
+    --scrollbarThumb-cocktailTheme: rgba(2,0,36,1);
+    --scrollbarBorder-cocktailTheme: 3px solid var(--scrollbarBG-cocktailTheme);
+    --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 2);
+}
+
+body::-webkit-scrollbar {
+    width: var(--scrollbarWidth);
+    background: var(--scrollbarBG-cocktailTheme);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scrollbarBG-cocktailTheme);
+    border-radius: var(--scrollbarBorderRadius);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbarThumb-cocktailTheme);
+    border-radius: var(--scrollbarBorderRadius);
+    border: var(--scrollbarBorder-cocktailTheme);
 }
 
 body {
     color: var(--color-text-cocktailTheme-base);
     background: var(--background-cocktailTheme-body);
+    overflow-y: scroll;
 }

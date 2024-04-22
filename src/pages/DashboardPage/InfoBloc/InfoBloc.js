@@ -1,6 +1,6 @@
 import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme, VictoryTooltip} from "victory";
 import React from "react";
-import "./InfoBloc.css"
+import "./view"
 
 const InfoBloc = ({ data, uniqueLabels, type, id }) => {
 

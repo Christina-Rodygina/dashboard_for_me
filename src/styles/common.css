@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 body {
@@ -18,3 +19,6 @@ body {
     background-size: cover;
 }
 
+.blur-effect {
+    filter: blur(5px);
+}

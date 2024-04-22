@@ -1,4 +1,4 @@
-import "./AuthorizationPage.css"
+import "./view"
 import React from "react";
 
 const AuthorizationPage = () => {

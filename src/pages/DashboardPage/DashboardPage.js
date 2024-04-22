@@ -1,5 +1,5 @@
-import "./DashboardPage.css"
-import React from "react";
+import "./view"
+import React, {useEffect} from "react";
 import InfoLine from "./InfoLine/InfoLine";
 
 const DashboardPage = () => {
@@ -32,6 +32,9 @@ const DashboardPage = () => {
 
     const uniqueLabels = [...new Set(data.map(item => item.x))];
 
+    useEffect(() => {
+
+    }, [])
 
 
     return (

@@ -1,0 +1,33 @@
+/*@media (sidebar.open) {*/
+/*    .sidebar {*/
+/*        width: 90px;*/
+/*    }*/
+
+/*    .sidebar__title,*/
+/*    .sidebar__logout span,*/
+/*    .sidebar__info,*/
+/*    .sidebar__list li button span*/
+/*    {*/
+/*        display: none;*/
+/*    }*/
+
+/*    .sidebar__logout img,*/
+/*    .sidebar__list li img {*/
+/*        margin-right: 0;*/
+/*    }*/
+
+/*    .sidebar__list li button {*/
+/*        padding: 15px 10px;*/
+/*        justify-content: center;*/
+/*    }*/
+
+/*    .sidebar__title {*/
+/*        text-align: center;*/
+/*    }*/
+/*}*/
+
+@media (max-width: 700px) {
+    .sidebar {
+        background-color: rgba(2, 0, 36, 0.8);
+    }
+}
