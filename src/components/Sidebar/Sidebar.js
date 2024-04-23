@@ -6,7 +6,6 @@ const Sidebar = ({updateSidebarData, meta}) => {
     const windowWidth = window.innerWidth;
     const [sideBar, setSideBar] = useState(windowWidth > 500)
     const handleClick = (event, data) => {
-        // Вызываем функцию обновления состояния с данными
         updateSidebarData(data);
         const buttons = document.querySelectorAll(".sidebar__list li button");
         buttons.forEach(button => {
