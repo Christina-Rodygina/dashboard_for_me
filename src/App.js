@@ -16,9 +16,8 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 export const URL = 'https://krianse.ru/api'
 
 function App() {
-    const [sidebarData, setSidebarData] = useState("Dashboard");
+    const [sidebarData, setSidebarData] = useState("Logout");
     const [meta, setMeta] = useState(null)
-    const [login, setLogin] = useState(false);
 
     const handleSidebarUpdate = (data) => {
         setSidebarData(data);
@@ -39,9 +38,10 @@ function App() {
         try {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true});
             if (response.status === 200) {
-                setLogin(login)
+                get_meta()
             } else {
-                setLogin(false)
+                setSidebarData('Logout')
+                renderPage()
             }
         } catch (error) {
             console.log(error)
@@ -56,7 +56,7 @@ function App() {
             case "Logout":
                 return <AuthorizationPage/>;
             case "Registration":
-                return <RegistrationPage/>
+                return <RegistrationPage/>;
             default:
                 const serversData = meta.find(item => item["table_name"] === sidebarData);
                 // Отображаем ServersPage с найденными данными
@@ -67,12 +67,7 @@ function App() {
 
     useEffect(() => {
         me()
-        if (login) {
-            get_meta()
-        } else {
-            setSidebarData('Logout')
-        }
-    }, [login])
+    },[])
 
     useEffect(() => {
         renderPage()
