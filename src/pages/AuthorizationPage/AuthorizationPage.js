@@ -16,6 +16,8 @@ const AuthorizationPage = () => {
                 "email": email,
                 "password": password
             }, {withCredentials: true});
+            console.log(email)
+            console.log(password)
             if (response.status === 200) {
                 sidebar.classList.remove("none")
                 authorization.classList.add("none")
