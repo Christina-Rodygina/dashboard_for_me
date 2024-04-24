@@ -39,8 +39,8 @@ function App() {
         try {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true});
             if (response.status === 200) {
+                authorization.classList.add("none")
                 get_meta()
-                authorization?.classList.add("none")
             } else {
                 setSidebarData('Logout')
                 renderPage()
