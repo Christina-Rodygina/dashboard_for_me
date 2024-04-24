@@ -56,7 +56,7 @@ function App() {
     const renderPage = () => {
         switch (sidebarData) {
             case "Dashboard":
-                return <DashboardPage/>;
+                window.location.replace("/dashboard")
             case "Logout":
                 return <AuthorizationPage/>;
             case "Registration":
