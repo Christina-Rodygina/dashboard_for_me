@@ -51,7 +51,6 @@ const DashboardPage = () => {
             const response = await axios.get(`${URL}/workload/get-workload`)
             if (response.status === 200) {
                 setDataWorkload(response.data)
-                console.log(response.data)
             }
         } catch (error) {
             console.log(error)
@@ -73,16 +72,7 @@ const DashboardPage = () => {
                         {dataWorkload ? (
                         <ul className="servers__list">
                             <li className="servers__list-item">
-                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VinylDiscount"} id={1} dataWorkload={dataWorkload}/>
-                            </li>
-                            <li className="servers__list-item">
-                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"MetricaFX"} id={2}/>
-                            </li>
-                            <li className="servers__list-item">
-                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"Neurology"} id={3}/>
-                            </li>
-                            <li className="servers__list-item">
-                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VictoryaBonya"} id={4}/>
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={dataWorkload ? dataWorkload['server'].name : null} id={1} dataWorkload={dataWorkload}/>
                             </li>
                         </ul>
                         ) : null}

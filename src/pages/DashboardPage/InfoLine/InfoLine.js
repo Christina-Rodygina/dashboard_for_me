@@ -3,7 +3,6 @@ import React from "react";
 import "./view"
 
 const InfoLine = ({ data, uniqueLabels, title, id, dataWorkload }) => {
-    console.log(dataWorkload)
     return (
         <>
             <h3 className="servers__list-item__title">{title}</h3>
