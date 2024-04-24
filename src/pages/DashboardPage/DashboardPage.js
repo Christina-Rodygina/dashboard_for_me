@@ -1,6 +1,8 @@
 import "./view"
 import React, {useEffect} from "react";
 import InfoLine from "./InfoLine/InfoLine";
+import axios from "axios";
+import URL from "../../App"
 
 const DashboardPage = () => {
     const data = [
@@ -32,8 +34,19 @@ const DashboardPage = () => {
 
     const uniqueLabels = [...new Set(data.map(item => item.x))];
 
-    useEffect(() => {
+    const me = async () => {
+        try {
+            const response = await axios.get(`${URL}/user/me`)
+            if (response.status !== 200) {
+                window.location.href = '/authorization'
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
+    useEffect(() => {
+        me()
     }, [])
 
 
