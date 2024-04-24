@@ -125,6 +125,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             </thead>
                             <tbody>
                             {data && data[0].length > 0 ? (
+                                console.log(data[0]),
                                 data[0].map((rowData, rowIndex) => (
                                     <tr key={rowIndex}>
                                         <td>
