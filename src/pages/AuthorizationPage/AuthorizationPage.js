@@ -6,6 +6,7 @@ import {URL} from "../../App";
 const AuthorizationPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('')
 
     const login = async (event) => {
         event.preventDefault();
@@ -17,7 +18,7 @@ const AuthorizationPage = () => {
             window.location.href = "/"
         } else {
             const error = document.querySelector(".error")
-            error.innerText = 'Ошибка авторизации'
+            setError(response.data.detail)
             console.log(response.status)
         }
     }
@@ -27,7 +28,7 @@ const AuthorizationPage = () => {
                 <div className="container authorization-container">
                     <div className="authorization__white-container">
                         <h3>Authorization</h3>
-                        <h4 className="error"></h4>
+                        <h4 className="error">{error}</h4>
                         <form>
                             <input
                                 onChange={(event) => setEmail(event.target.value)}
