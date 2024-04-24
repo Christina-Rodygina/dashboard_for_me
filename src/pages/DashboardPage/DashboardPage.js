@@ -37,9 +37,11 @@ const DashboardPage = () => {
     const me = async () => {
         console.log('me')
         try {
-            const response = await axios.get(`${URL}/user/me`)
+            const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
             if (response.status !== 200) {
                 window.location.href = '/authorization'
+            } else {
+                console.log(response.status)
             }
         } catch (error) {
             console.log(error)
@@ -55,7 +57,7 @@ const DashboardPage = () => {
         <>
             <div className="homepage">
                 <div className="container homepage__container">
-                    <h2></h2>
+                    <h2>{''}</h2>
                     <div className="homepage__row">
                         <ul className="servers__list">
                             <li className="servers__list-item">
