@@ -47,6 +47,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                 setData(response.data)
                 console.log(`${URL}/${title}/get-${title}`)
                 console.log(response.data)
+                console.log(response.data[0])
             }
         } catch (error) {
             console.log(error)
