@@ -7,7 +7,8 @@ const AuthorizationPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const login = async () => {
+    const login = async (event) => {
+        event.preventDefault();
         const response = await axios.post(`${URL}/user/login`, {
             "email": email,
             "password": password
@@ -41,7 +42,7 @@ const AuthorizationPage = () => {
                                 value={password}
                                 type="password"
                                 autoComplete="new-password"/>
-                            <button onClick={() => login()}>Login</button>
+                            <button onClick={(event) => login(event)}>Login</button>
                         </form>
                         <span>No account?
                             <span>Create</span>
