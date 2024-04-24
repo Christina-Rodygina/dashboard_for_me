@@ -1,5 +1,7 @@
 import "./view"
 import {useEffect, useState} from "react";
+import axios from "axios";
+import {URL} from "../../App";
 
 
 const Sidebar = ({updateSidebarData, meta}) => {
@@ -11,54 +13,8 @@ const Sidebar = ({updateSidebarData, meta}) => {
         buttons.forEach(button => {
             button.classList.remove("active");
         });
-        event.target.classList.add("active");
+        event?.target.classList.add("active");
     };
-
-    // const open_sidebar = () => {
-    //     const section = document.querySelector(".sidebar")
-    //     const spanLogout = document.querySelectorAll(".sidebar__logout span")
-    //     const info = document.querySelector(".sidebar__info")
-    //     const title = document.querySelector(".sidebar__title")
-    //     const spanButton = document.querySelectorAll(".sidebar__list li button span")
-    //     const logoutImg = document.querySelector(".sidebar__logout img")
-    //     const liImg = document.querySelectorAll(".sidebar__list li img")
-    //     const liButton = document.querySelectorAll(".sidebar__list li button")
-    //     if (section.classList.contains("open")) {
-    //         section.classList.remove("open")
-    //         spanLogout.forEach(el => {
-    //             el.classList.remove("open")
-    //         });
-    //         info.classList.remove("open")
-    //         title.classList.remove("open")
-    //         spanButton.forEach(el => {
-    //             el.classList.remove("open")
-    //         });
-    //         logoutImg.classList.remove("open")
-    //         liImg.forEach(el => {
-    //             el.classList.remove("open")
-    //         });
-    //         liButton.forEach(el => {
-    //             el.classList.remove("open")
-    //         });
-    //     } else {
-    //         section.classList.add("open")
-    //         spanLogout.forEach(el => {
-    //             el.classList.add("open")
-    //         });
-    //         info.classList.add("open")
-    //         title.classList.add("open")
-    //         spanButton.forEach(el => {
-    //             el.classList.add("open")
-    //         });
-    //         logoutImg.classList.add("open")
-    //         liImg.forEach(el => {
-    //             el.classList.add("open")
-    //         });
-    //         liButton.forEach(el => {
-    //             el.classList.add("open")
-    //         });
-    //     }
-    // }
 
     const open_sidebar = () => {
         const section = document.querySelector(".sidebar")
@@ -80,18 +36,17 @@ const Sidebar = ({updateSidebarData, meta}) => {
         }
     }
 
-    // useEffect(() => {
-    //     const section = document.querySelector(".sidebar")
-    //     const header = document.querySelector(".header__container")
-    //     const body = document.querySelector("body")
-    //     if (sideBar && windowWidth < 700) {
-    //         body.style.filter = 'blur(5px)';
-    //         section.style.filter = 'none';
-    //         header.style.filter = 'none';
-    //     } else {
-    //         body.style.filter = 'none';
-    //     }
-    // }, [sideBar])
+    const logout = async () => {
+        try {
+            const response = await axios.get(`${URL}/user/logout`, {withCredentials: true});
+            if (response.status === 200) {
+                handleClick(null, "Logout")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <>
             {meta ? (
