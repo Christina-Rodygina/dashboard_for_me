@@ -1,38 +1,30 @@
 import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme, VictoryTooltip} from "victory";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./view"
 
 const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
-    // const [dataCPU, setDataCPU] = useState([])
-    // const [dataRAM, setDataRAM] = useState([])
-    // const [dataDISC, setDataDISC] = useState([])
-    console.log(dataWorkload)
+    const [dataCPU, setDataCPU] = useState([])
+    const [dataRAM, setDataRAM] = useState([])
+    const [dataDISC, setDataDISC] = useState([])
+    console.log(dataCPU)
+    console.log(dataRAM)
+    console.log(dataDISC)
 
-    const dataCPU = [
-        {date: "2024-04-24T17:15:57.837849+00:00", cpu: "0"},
-        {date: "2024-04-24T17:20:58.497717+00:00", cpu: "0"},
-        {date: "2024-04-24T17:25:59.165751+00:00", cpu: "6.2"},
-        {date: "2024-04-24T17:36:00.534653+00:00", cpu: "18.7"},
-        {date: "2024-04-24T17:41:01.216959+00:00", cpu: "12.4"},
-    ]
-
-    const dataRAM = [
-        {date: "2024-04-24T17:15:57.837849+00:00", ram: "34.37"},
-        {date: "2024-04-24T17:20:58.497717+00:00", ram: "36.05"},
-        {date: "2024-04-24T17:25:59.165751+00:00", ram: "36.56"},
-        {date: "2024-04-24T17:36:00.534653+00:00", ram: "36.91"},
-        {date: "2024-04-24T17:41:01.216959+00:00", ram: "37.07"},
-    ]
-
-    const dataDisc = [
-        {date: "2024-04-24T17:20:58.497717+00:00", disc: "28"},
-        {date: "2024-04-24T17:15:57.837849+00:00", disc: "28"},
-        {date: "2024-04-24T17:25:59.165751+00:00", disc: "28"},
-        {date: "2024-04-24T17:36:00.534653+00:00", disc: "28"},
-        {date: "2024-04-24T17:41:01.216959+00:00", disc: "28"},
-    ]
-
-
+    // const dataRAM = [
+    //     {date: "2024-04-24T17:15:57.837849+00:00", ram: "34.37"},
+    //     {date: "2024-04-24T17:20:58.497717+00:00", ram: "36.05"},
+    //     {date: "2024-04-24T17:25:59.165751+00:00", ram: "36.56"},
+    //     {date: "2024-04-24T17:36:00.534653+00:00", ram: "36.91"},
+    //     {date: "2024-04-24T17:41:01.216959+00:00", ram: "37.07"},
+    // ]
+    //
+    // const dataDisc = [
+    //     {date: "2024-04-24T17:20:58.497717+00:00", disc: "28"},
+    //     {date: "2024-04-24T17:15:57.837849+00:00", disc: "28"},
+    //     {date: "2024-04-24T17:25:59.165751+00:00", disc: "28"},
+    //     {date: "2024-04-24T17:36:00.534653+00:00", disc: "28"},
+    //     {date: "2024-04-24T17:41:01.216959+00:00", disc: "28"},
+    // ]
 
     const intervalBtn = (index, container) => {
         const buttons = container.querySelectorAll('.interval__btn');
@@ -60,6 +52,24 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
             section.classList.add("open");
         }
     };
+
+    useEffect(() => {
+        const dataCpu = dataWorkload ? dataWorkload[0].map(item => ({
+            date: item.date,
+            cpu: parseFloat(item.cpu)
+        })) : null;
+        const dataRam = dataWorkload ? dataWorkload[0].map(item => ({
+            date: item.date,
+            cpu: parseFloat(item['ram'])
+        })) : null;
+        const dataDisc = dataWorkload ? dataWorkload[0].map(item => ({
+            date: item.date,
+            cpu: parseFloat(item['disc'])
+        })) : null;
+        setDataCPU(dataCpu);
+        setDataRAM(dataRam);
+        setDataDISC(dataDisc);
+    }, [dataWorkload])
 
     return (
         <>
