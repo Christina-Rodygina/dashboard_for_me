@@ -35,21 +35,6 @@ const DashboardPage = () => {
 
     const uniqueLabels = [...new Set(data.map(item => item.x))];
 
-    const me = async () => {
-        try {
-            const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
-            if (response.status === 200) {
-            }
-        } catch (error) {
-            window.location.href = '/authorization'
-        }
-    }
-
-    useEffect(() => {
-        me()
-    }, [])
-
-
     return (
         <>
             <div className="homepage">

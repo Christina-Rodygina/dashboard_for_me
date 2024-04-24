@@ -13,182 +13,25 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import ServerEditPage from "./pages/ServerEditPage/ServerEditPage";
 import ServerInfoPage from "./pages/ServerInfoPage/ServerInfoPage";
 import ServersPage from "./pages/ServersPage/ServersPage";
+import axios from "axios";
 
 
 export const URL = 'https://krianse.ru/api'
 
 function App() {
-    const [meta, setMeta] = useState([
-        {
-            "table_name": "log",
-            "columns": [
-                {
-                    "name": "id",
-                    "type": "BIGINT",
-                    "nullable": "False",
-                    "default": "nextval('log_id_seq'::regclass)"
-                },
-                {
-                    "name": "filename",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "line",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "level",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "message",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "date",
-                    "type": "TIMESTAMP",
-                    "nullable": "False",
-                    "default": "None"
-                }
-            ],
-            "functions": [
-                "add",
-                "delete",
-                "watch",
-                "edit",
-                "clear"
-            ]
-        },
-        {
-            "table_name": "workload",
-            "columns": [
-                {
-                    "name": "id",
-                    "type": "BIGINT",
-                    "nullable": "False",
-                    "default": "nextval('workload_id_seq'::regclass)"
-                },
-                {
-                    "name": "server_id",
-                    "type": "BIGINT",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "cpu",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "ram",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "disk",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "date",
-                    "type": "TIMESTAMP",
-                    "nullable": "False",
-                    "default": "None"
-                }
-            ],
-            "functions": [
-                "add",
-                "delete",
-                "watch",
-                "edit"
-            ]
-        },
-        {
-            "table_name": "server",
-            "columns": [
-                {
-                    "name": "id",
-                    "type": "BIGINT",
-                    "nullable": "False",
-                    "default": "nextval('server_id_seq'::regclass)"
-                },
-                {
-                    "name": "name",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "ip",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "port",
-                    "type": "INTEGER",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "password",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "status",
-                    "type": "VARCHAR",
-                    "nullable": "True",
-                    "default": "None"
-                },
-                {
-                    "name": "date",
-                    "type": "TIMESTAMP",
-                    "nullable": "False",
-                    "default": "None"
-                },
-                {
-                    "name": "user_id",
-                    "type": "BIGINT",
-                    "nullable": "True",
-                    "default": "None"
-                },
-                {
-                    "name": "user_name",
-                    "type": "VARCHAR",
-                    "nullable": "False",
-                    "default": "None"
-                }
-            ],
-            "functions": [
-                "add",
-                "delete",
-                "watch",
-                "edit"
-            ]
-        }
-    ]);
+    const [meta, setMeta] = useState([]);
     const [login, setLogin] = useState(true)
 
-    useEffect(() => {
-        if (window.location.pathname === '/authorization') {
-            setLogin(false)
-        } else {
-            setLogin(true)
+    const get_meta = async () => {
+        try {
+            const response = await axios.get(`${URL}/server/get-meta`)
+            if (response.status === 200) {
+                setMeta(response.data)
+            }
+        } catch (error) {
+            console.log(error)
         }
-    }, [window.location.pathname])
+    }
 
     const tabs_meta = () => {
         if (meta) {
@@ -204,11 +47,31 @@ function App() {
         }
     }
 
+    const me = async () => {
+        try {
+            const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
+            if (response.status === 200) {
+                setLogin(true)
+            }
+        } catch (error) {
+            setLogin(false)
+            window.location.href = '/authorization'
+        }
+    }
+
+    useEffect(() => {
+        me()
+    }, [])
+
+    useEffect(() => {
+        get_meta()
+    }, [])
+
     return (
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                {login ? (
+                {window.location.pathname !== '/authorization' ? (
                     <Sidebar meta={meta}/>
                 ) : null}
                 <Routes>

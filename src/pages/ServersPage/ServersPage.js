@@ -62,21 +62,21 @@ const ServersPage = ({dataColumn, title, functions}) => {
         return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
     }
 
-    // const functions_buttons = async (functions) => {
-    //     if (functions === 'clear') {
-    //         try {
-    //             const response = await axios.delete(`${URL}/${title}/clear-${title}`)
-    //             if (response.status === 200) {
-    //                 await get_request(title)
-    //             } else {
-    //                 console.log("An error occurred while clearing the data")
-    //             }
-    //
-    //         } catch (error) {
-    //             console.log(error)
-    //         }
-    //     }
-    // }
+    const functions_buttons = async (functions) => {
+        if (functions === 'clear') {
+            try {
+                const response = await axios.delete(`${URL}/${title}/clear-${title}`)
+                if (response.status === 200) {
+                    await get_request(title)
+                } else {
+                    console.log("An error occurred while clearing the data")
+                }
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
     useEffect(() => {
         setData(null)
