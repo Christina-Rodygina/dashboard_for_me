@@ -35,7 +35,6 @@ const DashboardPage = () => {
     const uniqueLabels = [...new Set(data.map(item => item.x))];
 
     const me = async () => {
-        console.log('me')
         try {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
             if (response.status !== 200) {
