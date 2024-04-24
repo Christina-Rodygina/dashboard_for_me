@@ -169,7 +169,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             ) : null}
                             </tbody>
                         </table>
-                        {data && data[0].length === 0 ? (
+                        {data ? (
                             <div className="box" style={
                                 {
                                     width: tableWidth,
