@@ -20,8 +20,9 @@ const AuthorizationPage = () => {
                 "password": password
             }, {withCredentials: true});
             if (response.status === 200) {
-                sidebar.classList.remove("none")
+                sidebar?.classList.remove("none")
                 authorization.classList.add("none")
+                window.location.reload()
             }
         } catch (error) {
             console.log(error)
