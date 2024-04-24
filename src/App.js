@@ -11,6 +11,7 @@ import {useEffect, useState} from "react";
 import ServersPage from "./pages/ServersPage/ServersPage";
 import AuthorizationPage from "./pages/AuthorizationPage/AuthorizationPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
 export const URL = 'https://krianse.ru/api'
@@ -70,18 +71,26 @@ function App() {
 
     useEffect(() => {
         me()
-    },[])
+    }, [])
 
     useEffect(() => {
         renderPage()
     }, [sidebarData])
 
     return (
-        <div className="App">
-            <Header/>
-            <Sidebar updateSidebarData={handleSidebarUpdate} meta={meta}/>
-            {renderPage()}
-        </div>
+        <BrowserRouter>
+            <div className="App">
+                <Header/>
+                <Sidebar updateSidebarData={handleSidebarUpdate} meta={meta}/>
+                <Routes>
+                    {/*{renderPage()}*/}
+                    <Route path="/" element={<AuthorizationPage/>} />
+                    <Route path="/dashboard" element={<DashboardPage/>} />
+                    <Route path="/servers" element={<ServersPage/>} />
+                    <Route path="/registration" element={<RegistrationPage/>} />
+                </Routes>
+            </div>
+        </BrowserRouter>
     );
 }
 
