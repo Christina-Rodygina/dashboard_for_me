@@ -126,8 +126,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             </tr>
                             </thead>
                             <tbody>
-                            {data && data[0].length > 0 ? (
-                                data.map((rowData, rowIndex) => (
+                            {data[0] && data[0].length > 0 ? (
+                                data[0].map((rowData, rowIndex) => (
                                     <tr key={rowIndex}>
                                         <td>
                                                 <span className="span__buttons">
@@ -171,7 +171,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             ) : null}
                             </tbody>
                         </table>
-                        {data && data[0].length === 0 ? (
+                        {data[0] && data[0].length === 0 ? (
                             <div className="box" style={
                                 {
                                     width: tableWidth,
