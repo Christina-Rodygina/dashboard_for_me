@@ -6,6 +6,7 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
     const [dataCPU, setDataCPU] = useState([])
     const [dataRAM, setDataRAM] = useState([])
     const [dataDISC, setDataDISC] = useState([])
+    console.log(dataWorkload)
     console.log(dataCPU)
     console.log(dataRAM)
     console.log(dataDISC)
@@ -54,15 +55,15 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
     };
 
     useEffect(() => {
-        const dataCpu = dataWorkload.length > 0 ? dataWorkload[0].map(item => ({
+        const dataCpu = dataWorkload ? dataWorkload[0].map(item => ({
             date: item.date,
             cpu: parseFloat(item.cpu)
         })) : null;
-        const dataRam = dataWorkload.length > 0 ? dataWorkload[0].map(item => ({
+        const dataRam = dataWorkload ? dataWorkload[0].map(item => ({
             date: item.date,
             cpu: parseFloat(item['ram'])
         })) : null;
-        const dataDisc = dataWorkload.length > 0 ? dataWorkload[0].map(item => ({
+        const dataDisc = dataWorkload ? dataWorkload[0].map(item => ({
             date: item.date,
             cpu: parseFloat(item['disc'])
         })) : null;
