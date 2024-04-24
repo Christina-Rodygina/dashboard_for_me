@@ -45,9 +45,6 @@ const ServersPage = ({dataColumn, title, functions}) => {
                 `${URL}/${title}/get-${title}?reverse=true`);
             if (response.status === 200) {
                 setData(response.data[0])
-                console.log(`${URL}/${title}/get-${title}`)
-                console.log(response.data)
-                console.log(response.data[0])
             }
         } catch (error) {
             console.log(error)
