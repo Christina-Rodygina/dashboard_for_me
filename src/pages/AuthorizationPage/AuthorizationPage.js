@@ -10,18 +10,20 @@ const AuthorizationPage = () => {
 
     const login = async (event) => {
         event.preventDefault();
-        try {
-            const response = await axios.post(`${URL}/user/login`, {
-                "email": email,
-                "password": password
-            }, {withCredentials: true})
-            if (response.status === 200) {
-                console.log(response.status)
-                setError('')
-                window.location.href = "/"
+        if (email && password) {
+            try {
+                const response = await axios.post(`${URL}/user/login`, {
+                    "email": email,
+                    "password": password
+                }, {withCredentials: true})
+                if (response.status === 200) {
+                    console.log(response.status)
+                    setError('')
+                    window.location.href = "/"
+                }
+            } catch (error) {
+                setError(error.response.data.detail)
             }
-        } catch (error) {
-            setError(error.response.data.detail)
         }
     }
 
