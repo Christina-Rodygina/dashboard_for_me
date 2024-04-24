@@ -49,7 +49,7 @@ const DashboardPage = () => {
         try {
             const response = await axios.get(`${URL}/workload/get-workload`)
             if (response.status === 200) {
-
+                setDataWorkload(response.data)
             }
         } catch (error) {
             console.log(error)
