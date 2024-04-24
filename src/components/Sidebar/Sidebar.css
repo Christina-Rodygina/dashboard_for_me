@@ -13,10 +13,6 @@
     width: 315px;
 }
 
-.none {
-    display: none;
-}
-
 .sidebar::-webkit-scrollbar {
     width: 0;
 }
