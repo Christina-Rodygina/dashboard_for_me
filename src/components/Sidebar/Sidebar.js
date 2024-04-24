@@ -40,7 +40,7 @@ const Sidebar = ({updateSidebarData, meta}) => {
         try {
             const response = await axios.get(`${URL}/user/logout`, {withCredentials: true});
             if (response.status === 200) {
-                handleClick(null, "Logout")
+
             }
         } catch (error) {
             console.log(error)
@@ -140,7 +140,7 @@ const Sidebar = ({updateSidebarData, meta}) => {
                                 <img style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}} src="/Group%201223.svg"
                                      alt="Thoughts Time"/>
                             </div>
-                            <button onClick={(event) => handleClick(event, "Logout")} className="sidebar__logout">
+                            <button onClick={(event) => {handleClick(event, "Logout"); logout()}} className="sidebar__logout">
                                 <img src="/Frame%201274.svg" alt="Logout"
                                      style={sideBar ? {marginRight: '10px'} : {marginRight: 0}}/>
                                 <span style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}}>Logout</span>
