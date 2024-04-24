@@ -73,9 +73,9 @@ function App() {
         me()
     }, [])
 
-    useEffect(() => {
-        renderPage()
-    }, [sidebarData])
+    // useEffect(() => {
+    //     renderPage()
+    // }, [sidebarData])
 
     return (
         <BrowserRouter>
