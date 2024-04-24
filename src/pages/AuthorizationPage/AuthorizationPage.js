@@ -19,14 +19,15 @@ const AuthorizationPage = () => {
                 setError('')
                 window.location.href = "/"
             } else {
-                const error = document.querySelector(".error")
                 setError(response.data.detail)
+                console.log(response.data.detail)
                 console.log(response.status)
             }
         } catch (error) {
             console.log(error)
         }
     }
+
     return (
         <>
             <div className="authorization">
