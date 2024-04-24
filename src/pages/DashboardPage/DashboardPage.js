@@ -2,12 +2,10 @@ import "./view"
 import React, {useEffect, useState} from "react";
 import InfoLine from "./InfoLine/InfoLine";
 import axios from "axios";
-// import URL from "../../App"
 import {URL} from "../../App";
 
 const DashboardPage = () => {
     const [dataWorkload, setDataWorkload] = useState([])
-    const [dataCharts, setDataCharts] = useState([])
 
     const data = [
         {x: '1', y: 2, label: "(1, 2)"},
@@ -36,17 +34,12 @@ const DashboardPage = () => {
         {x: '24', y: 12, label: "(24, 12)"},
     ];
 
-    const uniqueLabels = [...new Set(data.map(item => item.x))];
-
-    useEffect(() => {
-
-    }, [])
+    const uniqueLabels = [...new Set(data.map(item => item.date))];
 
     const me = async () => {
         try {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
             if (response.status === 200) {
-                setDataWorkload(response.data)
             }
         } catch (error) {
             window.location.href = '/authorization'
@@ -57,7 +50,7 @@ const DashboardPage = () => {
         try {
             const response = await axios.get(`${URL}/workload/get-workload`)
             if (response.status === 200) {
-
+                setDataWorkload(response.data)
             }
         } catch (error) {
             console.log(error)
@@ -78,7 +71,7 @@ const DashboardPage = () => {
                     <div className="homepage__row">
                         <ul className="servers__list">
                             <li className="servers__list-item">
-                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VinylDiscount"} id={1}/>
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VinylDiscount"} id={1} dataWorkload={dataWorkload}/>
                             </li>
                             <li className="servers__list-item">
                                 <InfoLine data={data} uniqueLabels={uniqueLabels} title={"MetricaFX"} id={2}/>

@@ -1,11 +1,39 @@
 import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme, VictoryTooltip} from "victory";
-import React from "react";
+import React, {useState} from "react";
 import "./view"
 
-const InfoBloc = ({ data, uniqueLabels, type, id }) => {
-    console.log(data)
-    console.log(uniqueLabels)
-    console.log(id)
+const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
+    // const [dataCPU, setDataCPU] = useState([])
+    // const [dataRAM, setDataRAM] = useState([])
+    // const [dataDISC, setDataDISC] = useState([])
+    console.log(dataWorkload)
+
+    const dataCPU = [
+        {date: "2024-04-24T17:15:57.837849+00:00", cpu: "0"},
+        {date: "2024-04-24T17:20:58.497717+00:00", cpu: "0"},
+        {date: "2024-04-24T17:25:59.165751+00:00", cpu: "6.2"},
+        {date: "2024-04-24T17:36:00.534653+00:00", cpu: "18.7"},
+        {date: "2024-04-24T17:41:01.216959+00:00", cpu: "12.4"},
+    ]
+
+    const dataRAM = [
+        {date: "2024-04-24T17:15:57.837849+00:00", ram: "34.37"},
+        {date: "2024-04-24T17:20:58.497717+00:00", ram: "36.05"},
+        {date: "2024-04-24T17:25:59.165751+00:00", ram: "36.56"},
+        {date: "2024-04-24T17:36:00.534653+00:00", ram: "36.91"},
+        {date: "2024-04-24T17:41:01.216959+00:00", ram: "37.07"},
+    ]
+
+    const dataDisc = [
+        {date: "2024-04-24T17:20:58.497717+00:00", disc: "28"},
+        {date: "2024-04-24T17:15:57.837849+00:00", disc: "28"},
+        {date: "2024-04-24T17:25:59.165751+00:00", disc: "28"},
+        {date: "2024-04-24T17:36:00.534653+00:00", disc: "28"},
+        {date: "2024-04-24T17:41:01.216959+00:00", disc: "28"},
+    ]
+
+
+
     const intervalBtn = (index, container) => {
         const buttons = container.querySelectorAll('.interval__btn');
         buttons.forEach((button, i) => {
@@ -69,24 +97,24 @@ const InfoBloc = ({ data, uniqueLabels, type, id }) => {
                         <button onClick={() => handleIntervalBtnClick(1)} className="interval__btn">Week</button>
                         <button onClick={() => handleIntervalBtnClick(2)} className="interval__btn active">Day</button>
                     </div>
-                    <VictoryChart
-                        width={500}
-                        height={300}
-                        theme={VictoryTheme.material}
-                    >
-                        <VictoryAxis tickValues={uniqueLabels}/>
-                        <VictoryAxis dependentAxis/>
-                        <VictoryLine
-                            data={data}
-                            x="x" y="y"
-                            style={{
-                                data: {stroke: "#FF7800"}, // Цвет линии
-                                parent: {border: "1px solid #ccc"} // Стиль родительского элемента
-                            }}
-                            labels={({datum}) => datum.label}
-                            labelComponent={<VictoryTooltip/>}
-                        />
-                    </VictoryChart>
+                    {/*<VictoryChart*/}
+                    {/*    width={500}*/}
+                    {/*    height={300}*/}
+                    {/*    theme={VictoryTheme.material}*/}
+                    {/*>*/}
+                    {/*    <VictoryAxis tickValues={uniqueLabels}/>*/}
+                    {/*    <VictoryAxis dependentAxis/>*/}
+                    {/*    <VictoryLine*/}
+                    {/*        data={data}*/}
+                    {/*        x="x" y="y"*/}
+                    {/*        style={{*/}
+                    {/*            data: {stroke: "#FF7800"}, // Цвет линии*/}
+                    {/*            parent: {border: "1px solid #ccc"} // Стиль родительского элемента*/}
+                    {/*        }}*/}
+                    {/*        labels={({datum}) => datum.label}*/}
+                    {/*        labelComponent={<VictoryTooltip/>}*/}
+                    {/*    />*/}
+                    {/*</VictoryChart>*/}
                 </div>
             </div>
         </>
