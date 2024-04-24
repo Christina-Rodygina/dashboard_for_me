@@ -9,8 +9,9 @@ const AuthorizationPage = () => {
     const [password, setPassword] = useState('');
     sidebar?.classList.add("none")
 
-    const login = async () => {
+    const login = async (event) => {
         const authorization = document.querySelector(".authorization");
+        event.preventDefault();
         console.log(email)
         console.log(password)
         try {
@@ -46,7 +47,7 @@ const AuthorizationPage = () => {
                                 value={password}
                                 type="password"
                                 autoComplete="new-password"/>
-                            <button onClick={() => login()}>Login</button>
+                            <button onClick={(event) => login(event)}>Login</button>
                         </form>
                         <span>No account?
                             <span>Create</span>
