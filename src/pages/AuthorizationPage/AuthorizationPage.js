@@ -19,13 +19,11 @@ const AuthorizationPage = () => {
                 console.log(response.status)
                 setError('')
                 window.location.href = "/"
-            } else if (response.status === 400 || response.status === 404) {
-                setError(response.data.detail)
-                console.log(response.data.detail)
-                console.log(response.status)
             }
         } catch (error) {
-            console.log(error)
+            setError(error.data.detail)
+            console.log(error.data.detail)
+            console.log(error.status)
         }
     }
 
