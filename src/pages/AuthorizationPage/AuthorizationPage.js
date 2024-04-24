@@ -16,6 +16,7 @@ const AuthorizationPage = () => {
                 "password": password
             }, {withCredentials: true})
             if (response.status === 200) {
+                console.log(response.status)
                 setError('')
                 window.location.href = "/"
             } else if (response.status === 400 || response.status === 404) {
