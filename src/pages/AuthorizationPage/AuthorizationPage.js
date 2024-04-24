@@ -14,8 +14,7 @@ const AuthorizationPage = () => {
             "password": password
         }, {withCredentials: true})
         if (response.status === 200) {
-            // window.location.href = "/"
-            console.log(response.status)
+            window.location.href = "/"
         } else {
             const error = document.querySelector(".error")
             error.innerText = 'Ошибка авторизации'
