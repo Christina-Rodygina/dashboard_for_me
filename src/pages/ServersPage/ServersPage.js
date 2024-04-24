@@ -44,7 +44,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                 `${URL}/${title}/get-${title}` :
                 `${URL}/${title}/get-${title}?reverse=true`);
             if (response.status === 200) {
-                setData(response.data)
+                setData(response.data[0])
                 console.log(`${URL}/${title}/get-${title}`)
                 console.log(response.data)
                 console.log(response.data[0])
@@ -127,8 +127,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             </tr>
                             </thead>
                             <tbody>
-                            {data[0] && data[0].length > 0 ? (
-                                data[0].map((rowData, rowIndex) => (
+                            {data && data.length > 0 ? (
+                                data.map((rowData, rowIndex) => (
                                     <tr key={rowIndex}>
                                         <td>
                                                 <span className="span__buttons">
@@ -172,7 +172,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             ) : null}
                             </tbody>
                         </table>
-                        {data[0] && data[0].length === 0 ? (
+                        {!data || data.length === 0 ? (
                             <div className="box" style={
                                 {
                                     width: tableWidth,
