@@ -35,11 +35,13 @@ const AuthorizationPage = () => {
                             <input
                                 onChange={(event) => setEmail(event.target.value)}
                                 placeholder="KreigMenson@mail.ru"
+                                value={email}
                                 type="email"
                                 autoComplete="email"/>
                             <input
                                 onChange={(event) => setPassword(event.target.value)}
                                 placeholder="Password"
+                                value={password}
                                 type="password"
                                 autoComplete="new-password"/>
                             <button onClick={() => login()}>Login</button>
