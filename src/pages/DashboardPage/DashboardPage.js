@@ -2,7 +2,8 @@ import "./view"
 import React, {useEffect} from "react";
 import InfoLine from "./InfoLine/InfoLine";
 import axios from "axios";
-import URL from "../../App"
+// import URL from "../../App"
+import {URL} from "../../App";
 
 const DashboardPage = () => {
     const data = [
