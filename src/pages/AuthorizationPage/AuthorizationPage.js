@@ -11,13 +11,13 @@ const AuthorizationPage = () => {
 
     const login = async () => {
         const authorization = document.querySelector(".authorization");
+        console.log(email)
+        console.log(password)
         try {
             const response = await axios.post(`${URL}/user/login`, {
                 "email": email,
                 "password": password
             }, {withCredentials: true});
-            console.log(email)
-            console.log(password)
             if (response.status === 200) {
                 sidebar.classList.remove("none")
                 authorization.classList.add("none")
