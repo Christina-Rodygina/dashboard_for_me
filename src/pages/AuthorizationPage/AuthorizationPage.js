@@ -18,7 +18,7 @@ const AuthorizationPage = () => {
             if (response.status === 200) {
                 setError('')
                 window.location.href = "/"
-            } else {
+            } else if (response.status === 400 || response.status === 404) {
                 setError(response.data.detail)
                 console.log(response.data.detail)
                 console.log(response.status)
