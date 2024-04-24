@@ -46,10 +46,12 @@ const DashboardPage = () => {
     }, [dataWorkload])
 
     const workload = async () => {
+        console.log('work')
         try {
             const response = await axios.get(`${URL}/workload/get-workload`)
             if (response.status === 200) {
                 setDataWorkload(response.data)
+                console.log(response.data)
             }
         } catch (error) {
             console.log(error)
@@ -57,6 +59,7 @@ const DashboardPage = () => {
     }
 
     useEffect(() => {
+        console.log('use')
         me()
         workload()
     }, [])
