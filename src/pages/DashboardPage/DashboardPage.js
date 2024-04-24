@@ -5,7 +5,7 @@ import axios from "axios";
 import {URL} from "../../App";
 
 const DashboardPage = () => {
-    const [dataWorkload, setDataWorkload] = useState([])
+    const [dataWorkload, setDataWorkload] = useState()
 
     const data = [
         {x: '1', y: 2, label: "(1, 2)"},
@@ -70,6 +70,7 @@ const DashboardPage = () => {
                 <div className="container homepage__container">
                     <h2>{''}</h2>
                     <div className="homepage__row">
+                        {dataWorkload ? (
                         <ul className="servers__list">
                             <li className="servers__list-item">
                                 <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VinylDiscount"} id={1} dataWorkload={dataWorkload}/>
@@ -84,6 +85,7 @@ const DashboardPage = () => {
                                 <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VictoryaBonya"} id={4}/>
                             </li>
                         </ul>
+                        ) : null}
                     </div>
                 </div>
             </div>
