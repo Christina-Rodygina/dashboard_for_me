@@ -52,6 +52,7 @@ function App() {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
             if (response.status === 200) {
                 setLogin(true)
+                await get_meta()
             }
         } catch (error) {
             setLogin(false)
@@ -61,10 +62,6 @@ function App() {
 
     useEffect(() => {
         me()
-    }, [])
-
-    useEffect(() => {
-        get_meta()
     }, [])
 
     return (
