@@ -18,7 +18,6 @@ export const URL = 'https://krianse.ru/api'
 function App() {
     const [sidebarData, setSidebarData] = useState("Logout");
     const [meta, setMeta] = useState(null)
-    const authorization = document.querySelector(".authorization");
 
     const handleSidebarUpdate = (data) => {
         setSidebarData(data);
@@ -36,10 +35,11 @@ function App() {
     }
 
     const me = async () => {
+        const authorization = document.querySelector(".authorization");
         try {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true});
             if (response.status === 200) {
-                authorization.classList.add("none")
+                authorization?.classList.add("none")
                 get_meta()
             } else {
                 setSidebarData('Logout')
