@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "./view"
 import axios from "axios";
-// import {URL} from "../../App";
+import {URL} from "../../App";
 
 const ServersPage = ({dataColumn, title, functions}) => {
     // const [passwordVisibility, setPasswordVisibility] = useState({});
@@ -45,6 +45,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                 `${URL}/${title}/get-${title}?reverse=true`);
             if (response.status === 200) {
                 setData(response.data)
+                console.log(`${URL}/${title}/get-${title}`)
+                console.log(response.data)
             }
         } catch (error) {
             console.log(error)
