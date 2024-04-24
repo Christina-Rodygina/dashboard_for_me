@@ -42,27 +42,15 @@ function App() {
                         functions={item.functions}
                         dataColumn={item.columns}
                     />
-                }/>
+                }
+                />
             ))
         }
     }
 
-    const me = async () => {
-        try {
-            const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
-            if (response.status === 200) {
-                setLogin(true)
-                await get_meta()
-            }
-        } catch (error) {
-            setLogin(false)
-            window.location.href = '/authorization'
-        }
-    }
-
     useEffect(() => {
-        me()
-    }, [])
+        get_meta()
+    },[])
 
     return (
         <BrowserRouter>
