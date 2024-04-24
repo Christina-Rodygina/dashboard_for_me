@@ -71,9 +71,11 @@ const DashboardPage = () => {
                     <div className="homepage__row">
                         {dataWorkload ? (
                         <ul className="servers__list">
+                            {dataWorkload && dataWorkload['server'] ? (
                             <li className="servers__list-item">
-                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={dataWorkload ? dataWorkload['server'].name : null} id={1} dataWorkload={dataWorkload}/>
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={dataWorkload['server'].name} id={1} dataWorkload={dataWorkload}/>
                             </li>
+                            ) : null}
                         </ul>
                         ) : null}
                     </div>
