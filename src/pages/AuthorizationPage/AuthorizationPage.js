@@ -21,7 +21,7 @@ const AuthorizationPage = () => {
                 window.location.href = "/"
             }
         } catch (error) {
-            console.log(error.response.data.detail)
+            setError(error.response.data.detail)
         }
     }
 
