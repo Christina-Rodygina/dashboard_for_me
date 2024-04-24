@@ -76,15 +76,20 @@ const DashboardPage = () => {
                 <div className="container homepage__container">
                     <h2>{''}</h2>
                     <div className="homepage__row">
-                        {dataWorkload ? (
                         <ul className="servers__list">
-                            {dataWorkload[0].map((item, index) => (
-                            <li key={index} className="servers__list-item">
-                                <InfoLine data={item} uniqueLabels={uniqueLabels} title={item.server.name} id={item['server_id']}/>
+                            <li className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VinylDiscount"} id={1}/>
                             </li>
-                            ))}
+                            <li className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"MetricaFX"} id={2}/>
+                            </li>
+                            <li className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"Neurology"} id={3}/>
+                            </li>
+                            <li className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={"VictoryaBonya"} id={4}/>
+                            </li>
                         </ul>
-                        ) : null}
                     </div>
                 </div>
             </div>
