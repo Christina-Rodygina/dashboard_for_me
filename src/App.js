@@ -41,6 +41,8 @@ function App() {
             if (response.status === 200) {
                 authorization?.classList.add("none")
                 get_meta()
+                setSidebarData("Dashboard")
+                renderPage()
             } else {
                 setSidebarData('Logout')
                 renderPage()
