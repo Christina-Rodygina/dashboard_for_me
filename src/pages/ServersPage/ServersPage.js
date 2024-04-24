@@ -126,7 +126,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             </tr>
                             </thead>
                             <tbody>
-                            {data ? (
+                            {data && data[0].length > 0 ? (
                                 data.map((rowData, rowIndex) => (
                                     <tr key={rowIndex}>
                                         <td>
@@ -171,7 +171,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             ) : null}
                             </tbody>
                         </table>
-                        {data ? (
+                        {data && data[0].length === 0 ? (
                             <div className="box" style={
                                 {
                                     width: tableWidth,
