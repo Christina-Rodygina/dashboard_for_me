@@ -13,10 +13,12 @@ const AuthorizationPage = () => {
             "password": password
         }, {withCredentials: true})
         if (response.status === 200) {
-            window.location.href = "/"
+            // window.location.href = "/"
+            console.log(response.status)
         } else {
             const error = document.querySelector(".error")
             error.innerText = 'Ошибка авторизации'
+            console.log(response.status)
         }
     }
     return (
@@ -25,7 +27,7 @@ const AuthorizationPage = () => {
                 <div className="container authorization-container">
                     <div className="authorization__white-container">
                         <h3>Authorization</h3>
-                        <h4 className="error">Ошибка авторизации</h4>
+                        <h4 className="error"></h4>
                         <form>
                             <input
                                 onChange={(event) => setEmail(event.target.value)}
