@@ -38,14 +38,11 @@ const DashboardPage = () => {
     const me = async () => {
         try {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
-            console.log(`${URL}/user/me`)
             if (response.status === 200) {
                 console.log(response)
-            } else {
-                window.location.href = '/authorization'
             }
         } catch (error) {
-            console.log(error)
+            window.location.href = '/authorization'
         }
     }
 
