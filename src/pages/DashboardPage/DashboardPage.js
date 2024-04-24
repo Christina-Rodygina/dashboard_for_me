@@ -5,7 +5,7 @@ import axios from "axios";
 import {URL} from "../../App";
 
 const DashboardPage = () => {
-    const [dataWorkload, setDataWorkload] = useState()
+    const [dataWorkload, setDataWorkload] = useState(Array)
     console.log(dataWorkload)
 
     const data = [
@@ -63,24 +63,23 @@ const DashboardPage = () => {
         workload()
     }, [])
 
-
     return (
         <>
             <div className="homepage">
+                {dataWorkload ? (
                 <div className="container homepage__container">
                     <h2>{''}</h2>
                     <div className="homepage__row">
-                        {dataWorkload ? (
                         <ul className="servers__list">
-                            {dataWorkload && dataWorkload[0] ? (
-                            <li className="servers__list-item">
-                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={dataWorkload[0]['server'].name} id={1} dataWorkload={dataWorkload}/>
+                            {dataWorkload.map((item, index) => (
+                            <li key={index} className="servers__list-item">
+                                <InfoLine data={data} uniqueLabels={uniqueLabels} title={item.name} id={index+1} dataWorkload={item.data}/>
                             </li>
-                            ) : null}
+                            ))}
                         </ul>
-                        ) : null}
                     </div>
                 </div>
+                ) : null}
             </div>
         </>
     )
