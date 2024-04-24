@@ -43,10 +43,10 @@ function App() {
                 authorization?.classList.add("none")
                 get_meta()
                 setSidebarData("Dashboard")
-                renderPage()
+                // renderPage()
             } else {
                 setSidebarData('Logout')
-                renderPage()
+                // renderPage()
             }
         } catch (error) {
         }
