@@ -3,7 +3,9 @@ import React from "react";
 import "./view"
 
 const InfoBloc = ({ data, uniqueLabels, type, id }) => {
-
+    console.log(data)
+    console.log(uniqueLabels)
+    console.log(id)
     const intervalBtn = (index, container) => {
         const buttons = container.querySelectorAll('.interval__btn');
         buttons.forEach((button, i) => {
