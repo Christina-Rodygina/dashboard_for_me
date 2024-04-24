@@ -49,9 +49,7 @@ function App() {
     }
 
     useEffect(() => {
-        if (isLogin) {
             get_meta()
-        }
     }, [])
 
     return (
@@ -62,7 +60,7 @@ function App() {
                     <Sidebar meta={meta}/>
                 ) : null}
                 <Routes>
-                    <Route path="/" element={<DashboardPage setIsLogin={setIsLogin}/>}/>
+                    <Route path="/" element={<DashboardPage/>}/>
                     <Route path="/registration" element={<RegistrationPage/>}/>
                     <Route path="/edit" element={<ServerEditPage/>}/>
                     <Route path="/whatch" element={<ServerInfoPage/>}/>

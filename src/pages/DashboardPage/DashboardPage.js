@@ -5,7 +5,7 @@ import axios from "axios";
 // import URL from "../../App"
 import {URL} from "../../App";
 
-const DashboardPage = ({setIsLogin}) => {
+const DashboardPage = () => {
     const data = [
         {x: '1', y: 2, label: "(1, 2)"},
         {x: '2', y: 3, label: "(2, 3)"},
@@ -39,7 +39,6 @@ const DashboardPage = ({setIsLogin}) => {
         try {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
             if (response.status === 200) {
-                setIsLogin(true)
             }
         } catch (error) {
             window.location.href = '/authorization'
@@ -79,5 +78,3 @@ const DashboardPage = ({setIsLogin}) => {
 }
 
 export default DashboardPage
-
-//cpu, оперативная память, диск
