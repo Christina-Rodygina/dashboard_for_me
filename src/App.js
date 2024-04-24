@@ -20,7 +20,7 @@ export const URL = 'https://krianse.ru/api'
 
 function App() {
     const [meta, setMeta] = useState([]);
-    const [login, setLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
 
     const get_meta = async () => {
         try {
@@ -49,8 +49,10 @@ function App() {
     }
 
     useEffect(() => {
-        get_meta()
-    },[])
+        if (isLogin) {
+            get_meta()
+        }
+    }, [])
 
     return (
         <BrowserRouter>
@@ -60,7 +62,7 @@ function App() {
                     <Sidebar meta={meta}/>
                 ) : null}
                 <Routes>
-                    <Route path="/" element={<DashboardPage/>}/>
+                    <Route path="/" element={<DashboardPage setIsLogin={setIsLogin}/>}/>
                     <Route path="/registration" element={<RegistrationPage/>}/>
                     <Route path="/edit" element={<ServerEditPage/>}/>
                     <Route path="/whatch" element={<ServerInfoPage/>}/>
