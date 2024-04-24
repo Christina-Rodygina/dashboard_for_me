@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ServersPage = ({dataColumn, title, functions}) => {
     // const [passwordVisibility, setPasswordVisibility] = useState({});
-    const [data, setData] = useState();
+    const [data, setData] = useState([]);
     const tableWidth = document.querySelector(".servers__table")?.offsetWidth;
     const headerHeight = document.querySelector(".header__container")?.offsetHeight;
     const tableHeaderHeight = document.querySelector(".servers__table")?.offsetHeight;
@@ -124,9 +124,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             </tr>
                             </thead>
                             <tbody>
-                            {data && data[0].length > 0 ? (
-                                console.log(data[0]),
-                                data[0].map((rowData, rowIndex) => (
+                            {data ? (
+                                data.map((rowData, rowIndex) => (
                                     <tr key={rowIndex}>
                                         <td>
                                                 <span className="span__buttons">
