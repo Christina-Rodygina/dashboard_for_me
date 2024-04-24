@@ -8,9 +8,10 @@ import {URL} from "../../App";
 const DashboardPage = () => {
     const [dataWorkload, setDataWorkload] = useState([])
     const [dataCharts, setDataCharts] = useState([])
-    const uniqueLabelsCPU = [...new Set(dataCharts[0].map(item => item.x))];
-    const uniqueLabelsRAM = [...new Set(dataCharts[1].map(item => item.x))];
-    const uniqueLabelsDISC = [...new Set(dataCharts[2].map(item => item.x))];
+
+    let uniqueLabelsCPU;
+    let uniqueLabelsRAM;
+    let uniqueLabelsDISC;
 
     const me = async () => {
         try {
@@ -41,9 +42,21 @@ const DashboardPage = () => {
         setDataCharts([cpuData, ramData, discData])
     }
 
+    const grafics = () => {
+        if (dataCharts) {
+            uniqueLabelsCPU = [...new Set(dataCharts[0].map(item => item.x))];
+            uniqueLabelsRAM = [...new Set(dataCharts[1].map(item => item.x))];
+            uniqueLabelsDISC = [...new Set(dataCharts[2].map(item => item.x))];
+        }
+    }
+
     useEffect(() => {
         changeCharts()
     }, [dataWorkload])
+
+    useEffect(() => {
+        grafics()
+    }, [dataCharts])
 
     const workload = async () => {
         console.log('work')
