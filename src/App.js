@@ -48,7 +48,6 @@ function App() {
                 renderPage()
             }
         } catch (error) {
-            console.log(error)
         }
     }
 

@@ -42,7 +42,7 @@ const AuthorizationPage = () => {
                                 placeholder="Password"
                                 type="password"
                                 autoComplete="new-password"/>
-                            <button onClick={login}>Login</button>
+                            <button onClick={() => login()}>Login</button>
                         </form>
                         <span>No account?
                             <span>Create</span>
