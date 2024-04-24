@@ -40,7 +40,7 @@ const Sidebar = ({updateSidebarData, meta}) => {
         try {
             const response = await axios.get(`${URL}/user/logout`, {withCredentials: true});
             if (response.status === 200) {
-
+                window.location.reload()
             }
         } catch (error) {
             console.log(error)
