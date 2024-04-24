@@ -6,6 +6,7 @@ import {URL} from "../../App";
 
 const DashboardPage = () => {
     const [dataWorkload, setDataWorkload] = useState()
+    console.log(dataWorkload)
 
     const data = [
         {x: '1', y: 2, label: "(1, 2)"},
