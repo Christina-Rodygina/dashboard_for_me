@@ -1,34 +1,9 @@
 import "./view"
-import React, {useState} from "react";
-import axios from "axios";
-import {URL} from "../../App";
+import React, {useEffect, useState} from "react";
 
 const AuthorizationPage = () => {
-    const sidebar = document.querySelector(".sidebar");
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    sidebar?.classList.add("none")
-
-    const login = async (event) => {
-        const authorization = document.querySelector(".authorization");
-        event.preventDefault();
-        console.log(email)
-        console.log(password)
-        try {
-            const response = await axios.post(`${URL}/user/login`, {
-                "email": email,
-                "password": password
-            }, {withCredentials: true});
-            if (response.status === 200) {
-                sidebar?.classList.remove("none")
-                authorization.classList.add("none")
-                window.location.reload()
-            }
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     return (
         <>
             <div className="authorization">
@@ -48,7 +23,7 @@ const AuthorizationPage = () => {
                                 value={password}
                                 type="password"
                                 autoComplete="new-password"/>
-                            <button onClick={(event) => login(event)}>Login</button>
+                            <button>Login</button>
                         </form>
                         <span>No account?
                             <span>Create</span>

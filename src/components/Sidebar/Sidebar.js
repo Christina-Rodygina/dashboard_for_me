@@ -1,20 +1,12 @@
 import "./view"
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {URL} from "../../App";
+// import {URL} from "../../App";
 
 
-const Sidebar = ({updateSidebarData, meta}) => {
+const Sidebar = ({meta}) => {
     const windowWidth = window.innerWidth;
     const [sideBar, setSideBar] = useState(windowWidth > 500)
-    const handleClick = (event, data) => {
-        updateSidebarData(data);
-        const buttons = document.querySelectorAll(".sidebar__list li button");
-        buttons.forEach(button => {
-            button.classList.remove("active");
-        });
-        event?.target.classList.add("active");
-    };
 
     const open_sidebar = () => {
         const section = document.querySelector(".sidebar")
@@ -33,16 +25,6 @@ const Sidebar = ({updateSidebarData, meta}) => {
                 servers?.classList.remove("max")
                 dashboard?.classList.remove("max")
             }
-        }
-    }
-
-    const logout = async () => {
-        try {
-            const response = await axios.get(`${URL}/user/logout`, {withCredentials: true});
-            if (response.status === 200) {
-            }
-        } catch (error) {
-            console.log(error)
         }
     }
 
@@ -65,11 +47,13 @@ const Sidebar = ({updateSidebarData, meta}) => {
                             </div>
                             <ul className="sidebar__list">
                                 <li>
-                                    <button style={sideBar ? {
-                                        padding: '24px 10px',
-                                        justifyContent: 'start'
-                                    } : {padding: '15px 10px', justifyContent: 'center'}} className="active"
-                                            onClick={(event) => handleClick(event, "Dashboard")}>
+                                    <button
+                                        className={window.location.pathname === '/' ? 'active' : null}
+                                        onClick={() => window.location.href = '/'}
+                                        style={sideBar ? {
+                                            padding: '24px 10px',
+                                            justifyContent: 'start'
+                                        } : {padding: '15px 10px', justifyContent: 'center'}}>
                                         <img style={sideBar ? {
                                             maxWidth: "20px",
                                             marginLeft: "-1px",
@@ -81,7 +65,8 @@ const Sidebar = ({updateSidebarData, meta}) => {
                                 </li>
                                 {meta.map((item, index) => (
                                     <li key={index}>
-                                        <button onClick={(event) => handleClick(event, item["table_name"])}
+                                        <button className={window.location.pathname === `/${item["table_name"]}` ? 'active' : null}
+                                                onClick={() => window.location.href = `/${item["table_name"]}`}
                                                 style={sideBar ? {
                                                     padding: '24px 10px',
                                                     justifyContent: 'start'
@@ -122,24 +107,14 @@ const Sidebar = ({updateSidebarData, meta}) => {
                                         </button>
                                     </li>
                                 ))}
-                                {/*<li>*/}
-                                {/*    <button onClick={(event) => handleClick(event,"Servers")}>*/}
-                                {/*        <img style={{maxWidth: "20px", marginLeft: "-1px"}} src="/server-free-material-svgrepo-com.svg" alt="Servers"/>*/}
-                                {/*        <span>Servers</span>*/}
-                                {/*    </button>*/}
-                                {/*</li>*/}
-                                {/*<li>*/}
-                                {/*    <button onClick={(event) => handleClick(event,"Services")}>*/}
-                                {/*        <img style={{marginLeft: "-3px"}} src="/services-20px-svgrepo-com.svg" alt="Services"/>*/}
-                                {/*        <span>Services</span>*/}
-                                {/*    </button>*/}
-                                {/*</li>*/}
                             </ul>
                             <div className="sidebar__info">
                                 <img style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}} src="/Group%201223.svg"
                                      alt="Thoughts Time"/>
                             </div>
-                            <button onClick={(event) => {handleClick(event, "Logout"); logout()}} className="sidebar__logout">
+                            <button
+                                onClick={() => window.location.href = '/authorization'}
+                                className="sidebar__logout">
                                 <img src="/Frame%201274.svg" alt="Logout"
                                      style={sideBar ? {marginRight: '10px'} : {marginRight: 0}}/>
                                 <span style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}}>Logout</span>

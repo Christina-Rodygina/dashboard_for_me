@@ -3,91 +3,222 @@ import "./styles/common.css"
 import "./styles/CocktailTheme/view"
 import "./styles/animations.css"
 
-import axios from "axios";
+import React, {useEffect, useState} from 'react';
+import {BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
 import Header from "./components/Header/Header";
-import DashboardPage from "./pages/DashboardPage/DashboardPage"
 import Sidebar from "./components/Sidebar/Sidebar";
-import {useEffect, useState} from "react";
-import ServersPage from "./pages/ServersPage/ServersPage";
 import AuthorizationPage from "./pages/AuthorizationPage/AuthorizationPage";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import ServerEditPage from "./pages/ServerEditPage/ServerEditPage";
+import ServerInfoPage from "./pages/ServerInfoPage/ServerInfoPage";
+import ServersPage from "./pages/ServersPage/ServersPage";
 
 
 export const URL = 'https://krianse.ru/api'
 
 function App() {
-    const [sidebarData, setSidebarData] = useState("Logout");
-    const [meta, setMeta] = useState(null)
-
-    const handleSidebarUpdate = (data) => {
-        setSidebarData(data);
-    };
-
-    const get_meta = async () => {
-        try {
-            const response = await axios.get(`${URL}/server/get-meta`, {withCredentials: true});
-            if (response.status === 200) {
-                setMeta(response.data)
-            }
-        } catch (error) {
-            console.log(error)
+    const [meta, setMeta] = useState([
+        {
+            "table_name": "log",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "BIGINT",
+                    "nullable": "False",
+                    "default": "nextval('log_id_seq'::regclass)"
+                },
+                {
+                    "name": "filename",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "line",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "level",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "message",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "date",
+                    "type": "TIMESTAMP",
+                    "nullable": "False",
+                    "default": "None"
+                }
+            ],
+            "functions": [
+                "add",
+                "delete",
+                "watch",
+                "edit",
+                "clear"
+            ]
+        },
+        {
+            "table_name": "workload",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "BIGINT",
+                    "nullable": "False",
+                    "default": "nextval('workload_id_seq'::regclass)"
+                },
+                {
+                    "name": "server_id",
+                    "type": "BIGINT",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "cpu",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "ram",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "disk",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "date",
+                    "type": "TIMESTAMP",
+                    "nullable": "False",
+                    "default": "None"
+                }
+            ],
+            "functions": [
+                "add",
+                "delete",
+                "watch",
+                "edit"
+            ]
+        },
+        {
+            "table_name": "server",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "BIGINT",
+                    "nullable": "False",
+                    "default": "nextval('server_id_seq'::regclass)"
+                },
+                {
+                    "name": "name",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "ip",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "port",
+                    "type": "INTEGER",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "password",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "status",
+                    "type": "VARCHAR",
+                    "nullable": "True",
+                    "default": "None"
+                },
+                {
+                    "name": "date",
+                    "type": "TIMESTAMP",
+                    "nullable": "False",
+                    "default": "None"
+                },
+                {
+                    "name": "user_id",
+                    "type": "BIGINT",
+                    "nullable": "True",
+                    "default": "None"
+                },
+                {
+                    "name": "user_name",
+                    "type": "VARCHAR",
+                    "nullable": "False",
+                    "default": "None"
+                }
+            ],
+            "functions": [
+                "add",
+                "delete",
+                "watch",
+                "edit"
+            ]
         }
-    }
-
-    const me = async () => {
-        const authorization = document.querySelector(".authorization");
-        try {
-            const response = await axios.get(`${URL}/user/me`, {withCredentials: true});
-            if (response.status === 200) {
-                authorization?.classList.add("none")
-                get_meta()
-                setSidebarData("Dashboard")
-                // renderPage()
-            } else {
-                setSidebarData('Logout')
-                // renderPage()
-            }
-        } catch (error) {
-        }
-    }
-
-
-    const renderPage = () => {
-        switch (sidebarData) {
-            case "Dashboard":
-                window.location.replace("/dashboard")
-            case "Logout":
-                return <AuthorizationPage/>;
-            case "Registration":
-                return <RegistrationPage/>;
-            default:
-                const serversData = meta.find(item => item["table_name"] === sidebarData);
-                // Отображаем ServersPage с найденными данными
-                return <ServersPage onSidebarUpdate={handleSidebarUpdate} dataColumn={serversData.columns}
-                                    title={serversData["table_name"]} functions={serversData.functions}/>;
-        }
-    };
+    ]);
+    const [login, setLogin] = useState(true)
 
     useEffect(() => {
-        me()
-    }, [])
+        if (window.location.pathname === '/authorization') {
+            setLogin(false)
+        } else {
+            setLogin(true)
+        }
+    }, [window.location.pathname])
 
-    // useEffect(() => {
-    //     renderPage()
-    // }, [sidebarData])
+    const tabs_meta = () => {
+        if (meta) {
+            return meta.map((item, index) => (
+                <Route key={index} path={`/${item['table_name']}`} element={
+                    <ServersPage
+                        title={item['table_name']}
+                        functions={item.functions}
+                        dataColumn={item.columns}
+                    />
+                }/>
+            ))
+        }
+    }
 
     return (
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                <Sidebar updateSidebarData={handleSidebarUpdate} meta={meta}/>
+                {login ? (
+                    <Sidebar meta={meta}/>
+                ) : null}
                 <Routes>
-                    {/*{renderPage()}*/}
-                    <Route path="/" element={<AuthorizationPage/>} />
-                    <Route path="/dashboard" element={<DashboardPage/>} />
-                    <Route path="/servers" element={<ServersPage/>} />
-                    <Route path="/registration" element={<RegistrationPage/>} />
+                    <Route path="/" element={<DashboardPage/>}/>
+                    <Route path="/registration" element={<RegistrationPage/>}/>
+                    <Route path="/edit" element={<ServerEditPage/>}/>
+                    <Route path="/whatch" element={<ServerInfoPage/>}/>
+                    <Route path="/authorization" element={<AuthorizationPage/>}/>
+                    {tabs_meta()}
+                    <Route path="*" element={<div>Error page</div>}/>
                 </Routes>
             </div>
         </BrowserRouter>
