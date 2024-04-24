@@ -6,6 +6,10 @@
     min-height: 70vh;
 }
 
+.none {
+    display: none;
+}
+
 .authorization-container {
     width: 100%;
     height: 100%;
