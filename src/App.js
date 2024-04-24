@@ -49,7 +49,7 @@ function App() {
     }
 
     useEffect(() => {
-            get_meta()
+        get_meta()
     }, [])
 
     return (

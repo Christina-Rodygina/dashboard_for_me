@@ -49,16 +49,16 @@ const InfoBloc = ({ data, uniqueLabels, type, id }) => {
                         </div>
                         <div className="item__info">
                             <h4>{type === "cpu" ? ('CPU') : type === "op" ? ('RAM') : type === "disc" ? ('DISC') : console.log("не указан тип блока")}</h4>
-                            <span className="item__info-percent norm">80%</span>
+                            <span className="item__info-percent norm">{type === "cpu" ? `${data.cpu}%` : type === "op" ? data['ram'] : type === "disc" ? data['disc'] : ''}</span>
                         </div>
                     </div>
                     <div className="item__info-date-time">
                         <span className="item__info-date">Update date:</span>
-                        <span className="item__info-time">24.06.23 18:00</span>
+                        <span className="item__info-time">{data.date}</span>
                     </div>
                     <div className="item__info-status-container">
                         <span>Status:</span>
-                        <span className="item__info-status offline">Offline</span>
+                        <span className="item__info-status offline">{data.server.status}</span>
                     </div>
                 </button>
                 <div className={`cpu__statistics ${type}`} id={id}>
