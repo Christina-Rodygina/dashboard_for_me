@@ -57,9 +57,9 @@ const Sidebar = ({meta}) => {
                                         } : {padding: '15px 10px', justifyContent: 'start'}}>
                                         <img style={sideBar ? {
                                             maxWidth: "20px",
-                                            marginLeft: "-1px",
+                                            marginLeft: "4px",
                                             marginRight: '10px'
-                                        } : {maxWidth: "20px", marginLeft: "-1px", marginRight: 0}} src="/Dashboard.svg"
+                                        } : {maxWidth: "20px", marginLeft: "4px", marginRight: 0}} src="/Dashboard.svg"
                                              alt="Dashboard"/>
                                         <span style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}}>Dashboard</span>
                                     </button>
@@ -76,9 +76,9 @@ const Sidebar = ({meta}) => {
                                                 <>
                                                     <img style={sideBar ? {
                                                         maxWidth: "20px",
-                                                        marginLeft: "-1px",
+                                                        marginLeft: "4px",
                                                         marginRight: '10px'
-                                                    } : {maxWidth: "20px", marginLeft: "-1px", marginRight: 0}}
+                                                    } : {maxWidth: "20px", marginLeft: "4px", marginRight: 0}}
                                                          src="/server-free-material-svgrepo-com.svg" alt="Servers"/>
                                                     <span
                                                         style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}}>Servers</span>
