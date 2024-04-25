@@ -4,7 +4,7 @@ import "./view"
 import axios from "axios";
 import {URL} from "../../../App";
 
-const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
+const InfoBloc = ({data, uniqueLabels, type, id, dataWorkload}) => {
     const [dataCPU, setDataCPU] = useState()
     const [dataRAM, setDataRAM] = useState()
     const [dataDISC, setDataDISC] = useState()
@@ -66,7 +66,7 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                     <div className="list-item">
                         <div className="item__logo">
                             {type === 'cpu' ? (
-                            <img src="/cpu-free-4-svgrepo-com.svg" alt="CPULogo"/>
+                                <img src="/cpu-free-4-svgrepo-com.svg" alt="CPULogo"/>
                             ) : type === 'ram' ? (
                                 <img src="/ram-memory-svgrepo-com.svg" alt="RUMLogo"/>
                             ) : type === 'disc' ? (
@@ -99,35 +99,36 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                         width={500}
                         height={300}
                         theme={VictoryTheme.material}
-                        padding={{ top: 50, bottom: 50, left: 80, right: 50 }} // Установите padding для графика
+                        padding={{top: 50, bottom: 50, left: 80, right: 50}} // Установите padding для графика
                     >
                         <VictoryAxis
                             dependentAxis
-                            tickValues={[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]} // Определите значения для оси Y
+                            tickValues={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+                                , 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]} // Определите значения для оси Y
                             style={{
-                                axis: { stroke: "#000" }, // Цвет оси
-                                tickLabels: { fontSize: 10 } // Размер шрифта меток
+                                axis: {stroke: "#000"}, // Цвет оси
+                                tickLabels: {fontSize: 10} // Размер шрифта меток
                             }}
                         />
                         <VictoryAxis
-                            tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} // Определите значения для оси X
+                            tickFormat={(t) => {
+// Преобразуйте дату в часы
+                                const date = new Date(t);
+                                return `${date.getHours()}:${date.getMinutes()}`;
+                            }}
                             style={{
-                                axis: { stroke: "#000" }, // Цвет оси
-                                tickLabels: { fontSize: 10, padding: 5 } // Размер шрифта меток и padding
+                                axis: {stroke: "#000"}, // Цвет оси
+                                tickLabels: {fontSize: 10, padding: 5} // Размер шрифта меток и padding
                             }}
                             offsetY={50} // Сместите ось X вниз
                         />
                         <VictoryLine
                             data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
-                            x={(datum) => {
-                                // Преобразуйте данные X в диапазон от 0 до 100
-                                const date = new Date(datum.date);
-                                return ((date.getHours() * 60 + date.getMinutes()) / 1440) * 100;
-                            }}
+                            x="date"
                             y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
                             style={{
-                                data: { stroke: "#FF7800" }, // Цвет линии
-                                parent: { border: "1px solid #ccc" } // Стиль родительского элемента
+                                data: {stroke: "#FF7800"}, // Цвет линии
+                                parent: {border: "1px solid #ccc"} // Стиль родительского элемента
                             }}
                         />
                     </VictoryChart>
