@@ -73,6 +73,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                     disk: dataItem.disk,
                     ram: dataItem.ram,
                     id: dataItem.id,
+                    server_id: dataItem.server_id,
                     date: dataItem.date
                 };
                 transformedData.push(transformedItem);
