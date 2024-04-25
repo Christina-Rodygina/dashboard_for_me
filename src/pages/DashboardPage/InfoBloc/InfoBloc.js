@@ -222,8 +222,11 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                         </div>
                         <div className="item__info-status-container">
                             <span>Status:</span>
+                            {dataWorkload && dataWorkload[0] ? (
                             <span
-                                className={`item__info-status ${dataWorkload[0]?.server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
+                                className={`item__info-status ${dataWorkload[0]?.server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}
+                            </span>
+                            ) : null}
                         </div>
                     </button>
                     <div className={`cpu__statistics ${type}`} id={id}>

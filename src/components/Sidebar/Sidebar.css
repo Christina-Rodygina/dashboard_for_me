@@ -75,7 +75,21 @@
     display: flex;
     justify-content: start;
     border-radius: 8px;
-    transition: all .3s ease-in-out;
+    transition: all .3s ease;
+}
+
+@keyframes hideSidebar {
+    0% {
+        justify-content: center;
+    }
+
+    90% {
+        justify-content: start;
+    }
+
+    100% {
+        justify-content: center;
+    }
 }
 
 .sidebar__logout img,
