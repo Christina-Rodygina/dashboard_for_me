@@ -73,24 +73,9 @@
     width: 100%;
     height: 100%;
     display: flex;
-    /*justify-content: start;*/
+    justify-content: start;
     border-radius: 8px;
-    /*transition: all .3s ease;*/
-    transition: hideSidebar .3s linear;
-}
-
-@keyframes hideSidebar {
-    0% {
-        justify-content: center;
-    }
-
-    90% {
-        justify-content: start;
-    }
-
-    100% {
-        justify-content: center;
-    }
+    transition: all .3s ease;
 }
 
 .sidebar__logout img,
