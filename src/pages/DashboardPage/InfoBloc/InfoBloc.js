@@ -134,6 +134,7 @@ const InfoBloc = ({type, id, dataWorkload}) => {
 
     return (
         <>
+            {dataWorkload && dataCPU && dataRAM && dataDISC ? (
             <div className={`servers__list-item__${type}`}>
                 <button onClick={() => open_info()} className="servers__list-item__cpu-info">
                     <div className="list-item">
@@ -212,6 +213,7 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                     </VictoryChart>
                 </div>
             </div>
+            ) : null}
         </>
     )
 }
