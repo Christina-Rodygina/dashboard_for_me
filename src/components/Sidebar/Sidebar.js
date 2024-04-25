@@ -114,7 +114,7 @@ const Sidebar = ({meta}) => {
                                      alt="Thoughts Time"/>
                             </div>
                             <button
-                                style={sideBar ? {height: "100%"} : {height: "auto"}}
+                                style={sideBar ? {padding: "24px 10px"} : {padding: "15px 10px"}}
                                 onClick={() => window.location.href = '/authorization'}
                                 className="sidebar__logout">
                                 <img src="/Frame%201274.svg" alt="Logout"
