@@ -118,7 +118,7 @@ const Sidebar = ({meta}) => {
                                 onClick={() => window.location.href = '/authorization'}
                                 className="sidebar__logout">
                                 <img src="/Frame%201274.svg" alt="Logout"
-                                     style={sideBar ? {marginRight: '10px', } : {marginRight: 0, }}/>
+                                     style={sideBar ? {marginRight: '10px', marginLeft: "4px"} : {marginRight: 0, marginLeft: "4px"}}/>
                                 <span style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}}>Logout</span>
                             </button>
                         </div>
