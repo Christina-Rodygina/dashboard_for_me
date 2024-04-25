@@ -44,6 +44,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
     // };
 
     const get_request = async (title) => {
+        console.log(title)
+        console.log(`${URL}/${title}/get-${title}`)
         try {
             const response = await axios.get(title !== 'log' ?
                 `${URL}/${title}/get-${title}` :
