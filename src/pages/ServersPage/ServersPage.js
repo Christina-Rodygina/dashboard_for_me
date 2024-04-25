@@ -163,13 +163,17 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                 </span>
                                         </td>
                                         {dataColumn.map((column, columnIndex) => (
-                                            <td key={columnIndex}>
-                                                {column.name !== 'date' ? (
-                                                    <span>{rowData[column.name]}</span>
-                                                ) : (
-                                                    <span>{date_constructor(rowData[column.name])}</span>
-                                                )}
-                                            </td>
+                                            <>
+                                                {console.log(dataColumn)}
+                                                {console.log(column)}
+                                                <td key={columnIndex}>
+                                                    {column.name !== 'date' ? (
+                                                        <span>{rowData[column.name]}</span>
+                                                    ) : (
+                                                        <span>{date_constructor(rowData[column.name])}</span>
+                                                    )}
+                                                </td>
+                                            </>
                                         ))}
                                     </tr>
                                 ))
