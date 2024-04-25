@@ -200,7 +200,17 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                                         type === "ram" ? ('RAM')
                                             : type === "disc" ? ('DISC')
                                                 : console.log("не указан тип блока")}</h4>
-                                    <span className="item__info-percent norm">
+                                    <span className={`item__info-percent ${
+                                        type === "cpu" && dataCPU[0]?.cpu < 61 ? ("min") :
+                                            type === "cpu" && dataCPU[0]?.cpu < 81 ? ("norm") :
+                                                type === "cpu" ? ("max") :
+                                                    type === "ram" && dataRAM[0]?.ram < 61 ? ("min") :
+                                                        type === "ram" && dataRAM[0]?.ram < 81 ? ("norm") :
+                                                            type === "ram" ? ("max") :
+                                                                type === "disc" && dataDISC[0]?.disc < 61 ? ("min") :
+                                                                    type === "disc" && dataDISC[0]?.disc < 81 ? ("norm") :
+                                                                        type === "disc" ? ("max") : null
+                                    }`}>
                                 {type === "cpu" ? dataCPU[0]?.cpu :
                                     type === "ram" ? dataRAM[0]?.ram
                                         : type === "disc" ? dataDISC[0]?.disc
@@ -223,8 +233,8 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                         <div className="item__info-status-container">
                             <span>Status:</span>
                             {dataWorkload && dataWorkload[0] ? (
-                            <span
-                                className={`item__info-status ${dataWorkload[0]?.server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}
+                                <span
+                                    className={`item__info-status ${dataWorkload[0]?.server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}
                             </span>
                             ) : null}
                         </div>
@@ -256,8 +266,8 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                                 }}
                                 y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
                                 style={{
-                                    data: { stroke: "#FF7800" },
-                                    parent: { border: "1px solid #ccc" }
+                                    data: {stroke: "#FF7800"},
+                                    parent: {border: "1px solid #ccc"}
                                 }}
                             />
                         </VictoryChart>

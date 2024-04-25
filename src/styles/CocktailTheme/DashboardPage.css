@@ -9,9 +9,13 @@
     box-shadow: var(--box-shadow-cocktailTheme);
 }
 
-.item__info-percent.norm,
+
 .item__info-percent.min {
     color: var(--color-text-cocktailTheme-block-green);
+}
+
+.item__info-percent.norm {
+    color: #ffcc00;
 }
 
 .item__info-percent.max {
