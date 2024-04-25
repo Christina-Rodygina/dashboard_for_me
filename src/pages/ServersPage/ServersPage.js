@@ -11,11 +11,6 @@ const ServersPage = ({dataColumn, title, functions}) => {
     const tableHeaderHeight = document.querySelector(".servers__table")?.offsetHeight;
     const windowHeight = window.innerHeight;
 
-    console.log(dataColumn)
-    console.log(title)
-    console.log(functions)
-    console.log(data)
-
     // const togglePasswordVisibility = (index) => {
     //     setPasswordVisibility(prevState => ({
     //         ...prevState, [index]: !prevState[index] // инвертируем значение видимости пароля
@@ -188,17 +183,14 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                 </span>
                                         </td>
                                         {dataColumn.map((column, columnIndex) => (
-                                            <>
-                                                {console.log(dataColumn)}
-                                                {console.log(column)}
-                                                <td key={columnIndex}>
-                                                    {column.name !== 'date' ? (
-                                                        <span>{rowData[column.name]}</span>
-                                                    ) : (
-                                                        <span>{date_constructor(rowData[column.name])}</span>
-                                                    )}
-                                                </td>
-                                            </>
+
+                                            <td key={columnIndex}>
+                                                {column.name !== 'date' ? (
+                                                    <span>{rowData[column.name]}</span>
+                                                ) : (
+                                                    <span>{date_constructor(rowData[column.name])}</span>
+                                                )}
+                                            </td>
                                         ))}
                                     </tr>
                                 ))

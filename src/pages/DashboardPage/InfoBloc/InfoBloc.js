@@ -23,9 +23,6 @@ const InfoBloc = ({type, id, dataWorkload}) => {
     const [dataCPUMonth, setDataCPUMonth] = useState()
     const [dataRAMMonth, setDataRAMMonth] = useState()
     const [dataDISCMonth, setDataDISCMonth] = useState()
-    console.log(dataCPU)
-    console.log(dataRAM)
-    console.log(dataDISC)
 
     const workload_day = async (period, serverType) => {
         try {
