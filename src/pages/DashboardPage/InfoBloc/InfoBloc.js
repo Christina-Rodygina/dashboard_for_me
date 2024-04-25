@@ -99,23 +99,13 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                         width={500}
                         height={300}
                         theme={VictoryTheme.material}
-                        padding={{ top: 50, bottom: 50, left: 80, right: 50 }} // Установите padding для графика
                     >
                         <VictoryAxis
                             dependentAxis
-                            tickValues={[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]} // Определите значения для оси Y
-                            style={{
-                                axis: { stroke: "#000" }, // Цвет оси
-                                tickLabels: { fontSize: 10 } // Размер шрифта меток
-                            }}
+                            tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} // Определите значения для оси Y
                         />
                         <VictoryAxis
-                            tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} // Определите значения для оси X
-                            style={{
-                                axis: { stroke: "#000" }, // Цвет оси
-                                tickLabels: { fontSize: 10, padding: 5 } // Размер шрифта меток и padding
-                            }}
-                            offsetY={50} // Сместите ось X вниз
+                            tickValues={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]} // Определите значения для оси X
                         />
                         <VictoryLine
                             data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
@@ -126,7 +116,6 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                                 const minutes = serverDate.getMinutes();
                                 // Преобразуйте часы и минуты в часы от 0 до 24
                                 const hoursOfDay = hours + minutes / 60;
-                                console.log(hoursOfDay)
                                 return hoursOfDay;
                             }}
                             y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
