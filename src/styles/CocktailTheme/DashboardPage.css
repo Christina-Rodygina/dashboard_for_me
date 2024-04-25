@@ -4,7 +4,7 @@
 }
 
 .servers__list-item__disc:hover >.cpu__statistics.open,
-.servers__list-item__op:hover >.cpu__statistics.open ,
+.servers__list-item__ram:hover >.cpu__statistics.open ,
 .servers__list-item__cpu:hover > .cpu__statistics.open  {
     box-shadow: var(--box-shadow-cocktailTheme);
 }
