@@ -82,6 +82,7 @@
 .sidebar__list li img {
     margin-right: 10px;
     max-width: 24px;
+    transition: all .3s ease;
 }
 
 .sidebar__info {
