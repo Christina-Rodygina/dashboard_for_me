@@ -120,14 +120,14 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                         <VictoryLine
                             data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
                             x={(datum) => {
-                                // Получите часы и минуты из данных времени сервера
+                                // Получите часы из данных времени сервера
                                 const serverDate = new Date(datum.date);
                                 const hours = serverDate.getHours();
                                 const minutes = serverDate.getMinutes();
-                                // Преобразуйте часы и минуты в доли от 24 часов
-                                const fractionOfDay = (hours * 60 + minutes) / (24 * 60);
-                                // Умножьте на 100, чтобы получить значение от 0 до 100
-                                return fractionOfDay * 100;
+                                // Преобразуйте часы и минуты в часы от 0 до 24
+                                const hoursOfDay = hours + minutes / 60;
+                                console.log(hoursOfDay)
+                                return hoursOfDay;
                             }}
                             y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
                             style={{
