@@ -101,20 +101,20 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                         theme={VictoryTheme.material}
                     >
                         <VictoryAxis
-                            tickValues={[0, 25, 50, 75, 100]} // Определите значения для оси X
+                            tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} // Определите значения для оси X
                         />
                         <VictoryAxis
                             dependentAxis
-                            tickValues={[0, 6, 12, 18, 24]} // Определите значения для оси Y
+                            tickValues={[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]} // Определите значения для оси Y
                         />
                         <VictoryLine
                             data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
-                            x={(datum) => parseFloat(datum[type])}
-                            y={(datum) => {
+                            x={(datum) => {
                                 // Преобразуйте данные X в диапазон от 0 до 100
                                 const date = new Date(datum.date);
                                 return ((date.getHours() * 60 + date.getMinutes()) / 1440) * 100;
-                            }} // Используйте только числовые значения
+                            }}
+                            y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
                             style={{
                                 data: { stroke: "#FF7800" }, // Цвет линии
                                 parent: { border: "1px solid #ccc" } // Стиль родительского элемента
