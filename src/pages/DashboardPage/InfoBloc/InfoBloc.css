@@ -1,5 +1,5 @@
 .servers__list-item__disc,
-.servers__list-item__op,
+.servers__list-item__ram,
 .servers__list-item__cpu {
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@
     height: 50px;
 }
 
-.servers__list-item__op .item__logo img {
+.servers__list-item__ram .item__logo img {
     width: 70px;
     height: 70px;
     margin-top: -14px;
