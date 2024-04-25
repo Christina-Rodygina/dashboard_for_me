@@ -1,17 +1,90 @@
-import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme, VictoryTooltip} from "victory";
+import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme} from "victory";
 import React, {useEffect, useState} from "react";
 import "./view"
 import axios from "axios";
 import {URL} from "../../../App";
 
-const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
+const InfoBloc = ({type, id, dataWorkload}) => {
     const [dataCPU, setDataCPU] = useState()
     const [dataRAM, setDataRAM] = useState()
     const [dataDISC, setDataDISC] = useState()
-    console.log(dataWorkload)
+
+    const [dataDay, setDataDay] = useState()
+    const [dataCPUDay, setDataCPUDay] = useState()
+    const [dataRAMDay, setDataRAMDay] = useState()
+    const [dataDISCDay, setDataDISCDay] = useState()
+
+    const [dataWeek, setDataWeek] = useState()
+    const [dataCPUWeek, setDataCPUWeek] = useState()
+    const [dataRAMWeek, setDataRAMWeek] = useState()
+    const [dataDISCWeek, setDataDISCWeek] = useState()
+
+    const [dataMonth, setDataMonth] = useState()
+    const [dataCPUMonth, setDataCPUMonth] = useState()
+    const [dataRAMMonth, setDataRAMMonth] = useState()
+    const [dataDISCMonth, setDataDISCMonth] = useState()
     console.log(dataCPU)
     console.log(dataRAM)
     console.log(dataDISC)
+
+    const workload_day = async (period, serverType) => {
+        try {
+            const response = await axios.get(`${URL}/workload/get-workload?days=${period}&type=${serverType}`);
+            if (response.status === 200) {
+                switch (period) {
+                    case 1:
+                        switch (serverType) {
+                            case 'cpu':
+                                setDataCPUDay(response.data);
+                                break;
+                            case 'ram':
+                                setDataRAMDay(response.data);
+                                break;
+                            case 'disc':
+                                setDataDISCDay(response.data);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 7:
+                        switch (serverType) {
+                            case 'cpu':
+                                setDataCPUWeek(response.data);
+                                break;
+                            case 'ram':
+                                setDataRAMWeek(response.data);
+                                break;
+                            case 'disc':
+                                setDataDISCWeek(response.data);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 30:
+                        switch (serverType) {
+                            case 'cpu':
+                                setDataCPUMonth(response.data);
+                                break;
+                            case 'ram':
+                                setDataRAMMonth(response.data);
+                                break;
+                            case 'disc':
+                                setDataDISCMonth(response.data);
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
 
     const intervalBtn = (index, container) => {
@@ -66,7 +139,7 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                     <div className="list-item">
                         <div className="item__logo">
                             {type === 'cpu' ? (
-                            <img src="/cpu-free-4-svgrepo-com.svg" alt="CPULogo"/>
+                                <img src="/cpu-free-4-svgrepo-com.svg" alt="CPULogo"/>
                             ) : type === 'ram' ? (
                                 <img src="/ram-memory-svgrepo-com.svg" alt="RUMLogo"/>
                             ) : type === 'disc' ? (
@@ -76,17 +149,30 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                             )}
                         </div>
                         <div className="item__info">
-                            <h4>{type === "cpu" ? ('CPU') : type === "ram" ? ('RAM') : type === "disc" ? ('DISC') : console.log("не указан тип блока")}</h4>
-                            <span className="item__info-percent norm">80%</span>
+                            <h4>{type === "cpu" ? ('CPU') :
+                                type === "ram" ? ('RAM')
+                                    : type === "disc" ? ('DISC')
+                                        : console.log("не указан тип блока")}</h4>
+                            <span className="item__info-percent norm">
+                                {type === "cpu" ? dataCPU[0].cpu :
+                                    type === "ram" ? dataRAM[0].ram
+                                        : type === "disc" ? dataDISC[0].disc
+                                            : console.log("не указан тип блока")}
+                                </span>
                         </div>
                     </div>
                     <div className="item__info-date-time">
                         <span className="item__info-date">Update date:</span>
-                        <span className="item__info-time">24.06.23 18:00</span>
+                        <span className="item__info-time">{
+                            type === "cpu" ? dataCPU[0].date :
+                                type === "ram" ? dataRAM[0].date
+                                    : type === "disc" ? dataDISC[0].date
+                                        : console.log("не указан тип блока")}
+                        </span>
                     </div>
                     <div className="item__info-status-container">
                         <span>Status:</span>
-                        <span className="item__info-status offline">Offline</span>
+                        <span className="item__info-status offline">{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
                     </div>
                 </button>
                 <div className={`cpu__statistics ${type}`} id={id}>
@@ -115,13 +201,12 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                                 const hours = serverDate.getHours();
                                 const minutes = serverDate.getMinutes();
                                 // Преобразуйте часы и минуты в часы от 0 до 24
-                                const hoursOfDay = hours + minutes / 60;
-                                return hoursOfDay;
+                                return hours + minutes / 60;
                             }}
                             y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
                             style={{
-                                data: { stroke: "#FF7800" }, // Цвет линии
-                                parent: { border: "1px solid #ccc" } // Стиль родительского элемента
+                                data: {stroke: "#FF7800"}, // Цвет линии
+                                parent: {border: "1px solid #ccc"} // Стиль родительского элемента
                             }}
                         />
                     </VictoryChart>
