@@ -75,7 +75,7 @@
     display: flex;
     justify-content: start;
     border-radius: 8px;
-    transition: background-color .3s linear, color .4s linear;
+    transition: all .3s ease;
 }
 
 .sidebar__logout img,
@@ -88,12 +88,12 @@
     margin-bottom: 8px;
     margin-top: -38px;
     height: 100%;
-    transition: max-width 1s ease;
+    transition: all 3s ease;
 }
 
 .sidebar__info img {
     overflow: hidden;
-    transition: max-width .3s ease;
+    transition: all .3s ease;
 }
 
 .sidebar__logout {
@@ -104,16 +104,16 @@
     justify-content: start;
     align-items: center;
     border-radius: 8px;
-    transition: all .3s linear, color .4s linear;
+    transition: all .3s ease;
 }
 
 .sidebar__logout span {
     overflow: hidden;
-    transition: max-width .3s ease;
+    transition: all .3s ease;
 }
 
 .sidebar__list li button span {
-    transition: max-width .3s ease;
+    transition: all .3s ease;
     overflow: hidden;
     white-space: nowrap;
 }
