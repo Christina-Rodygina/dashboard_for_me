@@ -51,12 +51,36 @@ const ServersPage = ({dataColumn, title, functions}) => {
                 `${URL}/${title}/get-${title}` :
                 `${URL}/${title}/get-${title}?reverse=true`);
             if (response.status === 200) {
-                setData(response.data[0])
+                if (title === "log") {
+                    setData(response.data[0])
+                } else if (title === "workload") {
+                    setData(transformData(response.data))
+                    console.log(transformData(response.data))
+                }
             }
         } catch (error) {
             console.log(error)
         }
     }
+
+    const transformData = (responseData) => {
+        const transformedData = [];
+        responseData.forEach(server => {
+            server.data.forEach(dataItem => {
+                const transformedItem = {
+                    name: server.name,
+                    cpu: dataItem.cpu,
+                    disk: dataItem.disk,
+                    ram: dataItem.ram,
+                    id: dataItem.id,
+                    date: dataItem.date
+                };
+                transformedData.push(transformedItem);
+            });
+        });
+        return transformedData;
+    };
+
 
     const date_constructor = (timeString) => {
         const date = new Date(timeString);
