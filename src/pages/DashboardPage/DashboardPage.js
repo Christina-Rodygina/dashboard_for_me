@@ -46,9 +46,9 @@ const DashboardPage = () => {
         }
     }
 
-    const workload = async () => {
+    const workload_day = async () => {
         try {
-            const response = await axios.get(`${URL}/workload/get-workload`)
+            const response = await axios.get(`${URL}/workload/get-workload?days=1`)
             if (response.status === 200) {
                 setDataWorkload(response.data)
             }
@@ -59,7 +59,7 @@ const DashboardPage = () => {
 
     useEffect(() => {
         me()
-        workload()
+        workload_day()
     }, [])
 
     return (

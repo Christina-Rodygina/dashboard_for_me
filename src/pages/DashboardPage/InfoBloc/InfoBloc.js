@@ -1,6 +1,8 @@
 import {VictoryAxis, VictoryChart, VictoryLine, VictoryTheme, VictoryTooltip} from "victory";
 import React, {useEffect, useState} from "react";
 import "./view"
+import axios from "axios";
+import {URL} from "../../../App";
 
 const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
     const [dataCPU, setDataCPU] = useState()
@@ -98,17 +100,25 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                         height={300}
                         theme={VictoryTheme.material}
                     >
-                        <VictoryAxis tickValues={uniqueLabels}/>
-                        <VictoryAxis dependentAxis/>
+                        <VictoryAxis
+                            tickValues={[0, 25, 50, 75, 100]} // Определите значения для оси X
+                        />
+                        <VictoryAxis
+                            dependentAxis
+                            tickValues={[0, 6, 12, 18, 24]} // Определите значения для оси Y
+                        />
                         <VictoryLine
                             data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
-                            x="date" y={type === 'cpu' ? 'cpu' : type === 'ram' ? 'ram' : type === 'disc' ? 'disc' : null}
-                            style={{
-                                data: {stroke: "#FF7800"}, // Цвет линии
-                                parent: {border: "1px solid #ccc"} // Стиль родительского элемента
+                            x={(datum) => {
+                                // Преобразуйте данные X в диапазон от 0 до 100
+                                const date = new Date(datum.date);
+                                return ((date.getHours() * 60 + date.getMinutes()) / 1440) * 100;
                             }}
-                            // labels={({datum}) => datum.label}
-                            // labelComponent={<VictoryTooltip/>}
+                            y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
+                            style={{
+                                data: { stroke: "#FF7800" }, // Цвет линии
+                                parent: { border: "1px solid #ccc" } // Стиль родительского элемента
+                            }}
                         />
                     </VictoryChart>
                 </div>
