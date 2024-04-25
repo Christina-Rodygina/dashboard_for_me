@@ -166,9 +166,9 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                                             : type === "disc" ? ('DISC')
                                                 : console.log("не указан тип блока")}</h4>
                                     <span className="item__info-percent norm">
-                                {type === "cpu" ? dataCPU[0].cpu :
-                                    type === "ram" ? dataRAM[0].ram
-                                        : type === "disc" ? dataDISC[0].disc
+                                {type === "cpu" ? dataCPU[0]?.cpu :
+                                    type === "ram" ? dataRAM[0]?.ram
+                                        : type === "disc" ? dataDISC[0]?.disc
                                             : console.log("не указан тип блока")}%
                                 </span>
                                 </div>
@@ -178,9 +178,9 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                             <span className="item__info-date">Update date:</span>
                             {dataCPU && dataRAM && dataDISC ? (
                                 <span className="item__info-time">{
-                                    type === "cpu" ? formatDate(dataCPU[0].date) :
-                                        type === "ram" ? formatDate(dataRAM[0].date)
-                                            : type === "disc" ? formatDate(dataDISC[0].date)
+                                    type === "cpu" ? formatDate(dataCPU[0]?.date) :
+                                        type === "ram" ? formatDate(dataRAM[0]?.date)
+                                            : type === "disc" ? formatDate(dataDISC[0]?.date)
                                                 : console.log("не указан тип блока")}
                         </span>
                             ) : null}
@@ -188,7 +188,7 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                         <div className="item__info-status-container">
                             <span>Status:</span>
                             <span
-                                className={`item__info-status ${dataWorkload[0].server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
+                                className={`item__info-status ${dataWorkload[0]?.server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
                         </div>
                     </button>
                     <div className={`cpu__statistics ${type}`} id={id}>
