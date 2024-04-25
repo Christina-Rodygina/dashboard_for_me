@@ -50,7 +50,7 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
         })) : null;
         const dataDisc = dataWorkload ? dataWorkload.map(item => ({
             date: item.date,
-            disc: parseFloat(item.disc)
+            disc: parseFloat(item['disk'])
         })) : null;
         setDataCPU(dataCpu);
         setDataRAM(dataRam);
