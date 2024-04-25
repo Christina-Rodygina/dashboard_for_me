@@ -168,7 +168,7 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                                 {type === "cpu" ? dataCPU[0].cpu :
                                     type === "ram" ? dataRAM[0].ram
                                         : type === "disc" ? dataDISC[0].disc
-                                            : console.log("не указан тип блока")}
+                                            : console.log("не указан тип блока")}%
                                 </span>
                         </div>
                     </div>
