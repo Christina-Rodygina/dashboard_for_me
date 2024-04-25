@@ -35,7 +35,7 @@ const DashboardPage = () => {
         me()
         workload_day()
         // Установка интервала для выполнения запроса каждые 5 минут
-        const intervalId = setInterval(workload_day, 5 * 60 * 1000);
+        const intervalId = setInterval(workload_day, 60 * 1000);
 
         // Очистка интервала при размонтировании компонента
         return () => clearInterval(intervalId);
