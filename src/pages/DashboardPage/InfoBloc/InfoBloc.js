@@ -109,12 +109,12 @@ const InfoBloc = ({ data, uniqueLabels, type, id, dataWorkload }) => {
                         />
                         <VictoryLine
                             data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
-                            x={(datum) => {
+                            x={(datum) => parseFloat(datum[type])}
+                            y={(datum) => {
                                 // Преобразуйте данные X в диапазон от 0 до 100
                                 const date = new Date(datum.date);
                                 return ((date.getHours() * 60 + date.getMinutes()) / 1440) * 100;
-                            }}
-                            y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
+                            }} // Используйте только числовые значения
                             style={{
                                 data: { stroke: "#FF7800" }, // Цвет линии
                                 parent: { border: "1px solid #ccc" } // Стиль родительского элемента
