@@ -114,6 +114,16 @@ const InfoBloc = ({type, id, dataWorkload}) => {
         }
     };
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear().toString().slice(-2);
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        return `${day}.${month}.${year} ${hours}:${minutes}`;
+    };
+
     useEffect(() => {
         const dataCpu = dataWorkload ? dataWorkload.map(item => ({
             date: item.date,
@@ -165,15 +175,15 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                     <div className="item__info-date-time">
                         <span className="item__info-date">Update date:</span>
                         <span className="item__info-time">{
-                            type === "cpu" ? dataCPU[0].date :
-                                type === "ram" ? dataRAM[0].date
-                                    : type === "disc" ? dataDISC[0].date
+                            type === "cpu" ? formatDate(dataCPU[0].date) :
+                                type === "ram" ? formatDate(dataRAM[0].date)
+                                    : type === "disc" ? formatDate(dataDISC[0].date)
                                         : console.log("не указан тип блока")}
                         </span>
                     </div>
                     <div className="item__info-status-container">
                         <span>Status:</span>
-                        <span className="item__info-status offline">{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
+                        <span className={`item__info-status ${dataWorkload[0].server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
                     </div>
                 </button>
                 <div className={`cpu__statistics ${type}`} id={id}>
