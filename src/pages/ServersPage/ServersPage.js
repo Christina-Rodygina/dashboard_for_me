@@ -11,6 +11,11 @@ const ServersPage = ({dataColumn, title, functions}) => {
     const tableHeaderHeight = document.querySelector(".servers__table")?.offsetHeight;
     const windowHeight = window.innerHeight;
 
+    console.log(dataColumn)
+    console.log(title)
+    console.log(functions)
+    console.log(data)
+
     // const togglePasswordVisibility = (index) => {
     //     setPasswordVisibility(prevState => ({
     //         ...prevState, [index]: !prevState[index] // инвертируем значение видимости пароля
