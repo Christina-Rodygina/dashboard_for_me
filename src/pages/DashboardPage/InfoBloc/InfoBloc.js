@@ -24,7 +24,6 @@ const InfoBloc = ({type, id, dataWorkload}) => {
     const [dataRAMMonth, setDataRAMMonth] = useState()
     const [dataDISCMonth, setDataDISCMonth] = useState()
 
-    const [data, setData] = useState(null);
     const [xTickValues, setXTickValues] = useState([]);
 
     const workload_day = async (period, serverType) => {
@@ -124,21 +123,41 @@ const InfoBloc = ({type, id, dataWorkload}) => {
         return `${day}.${month}.${year} ${hours}:${minutes}`;
     };
 
+    useEffect(() => {
+        const dataCpu = dataWorkload ? dataWorkload.map(item => ({
+            date: item.date,
+            cpu: parseFloat(item.cpu)
+        })) : null;
+        const dataRam = dataWorkload ? dataWorkload.map(item => ({
+            date: item.date,
+            ram: parseFloat(item.ram)
+        })) : null;
+        const dataDisc = dataWorkload ? dataWorkload.map(item => ({
+            date: item.date,
+            disc: parseFloat(item['disk'])
+        })) : null;
+        setDataCPU(dataCpu);
+        setDataRAM(dataRam);
+        setDataDISC(dataDisc);
+
+    }, [dataWorkload])
+
 
     useEffect(() => {
-        if (dataWorkload) {
-            // Фильтруем данные по типу сервера (CPU, RAM, DISC)
-            const filteredData = dataWorkload.map(item => ({
-                date: new Date(item.date),
-                value: parseFloat(item[type])
-            }));
+        const processData = (data) => {
+            // Инициализируем минимальное и максимальное время с первым элементом списка данных
+            let minTime = new Date(data[0].date);
+            let maxTime = new Date(data[0].date);
 
-            // Находим минимальное и максимальное время в данных
-            const minDate = new Date(Math.min(...filteredData.map(item => item.date)));
-            const maxDate = new Date(Math.max(...filteredData.map(item => item.date)));
+            // Находим минимальное и максимальное время в каждом списке данных
+            data.forEach(item => {
+                const date = new Date(item.date);
+                if (date < minTime) minTime = date;
+                if (date > maxTime) maxTime = date;
+            });
 
             // Устанавливаем минимальное значение оси X на минимальный час, но не менее 0
-            const minHour = Math.max(0, minDate.getHours());
+            const minHour = Math.max(0, minTime.getHours());
 
             // Генерируем значения для оси X от минимального часа до 24 часов
             const tickValues = [];
@@ -146,10 +165,17 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                 tickValues.push(i);
             }
             setXTickValues(tickValues);
+        };
 
-            setData(filteredData);
+        // Обработка каждого списка данных
+        if (type === 'cpu' && dataCPU) {
+            processData(dataCPU);
+        } else if (type === 'ram' && dataRAM) {
+            processData(dataRAM);
+        } else if (type === 'disc' && dataDISC) {
+            processData(dataDISC);
         }
-    }, [dataWorkload, type]);
+    }, [dataCPU, dataRAM, dataDISC]);
 
     return (
         <>
@@ -219,17 +245,18 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                             <VictoryAxis
                                 tickValues={xTickValues}
                             />
-                            {data && (
-                                <VictoryLine
-                                    data={data}
-                                    x="date"
-                                    y="value"
-                                    style={{
-                                        data: { stroke: "#FF7800" },
-                                        parent: { border: "1px solid #ccc" }
-                                    }}
-                                />
-                            )}
+                            <VictoryLine
+                                data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : []}
+                                x={(datum) => {
+                                    const serverDate = new Date(datum.date);
+                                    return serverDate.getHours() + serverDate.getMinutes() / 60;
+                                }}
+                                y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
+                                style={{
+                                    data: { stroke: "#FF7800" },
+                                    parent: { border: "1px solid #ccc" }
+                                }}
+                            />
                         </VictoryChart>
                     </div>
                 </div>
