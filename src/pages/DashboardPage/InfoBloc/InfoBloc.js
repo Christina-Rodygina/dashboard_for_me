@@ -145,84 +145,90 @@ const InfoBloc = ({type, id, dataWorkload}) => {
     return (
         <>
             {dataWorkload && dataCPU && dataRAM && dataDISC ? (
-            <div className={`servers__list-item__${type}`}>
-                <button onClick={() => open_info()} className="servers__list-item__cpu-info">
-                    <div className="list-item">
-                        <div className="item__logo">
-                            {type === 'cpu' ? (
-                                <img src="/cpu-free-4-svgrepo-com.svg" alt="CPULogo"/>
-                            ) : type === 'ram' ? (
-                                <img src="/ram-memory-svgrepo-com.svg" alt="RUMLogo"/>
-                            ) : type === 'disc' ? (
-                                <img src="/disc-svgrepo-com.svg" alt="DiscLogo"/>
-                            ) : (
-                                console.log("не указан тип блока")
-                            )}
-                        </div>
-                        <div className="item__info">
-                            <h4>{type === "cpu" ? ('CPU') :
-                                type === "ram" ? ('RAM')
-                                    : type === "disc" ? ('DISC')
-                                        : console.log("не указан тип блока")}</h4>
-                            <span className="item__info-percent norm">
+                <div className={`servers__list-item__${type}`}>
+                    <button onClick={() => open_info()} className="servers__list-item__cpu-info">
+                        <div className="list-item">
+                            <div className="item__logo">
+                                {type === 'cpu' ? (
+                                    <img src="/cpu-free-4-svgrepo-com.svg" alt="CPULogo"/>
+                                ) : type === 'ram' ? (
+                                    <img src="/ram-memory-svgrepo-com.svg" alt="RUMLogo"/>
+                                ) : type === 'disc' ? (
+                                    <img src="/disc-svgrepo-com.svg" alt="DiscLogo"/>
+                                ) : (
+                                    console.log("не указан тип блока")
+                                )}
+                            </div>
+                            {dataCPU && dataRAM && dataDISC ? (
+                                <div className="item__info">
+                                    <h4>{type === "cpu" ? ('CPU') :
+                                        type === "ram" ? ('RAM')
+                                            : type === "disc" ? ('DISC')
+                                                : console.log("не указан тип блока")}</h4>
+                                    <span className="item__info-percent norm">
                                 {type === "cpu" ? dataCPU[0].cpu :
                                     type === "ram" ? dataRAM[0].ram
                                         : type === "disc" ? dataDISC[0].disc
                                             : console.log("не указан тип блока")}%
                                 </span>
+                                </div>
+                            ) : null}
                         </div>
-                    </div>
-                    <div className="item__info-date-time">
-                        <span className="item__info-date">Update date:</span>
-                        <span className="item__info-time">{
-                            type === "cpu" ? formatDate(dataCPU[0].date) :
-                                type === "ram" ? formatDate(dataRAM[0].date)
-                                    : type === "disc" ? formatDate(dataDISC[0].date)
-                                        : console.log("не указан тип блока")}
+                        <div className="item__info-date-time">
+                            <span className="item__info-date">Update date:</span>
+                            {dataCPU && dataRAM && dataDISC ? (
+                                <span className="item__info-time">{
+                                    type === "cpu" ? formatDate(dataCPU[0].date) :
+                                        type === "ram" ? formatDate(dataRAM[0].date)
+                                            : type === "disc" ? formatDate(dataDISC[0].date)
+                                                : console.log("не указан тип блока")}
                         </span>
+                            ) : null}
+                        </div>
+                        <div className="item__info-status-container">
+                            <span>Status:</span>
+                            <span
+                                className={`item__info-status ${dataWorkload[0].server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
+                        </div>
+                    </button>
+                    <div className={`cpu__statistics ${type}`} id={id}>
+                        <div className="interval__btns">
+                            <button onClick={() => handleIntervalBtnClick(0)} className="interval__btn">Month</button>
+                            <button onClick={() => handleIntervalBtnClick(1)} className="interval__btn">Week</button>
+                            <button onClick={() => handleIntervalBtnClick(2)} className="interval__btn active">Day
+                            </button>
+                        </div>
+                        <VictoryChart
+                            width={500}
+                            height={300}
+                            theme={VictoryTheme.material}
+                        >
+                            <VictoryAxis
+                                dependentAxis
+                                tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} // Определите значения для оси Y
+                            />
+                            <VictoryAxis
+                                tickValues={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]} // Определите значения для оси X
+                            />
+                            <VictoryLine
+                                data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
+                                x={(datum) => {
+                                    // Получите часы из данных времени сервера
+                                    const serverDate = new Date(datum.date);
+                                    const hours = serverDate.getHours();
+                                    const minutes = serverDate.getMinutes();
+                                    // Преобразуйте часы и минуты в часы от 0 до 24
+                                    return hours + minutes / 60;
+                                }}
+                                y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
+                                style={{
+                                    data: {stroke: "#FF7800"}, // Цвет линии
+                                    parent: {border: "1px solid #ccc"} // Стиль родительского элемента
+                                }}
+                            />
+                        </VictoryChart>
                     </div>
-                    <div className="item__info-status-container">
-                        <span>Status:</span>
-                        <span className={`item__info-status ${dataWorkload[0].server.status === 'online' ? 'online' : 'offline'}`}>{dataWorkload[0].server.status[0].toUpperCase() + dataWorkload[0].server.status.slice(1)}</span>
-                    </div>
-                </button>
-                <div className={`cpu__statistics ${type}`} id={id}>
-                    <div className="interval__btns">
-                        <button onClick={() => handleIntervalBtnClick(0)} className="interval__btn">Month</button>
-                        <button onClick={() => handleIntervalBtnClick(1)} className="interval__btn">Week</button>
-                        <button onClick={() => handleIntervalBtnClick(2)} className="interval__btn active">Day</button>
-                    </div>
-                    <VictoryChart
-                        width={500}
-                        height={300}
-                        theme={VictoryTheme.material}
-                    >
-                        <VictoryAxis
-                            dependentAxis
-                            tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} // Определите значения для оси Y
-                        />
-                        <VictoryAxis
-                            tickValues={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]} // Определите значения для оси X
-                        />
-                        <VictoryLine
-                            data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
-                            x={(datum) => {
-                                // Получите часы из данных времени сервера
-                                const serverDate = new Date(datum.date);
-                                const hours = serverDate.getHours();
-                                const minutes = serverDate.getMinutes();
-                                // Преобразуйте часы и минуты в часы от 0 до 24
-                                return hours + minutes / 60;
-                            }}
-                            y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
-                            style={{
-                                data: {stroke: "#FF7800"}, // Цвет линии
-                                parent: {border: "1px solid #ccc"} // Стиль родительского элемента
-                            }}
-                        />
-                    </VictoryChart>
                 </div>
-            </div>
             ) : null}
         </>
     )
