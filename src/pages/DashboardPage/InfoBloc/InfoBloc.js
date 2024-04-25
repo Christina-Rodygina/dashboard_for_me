@@ -146,8 +146,8 @@ const InfoBloc = ({type, id, dataWorkload}) => {
     useEffect(() => {
         const processData = (data) => {
             // Инициализируем минимальное и максимальное время с первым элементом списка данных
-            let minTime = new Date(data[0].date);
-            let maxTime = new Date(data[0].date);
+            let minTime = new Date(data[0]?.date);
+            let maxTime = new Date(data[0]?.date);
 
             // Находим минимальное и максимальное время в каждом списке данных
             data.forEach(item => {
