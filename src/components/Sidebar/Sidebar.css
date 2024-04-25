@@ -76,7 +76,7 @@
     justify-content: start;
     border-radius: 8px;
     transition: all .3s ease;
-    animation: hideSidebar .3s linear;
+    transition: hideSidebar .3s linear;
 }
 
 @keyframes hideSidebar {
