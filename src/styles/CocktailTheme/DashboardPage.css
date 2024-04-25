@@ -15,7 +15,7 @@
 }
 
 .item__info-percent.norm {
-    color: yellow;
+    color: var(--color-text-cocktailTheme-btn--orange);
 }
 
 .item__info-percent.max {
