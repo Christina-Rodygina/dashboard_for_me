@@ -54,7 +54,7 @@ const Sidebar = ({meta}) => {
                                         style={sideBar ? {
                                             padding: '24px 10px',
                                             justifyContent: 'start'
-                                        } : {padding: '15px 10px', justifyContent: 'center'}}>
+                                        } : {padding: '15px 10px', justifyContent: 'start'}}>
                                         <img style={sideBar ? {
                                             maxWidth: "20px",
                                             marginLeft: "-1px",
