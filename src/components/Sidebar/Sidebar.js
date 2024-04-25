@@ -71,7 +71,7 @@ const Sidebar = ({meta}) => {
                                                 style={sideBar ? {
                                                     padding: '24px 10px',
                                                     justifyContent: 'start'
-                                                } : {padding: '15px 10px', justifyContent: 'center'}}>
+                                                } : {padding: '15px 10px', justifyContent: 'start'}}>
                                             {item["table_name"] === 'server' ? (
                                                 <>
                                                     <img style={sideBar ? {
