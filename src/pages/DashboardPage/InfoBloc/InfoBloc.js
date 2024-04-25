@@ -24,6 +24,9 @@ const InfoBloc = ({type, id, dataWorkload}) => {
     const [dataRAMMonth, setDataRAMMonth] = useState()
     const [dataDISCMonth, setDataDISCMonth] = useState()
 
+    const [data, setData] = useState(null);
+    const [xTickValues, setXTickValues] = useState([]);
+
     const workload_day = async (period, serverType) => {
         try {
             const response = await axios.get(`${URL}/workload/get-workload?days=${period}&type=${serverType}`);
@@ -121,23 +124,32 @@ const InfoBloc = ({type, id, dataWorkload}) => {
         return `${day}.${month}.${year} ${hours}:${minutes}`;
     };
 
+
     useEffect(() => {
-        const dataCpu = dataWorkload ? dataWorkload.map(item => ({
-            date: item.date,
-            cpu: parseFloat(item.cpu)
-        })) : null;
-        const dataRam = dataWorkload ? dataWorkload.map(item => ({
-            date: item.date,
-            ram: parseFloat(item.ram)
-        })) : null;
-        const dataDisc = dataWorkload ? dataWorkload.map(item => ({
-            date: item.date,
-            disc: parseFloat(item['disk'])
-        })) : null;
-        setDataCPU(dataCpu);
-        setDataRAM(dataRam);
-        setDataDISC(dataDisc);
-    }, [dataWorkload])
+        if (dataWorkload) {
+            // Фильтруем данные по типу сервера (CPU, RAM, DISC)
+            const filteredData = dataWorkload.map(item => ({
+                date: new Date(item.date),
+                value: parseFloat(item[type])
+            }));
+
+            // Находим минимальное и максимальное время в данных
+            const minDate = new Date(Math.min(...filteredData.map(item => item.date)));
+            const maxDate = new Date(Math.max(...filteredData.map(item => item.date)));
+
+            // Устанавливаем минимальное значение оси X на минимальный час, но не менее 0
+            const minHour = Math.max(0, minDate.getHours());
+
+            // Генерируем значения для оси X от минимального часа до 24 часов
+            const tickValues = [];
+            for (let i = minHour; i <= 24; i++) {
+                tickValues.push(i);
+            }
+            setXTickValues(tickValues);
+
+            setData(filteredData);
+        }
+    }, [dataWorkload, type]);
 
     return (
         <>
@@ -205,24 +217,19 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                                 tickValues={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} // Определите значения для оси Y
                             />
                             <VictoryAxis
-                                tickValues={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]} // Определите значения для оси X
+                                tickValues={xTickValues}
                             />
-                            <VictoryLine
-                                data={type === 'cpu' ? dataCPU : type === 'ram' ? dataRAM : type === 'disc' ? dataDISC : null}
-                                x={(datum) => {
-                                    // Получите часы из данных времени сервера
-                                    const serverDate = new Date(datum.date);
-                                    const hours = serverDate.getHours();
-                                    const minutes = serverDate.getMinutes();
-                                    // Преобразуйте часы и минуты в часы от 0 до 24
-                                    return hours + minutes / 60;
-                                }}
-                                y={(datum) => parseFloat(datum[type])} // Используйте только числовые значения
-                                style={{
-                                    data: {stroke: "#FF7800"}, // Цвет линии
-                                    parent: {border: "1px solid #ccc"} // Стиль родительского элемента
-                                }}
-                            />
+                            {data && (
+                                <VictoryLine
+                                    data={data}
+                                    x="date"
+                                    y="value"
+                                    style={{
+                                        data: { stroke: "#FF7800" },
+                                        parent: { border: "1px solid #ccc" }
+                                    }}
+                                />
+                            )}
                         </VictoryChart>
                     </div>
                 </div>
