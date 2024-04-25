@@ -53,8 +53,9 @@ const Sidebar = ({meta}) => {
                                         onClick={() => window.location.href = '/'}
                                         style={sideBar ? {
                                             padding: '24px 10px',
-                                            justifyContent: 'start'
-                                        } : {padding: '15px 10px', justifyContent: 'start'}}>
+                                            justifyContent: 'start',
+                                            width: '100%',
+                                        } : {padding: '15px 10px', justifyContent: 'start', width: "auto"}}>
                                         <img style={sideBar ? {
                                             maxWidth: "20px",
                                             marginLeft: "-1px",
@@ -70,8 +71,9 @@ const Sidebar = ({meta}) => {
                                                 onClick={() => window.location.href = `/${item["table_name"]}`}
                                                 style={sideBar ? {
                                                     padding: '24px 10px',
-                                                    justifyContent: 'start'
-                                                } : {padding: '15px 10px', justifyContent: 'start'}}>
+                                                    justifyContent: 'start',
+                                                    width: '100%',
+                                                } : {padding: '15px 10px', justifyContent: 'start', width: "auto"}}>
                                             {item["table_name"] === 'server' ? (
                                                 <>
                                                     <img style={sideBar ? {
@@ -115,6 +117,7 @@ const Sidebar = ({meta}) => {
                             </div>
                             <button
                                 onClick={() => window.location.href = '/authorization'}
+                                style={sideBar ? {width: "100%"} : {width: "auto"}}
                                 className="sidebar__logout">
                                 <img src="/Frame%201274.svg" alt="Logout"
                                      style={sideBar ? {marginRight: '10px'} : {marginRight: 0}}/>
