@@ -178,12 +178,6 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                             <span>{rowData.name}</span>
                                                         </th>
                                                     </tr>
-                                                    {!showDetails[rowIndex] && (
-                                                        <tr style={{backgroundColor: "transparent"}}>
-                                                            <th style={{border: "none"}}
-                                                                colSpan={dataColumn.length + 1}>{""}</th>
-                                                        </tr>
-                                                    )}
                                                 </>
                                             </>
                                         ) : null}
