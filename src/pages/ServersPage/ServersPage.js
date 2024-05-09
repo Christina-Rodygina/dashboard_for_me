@@ -152,8 +152,13 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             <tbody>
                             {data && data.length > 0 ? (
                                 data.map((rowData, rowIndex) => (
-                                    <tr key={rowIndex}>
-                                        <td>
+                                    <>
+                                        <tr>
+                                            <th>{rowData.name}</th>
+                                        </tr>
+                                        {rowData.map((item, index) => (
+                                        <tr key={index}>
+                                            <td>
                                                 <span className="span__buttons">
                                                     {title !== 'log' ? (
                                                         <>
@@ -165,33 +170,35 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                             </button>
                                                         </>
                                                     ) : null}
-                                                    <button onClick={() => openDeletion(rowData.id)}>
+                                                    <button onClick={() => openDeletion(item.id)}>
                                                         <img src="/delete-2-svgrepo-com.svg" alt="Delete"/>
                                                     </button>
-                                                    <div id={`confirmation-deletion-${rowData.id}`}
+                                                    <div id={`confirmation-deletion-${item.id}`}
                                                          className="confirmation-deletion">
                                                         <span>Are you sure you want to delete this {title}<b
-                                                            style={{marginLeft: "4px"}}>{title !== 'log' ? rowData.name : rowData.id}</b>?</span>
+                                                            style={{marginLeft: "4px"}}>{title !== 'log' ? item.name : item.id}</b>?</span>
                                                         <div className="confirmation-deletion__btns">
                                                             <button
-                                                                onClick={() => openDeletion(rowData.id, true)}>Ok</button>
+                                                                onClick={() => openDeletion(item.id, true)}>Ok</button>
                                                             <button
-                                                                onClick={() => openDeletion(rowData.id)}>Cancel</button>
+                                                                onClick={() => openDeletion(item.id)}>Cancel</button>
                                                         </div>
                                                     </div>
                                                 </span>
-                                        </td>
-                                        {dataColumn.map((column, columnIndex) => (
-
-                                            <td key={columnIndex}>
-                                                {column.name !== 'date' ? (
-                                                    <span>{rowData[column.name]}</span>
-                                                ) : (
-                                                    <span>{date_constructor(rowData[column.name])}</span>
-                                                )}
                                             </td>
+                                            {dataColumn.map((column, columnIndex) => (
+
+                                                <td key={columnIndex}>
+                                                    {column.name !== 'date' ? (
+                                                        <span>{item[column.name]}</span>
+                                                    ) : (
+                                                        <span>{date_constructor(item[column.name])}</span>
+                                                    )}
+                                                </td>
+                                            ))}
+                                        </tr>
                                         ))}
-                                    </tr>
+                                    </>
                                 ))
                             ) : null}
                             </tbody>
