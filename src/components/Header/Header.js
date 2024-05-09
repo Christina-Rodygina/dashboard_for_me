@@ -4,7 +4,6 @@ import React, {useEffect, useState} from "react";
 const Header = () => {
     const [bell, setBell] = useState(true)
 
-
     const scroll_header = () => {
         const section = document.querySelector(".header__container");
         if (window.scrollY > section.style.height) {
@@ -15,7 +14,11 @@ const Header = () => {
     }
 
     const bellOff = () => {
-        setBell(!bell)
+        if (bell) {
+            setBell(false)
+        } else {
+            setBell(true)
+        }
     }
 
     useEffect(() => {
@@ -49,6 +52,9 @@ const Header = () => {
                             ) : (
                                 <img src="/bell-slash-svgrepo-com.svg" alt="Not notification"/>
                             )}
+                        </button>
+                        <button className="header__account-btn">
+                            <img src="/account-circle-svgrepo-com.svg" alt="Account"/>
                         </button>
                     </div>
                 </div>
