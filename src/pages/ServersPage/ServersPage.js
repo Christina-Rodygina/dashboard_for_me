@@ -46,14 +46,15 @@ const ServersPage = ({dataColumn, title, functions}) => {
                 `${URL}/${title}/get-${title}` :
                 `${URL}/${title}/get-${title}?reverse=true`);
             if (response.status === 200) {
-                // if (title === "log") {
+                if (title === "log") {
+                    setData(response.data[0])
+                } else if (title === "workload") {
                     setData(transformData(response.data))
-                // } else if (title === "workload") {
-                //     setData(transformData(response.data))
-                //     console.log(transformData(response.data))
-                // } else {
-                //     console.log(data)
-                // }
+                    console.log(transformData(response.data))
+                } else {
+                    setData(response.data)
+                    console.log(data)
+                }
             }
         } catch (error) {
             console.log(error)
