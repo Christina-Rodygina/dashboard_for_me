@@ -205,8 +205,13 @@
     border-radius: 12px;
 }
 
+.btn-title-th img {
+    transform: rotate(0);
+    animation: showArrow .3s linear;
+}
 
 .btn-title-th img.show {
+    transform: rotate(180deg);
     animation: showArrow .3s linear;
 }
 
