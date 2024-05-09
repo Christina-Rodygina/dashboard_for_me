@@ -39,21 +39,17 @@ const ServersPage = ({dataColumn, title, functions}) => {
     // };
 
     const get_request = async (title) => {
-        console.log(title)
-        console.log(`${URL}/${title}/get-${title}`)
         try {
             const response = await axios.get(title !== 'log' ?
                 `${URL}/${title}/get-${title}` :
                 `${URL}/${title}/get-${title}?reverse=true`);
             if (response.status === 200) {
-                if (title === "log") {
-                    setData(response.data[0])
-                } else if (title === "workload") {
+                if (title === "workload") {
                     setData(transformData(response.data))
                     console.log(transformData(response.data))
                 } else {
-                    setData(response.data)
-                    console.log(data)
+                    setData(transformData(response.data))
+                    console.log(transformData(response.data))
                 }
             }
         } catch (error) {
