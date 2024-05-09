@@ -154,9 +154,9 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                 data.map((rowData, rowIndex) => (
                                     <>
                                         <tr key={rowIndex}>
-                                            {rowData.data ? (
+                                            {rowData.data.length > 0 ? (
                                                 <th>{rowData.name}</th>
-                                            ) : ""}
+                                            ) : null}
                                         </tr>
                                         {rowData.data.map((rowDataItem, rowDataIndex) => (
                                             <tr key={rowDataIndex}>
