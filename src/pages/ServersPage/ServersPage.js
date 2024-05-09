@@ -153,11 +153,11 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             {data && data.length > 0 ? (
                                 data.map((rowData, rowIndex) => (
                                     <>
-                                        <tr>
+                                        <tr key={rowIndex}>
                                             <th>{rowData.name}</th>
                                         </tr>
-                                        {rowData.map((item, index) => (
-                                        <tr key={index}>
+                                        {rowData.map((rowDataItem, rowDataIndex) => (
+                                        <tr key={rowDataIndex}>
                                             <td>
                                                 <span className="span__buttons">
                                                     {title !== 'log' ? (
@@ -170,18 +170,18 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                             </button>
                                                         </>
                                                     ) : null}
-                                                    <button onClick={() => openDeletion(item.id)}>
+                                                    <button onClick={() => openDeletion(rowDataItem.id)}>
                                                         <img src="/delete-2-svgrepo-com.svg" alt="Delete"/>
                                                     </button>
-                                                    <div id={`confirmation-deletion-${item.id}`}
+                                                    <div id={`confirmation-deletion-${rowDataItem.id}`}
                                                          className="confirmation-deletion">
                                                         <span>Are you sure you want to delete this {title}<b
-                                                            style={{marginLeft: "4px"}}>{title !== 'log' ? item.name : item.id}</b>?</span>
+                                                            style={{marginLeft: "4px"}}>{title !== 'log' ? rowDataItem.name : rowDataItem.id}</b>?</span>
                                                         <div className="confirmation-deletion__btns">
                                                             <button
-                                                                onClick={() => openDeletion(item.id, true)}>Ok</button>
+                                                                onClick={() => openDeletion(rowDataItem.id, true)}>Ok</button>
                                                             <button
-                                                                onClick={() => openDeletion(item.id)}>Cancel</button>
+                                                                onClick={() => openDeletion(rowDataItem.id)}>Cancel</button>
                                                         </div>
                                                     </div>
                                                 </span>
@@ -190,9 +190,9 @@ const ServersPage = ({dataColumn, title, functions}) => {
 
                                                 <td key={columnIndex}>
                                                     {column.name !== 'date' ? (
-                                                        <span>{item[column.name]}</span>
+                                                        <span>{rowDataItem[column.name]}</span>
                                                     ) : (
-                                                        <span>{date_constructor(item[column.name])}</span>
+                                                        <span>{date_constructor(rowDataItem[column.name])}</span>
                                                     )}
                                                 </td>
                                             ))}
