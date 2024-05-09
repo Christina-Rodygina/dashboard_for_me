@@ -165,27 +165,33 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                     <>
                                         {rowData.data?.length > 0 ? (
                                             <>
-                                                <tr style={{backgroundColor: "transparent"}}>
-                                                    <th style={{border: "none"}}
-                                                        colSpan={dataColumn.length + 1}>{""}</th>
-                                                </tr>
-                                                <tr key={rowIndex}>
-                                                    <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}}
-                                                        className="title-th">
-                                                        <button onClick={() => showInfo(rowIndex)}
-                                                                className="btn-title-th">
-                                                            <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap"
-                                                                 id={`img-title-th__${rowIndex}`}/>
-                                                        </button>
-                                                        <span>{rowData.name}</span>
-                                                    </th>
-                                                </tr>
+                                                <>
+                                                    {!showDetails[rowIndex] && (
+                                                        <tr style={{backgroundColor: "transparent"}}>
+                                                            <th style={{border: "none"}}
+                                                                colSpan={dataColumn.length + 1}>{""}</th>
+                                                        </tr>
+                                                    )}
+                                                    <tr key={rowIndex}>
+                                                        <th colSpan={dataColumn.length + 1}
+                                                            style={{fontSize: "20px"}}
+                                                            className="title-th">
+                                                            <button onClick={() => showInfo(rowIndex)}
+                                                                    className="btn-title-th">
+                                                                <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap"
+                                                                     id={`img-title-th__${rowIndex}`}/>
+                                                            </button>
+                                                            <span>{rowData.name}</span>
+                                                        </th>
+                                                    </tr>
+                                                </>
                                             </>
                                         ) : null}
                                         {rowData.data.map((rowDataItem, rowDataIndex) => (
                                             <>
-                                                <tr key={rowDataIndex} style={!showDetails[rowIndex] ? {display: "none", transition: "all .3s ease"} : {display: "block", transition: "all .3s ease"}}>
-                                                    <td>
+                                                {!showDetails[rowIndex] && (
+                                                    <tr key={rowDataIndex}>
+                                                        <td>
                                                             <span className="span__buttons">
                                                                 {title !== 'log' ? (
                                                                     <>
@@ -214,18 +220,19 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                                     </div>
                                                                 </div>
                                                             </span>
-                                                    </td>
-                                                    {dataColumn.map((column, columnIndex) => (
-
-                                                        <td key={columnIndex}>
-                                                            {column.name !== 'date' ? (
-                                                                <span>{rowDataItem[column.name]}</span>
-                                                            ) : (
-                                                                <span>{date_constructor(rowDataItem[column.name])}</span>
-                                                            )}
                                                         </td>
-                                                    ))}
-                                                </tr>
+                                                        {dataColumn.map((column, columnIndex) => (
+
+                                                            <td key={columnIndex}>
+                                                                {column.name !== 'date' ? (
+                                                                    <span>{rowDataItem[column.name]}</span>
+                                                                ) : (
+                                                                    <span>{date_constructor(rowDataItem[column.name])}</span>
+                                                                )}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                )}
                                             </>
                                         ))}
                                     </>
