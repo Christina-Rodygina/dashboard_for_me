@@ -211,10 +211,10 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                                                                     type === "disc" && dataDISC[0]?.disc < 81 ? ("norm") :
                                                                         type === "disc" ? ("max") : null
                                     }`}>
-                                {type === "cpu" ? dataCPU[0]?.cpu :
-                                    type === "ram" ? dataRAM[0]?.ram
-                                        : type === "disc" ? dataDISC[0]?.disc
-                                            : console.log("не указан тип блока")}%
+                                {type === "cpu" ? dataCPU[0]?.cpu + "%" :
+                                    type === "ram" ? dataRAM[0]?.ram + "%"
+                                        : type === "disc" ? dataDISC[0]?.disc + "%"
+                                            : "DISCONNECT"}
                                 </span>
                                 </div>
                             ) : null}
@@ -222,12 +222,12 @@ const InfoBloc = ({type, id, dataWorkload}) => {
                         <div className="item__info-date-time">
                             <span className="item__info-date">Update date:</span>
                             {dataCPU && dataRAM && dataDISC ? (
-                                <span className="item__info-time">{
-                                    type === "cpu" ? formatDate(dataCPU[0]?.date) :
-                                        type === "ram" ? formatDate(dataRAM[0]?.date)
-                                            : type === "disc" ? formatDate(dataDISC[0]?.date)
-                                                : console.log("не указан тип блока")}
-                        </span>
+                                <span className="item__info-time">
+                                    {type === "cpu" && dataCPU[0]?.date ? formatDate(dataCPU[0]?.date) :
+                                        type === "ram" && dataRAM[0]?.date ? formatDate(dataRAM[0]?.date) :
+                                            type === "disc" && dataDISC[0]?.date ? formatDate(dataDISC[0]?.date) :
+                                                ""}
+                                </span>
                             ) : null}
                         </div>
                         <div className="item__info-status-container">
