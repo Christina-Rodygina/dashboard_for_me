@@ -6,12 +6,14 @@ import {URL} from "../../App";
 
 const DashboardPage = () => {
     const [dataWorkload, setDataWorkload] = useState(Array)
+    const [timer, setTimer] = useState(60);
 
     const workload_day = async () => {
         try {
             const response = await axios.get(`${URL}/workload/get-workload?days=1`)
             if (response.status === 200) {
                 setDataWorkload(response.data)
+                setTimer(60);
             }
         } catch (error) {
             console.log(error)
@@ -40,6 +42,15 @@ const DashboardPage = () => {
         return () => clearInterval(intervalId);
     }, [])
 
+    useEffect(() => {
+        const timerId = setInterval(() => {
+            setTimer(prevTimer => (prevTimer > 0 ? prevTimer - 1 : 0));
+        }, 1000);
+
+        // Очистка таймера при размонтировании компонента
+        return () => clearInterval(timerId);
+    }, []);
+
 
     return (
         <>
@@ -47,7 +58,7 @@ const DashboardPage = () => {
                 {dataWorkload ? (
                 <div className="container homepage__container">
                     <h2>{''}</h2>
-                    <span>60 seconds before data update</span>
+                    <span>{timer > 0 ? `${timer} seconds before data update` : "Updating data..."}</span>
                     <div className="homepage__row">
                         <ul className="servers__list">
                             {dataWorkload.map((item, index) => (
