@@ -172,7 +172,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         {rowData.data?.length > 0 ? (
                                             <>
                                                 <>
-                                                    <tr key={rowIndex} onClick={() => showInfo(rowIndex)} style={{cursor: "pointer"}}>
+                                                    <tr key={rowIndex} onClick={() => showInfo(rowIndex)}
+                                                        style={{cursor: "pointer"}}>
                                                         <th colSpan={dataColumn.length + 1}
                                                             style={{fontSize: "20px"}}
                                                             className="title-th">
@@ -194,19 +195,27 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                             <span className="span__buttons">
                                                                 {title !== 'log' ? (
                                                                     <>
-                                                                        <button>
-                                                                            <img src="/view-svgrepo-com.svg"
-                                                                                 alt="Watch"/>
-                                                                        </button>
-                                                                        <button>
-                                                                            <img src="/edit-svgrepo-com.svg"
-                                                                                 alt="Edit"/>
-                                                                        </button>
+                                                                        {functions?.includes('watch') && (
+                                                                            <button>
+                                                                                <img src="/view-svgrepo-com.svg"
+                                                                                     alt="Watch"/>
+                                                                            </button>
+                                                                        )}
+                                                                        {functions?.includes('edit') && (
+                                                                            <button>
+                                                                                <img src="/edit-svgrepo-com.svg"
+                                                                                     alt="Edit"/>
+                                                                            </button>
+                                                                        )}
                                                                     </>
                                                                 ) : null}
-                                                                <button onClick={() => openDeletion(rowDataItem.id)}>
-                                                                    <img src="/delete-2-svgrepo-com.svg" alt="Delete"/>
-                                                                </button>
+                                                                {functions?.includes('delete') && (
+                                                                    <button
+                                                                        onClick={() => openDeletion(rowDataItem.id)}>
+                                                                        <img src="/delete-2-svgrepo-com.svg"
+                                                                             alt="Delete"/>
+                                                                    </button>
+                                                                )}
                                                                 <div id={`confirmation-deletion-${rowDataItem.id}`}
                                                                      className="confirmation-deletion">
                                                                     <span>Are you sure you want to delete this {title}<b

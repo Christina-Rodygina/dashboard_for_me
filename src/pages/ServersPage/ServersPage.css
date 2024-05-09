@@ -141,11 +141,19 @@
     display: none;
 }
 
-.add-btn,
 .log-btn {
     display: flex;
     justify-content: end;
     padding: 30px 20px 0;
+}
+
+.add-btn {
+    align-items: center;
+    border-radius: 13px;
+    display: flex;
+    font-size: 24px;
+    padding: 5px 18px;
+    font-weight: bold;
 }
 
 .log-btn button {
