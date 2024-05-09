@@ -107,11 +107,17 @@ const ServersPage = ({dataColumn, title, functions}) => {
     }
 
     const showInfo = (rowIndex) => {
+        const img = document.getElementById(`img-title-th__${rowIndex}`)
         setShowDetails(prevState => {
             const newState = [...prevState];
             newState[rowIndex] = !newState[rowIndex];
             return newState;
         });
+        if (img.classList.contains("show")) {
+            img.classList.remove("show")
+        } else {
+            img.classList.add("show")
+        }
     };
 
     useEffect(() => {
