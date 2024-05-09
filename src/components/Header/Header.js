@@ -53,7 +53,7 @@ const Header = () => {
                                 <img src="/bell-slash-svgrepo-com.svg" alt="Not notification"/>
                             )}
                         </button>
-                        <button className="header__account-btn">
+                        <button className="header__account-btn" style={{width: "37px", height: "37px"}}>
                             <img src="/account-circle-svgrepo-com.svg" alt="Account"/>
                         </button>
                     </div>
