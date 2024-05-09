@@ -161,7 +161,9 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                 </tr>
                                                 <tr key={rowIndex}>
                                                     <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}} className="title-th">
-                                                        <button className="btn-title-th">{"<"}</button>
+                                                        <button className="btn-title-th">
+                                                            <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap"/>
+                                                        </button>
                                                         <span>{rowData.name}</span>
                                                     </th>
                                                 </tr>
