@@ -156,7 +156,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         <tr key={rowIndex}>
                                             <th>{rowData.name}</th>
                                         </tr>
-                                        {rowData.map((rowDataItem, rowDataIndex) => (
+                                        {rowData.data.map((rowDataItem, rowDataIndex) => (
                                         <tr key={rowDataIndex}>
                                             <td>
                                                 <span className="span__buttons">
