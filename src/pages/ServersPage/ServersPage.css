@@ -195,7 +195,8 @@
 }
 
 .btn-title-th {
-    position: fixed;
-    left: 0;
-    top: 0;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
 }
