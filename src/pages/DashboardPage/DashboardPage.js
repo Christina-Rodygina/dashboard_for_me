@@ -47,8 +47,8 @@ const DashboardPage = () => {
                 {dataWorkload ? (
                 <div className="container homepage__container">
                     <h2>{''}</h2>
+                    <span>60 seconds before data update</span>
                     <div className="homepage__row">
-                        <span>60 seconds before data update</span>
                         <ul className="servers__list">
                             {dataWorkload.map((item, index) => (
                             <li key={index} className="servers__list-item">
