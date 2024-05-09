@@ -106,7 +106,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
     }
 
     const showInfo = (btnId) => {
-        const btn = document.getElementById(`btn-title-th__${btnId}`)
+        const btn = document.getElementById(`img-title-th__${btnId}`)
         if (btn.classList.contains("show")) {
             btn.classList.remove("show")
         } else {
@@ -170,8 +170,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                 </tr>
                                                 <tr key={rowIndex}>
                                                     <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}} className="title-th">
-                                                        <button onClick={() => showInfo(rowIndex)} className="btn-title-th" id={`btn-title-th__${rowIndex}`}>
-                                                            <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap"/>
+                                                        <button onClick={() => showInfo(rowIndex)} className="btn-title-th">
+                                                            <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap" id={`img-title-th__${rowIndex}`}/>
                                                         </button>
                                                         <span>{rowData.name}</span>
                                                     </th>

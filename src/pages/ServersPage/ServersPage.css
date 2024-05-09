@@ -205,7 +205,8 @@
     border-radius: 12px;
 }
 
-.btn-title-th.show {
+
+.btn-title-th img.show {
     animation: showArrow .3s linear;
 }
 
