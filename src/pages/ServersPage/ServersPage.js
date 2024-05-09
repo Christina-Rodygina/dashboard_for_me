@@ -184,8 +184,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         ) : null}
                                         {rowData.data.map((rowDataItem, rowDataIndex) => (
                                             <>
-                                                {showDetails[rowIndex] && (
-                                                    <tr key={rowDataIndex}>
+                                                    <tr key={rowDataIndex} style={showDetails[rowIndex] ? {height: "100%"} : {height: "0", overflow: "hidden"}}>
                                                         <td>
                                                             <span className="span__buttons">
                                                                 {title !== 'log' ? (
@@ -225,8 +224,6 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                             </td>
                                                         ))}
                                                     </tr>
-                                                )
-                                                }
                                             </>
                                         ))}
                                     </>
