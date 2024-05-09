@@ -154,11 +154,13 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                 data.map((rowData, rowIndex) => (
                                     <>
                                         <tr key={rowIndex}>
-                                            <th>{rowData.name}</th>
+                                            {rowData.data ? (
+                                                <th>{rowData.name}</th>
+                                            ) : ""}
                                         </tr>
                                         {rowData.data.map((rowDataItem, rowDataIndex) => (
-                                        <tr key={rowDataIndex}>
-                                            <td>
+                                            <tr key={rowDataIndex}>
+                                                <td>
                                                 <span className="span__buttons">
                                                     {title !== 'log' ? (
                                                         <>
@@ -185,18 +187,18 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                         </div>
                                                     </div>
                                                 </span>
-                                            </td>
-                                            {dataColumn.map((column, columnIndex) => (
-
-                                                <td key={columnIndex}>
-                                                    {column.name !== 'date' ? (
-                                                        <span>{rowDataItem[column.name]}</span>
-                                                    ) : (
-                                                        <span>{date_constructor(rowDataItem[column.name])}</span>
-                                                    )}
                                                 </td>
-                                            ))}
-                                        </tr>
+                                                {dataColumn.map((column, columnIndex) => (
+
+                                                    <td key={columnIndex}>
+                                                        {column.name !== 'date' ? (
+                                                            <span>{rowDataItem[column.name]}</span>
+                                                        ) : (
+                                                            <span>{date_constructor(rowDataItem[column.name])}</span>
+                                                        )}
+                                                    </td>
+                                                ))}
+                                            </tr>
                                         ))}
                                     </>
                                 ))
