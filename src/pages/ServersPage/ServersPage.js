@@ -105,6 +105,15 @@ const ServersPage = ({dataColumn, title, functions}) => {
         }
     }
 
+    const showInfo = (btnId) => {
+        const btn = document.getElementById(`btn-title-th__${btnId}`)
+        if (btn.classList.contains("show")) {
+            btn.classList.remove("show")
+        } else {
+            btn.classList.add("show")
+        }
+    }
+
     useEffect(() => {
         setData(null)
         get_request(title)
@@ -161,7 +170,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                 </tr>
                                                 <tr key={rowIndex}>
                                                     <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}} className="title-th">
-                                                        <button className="btn-title-th">
+                                                        <button onClick={() => showInfo(rowIndex)} className="btn-title-th" id={`btn-title-th__${rowIndex}`}>
                                                             <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap"/>
                                                         </button>
                                                         <span>{rowData.name}</span>
