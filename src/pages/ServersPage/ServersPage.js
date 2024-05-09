@@ -10,6 +10,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
     const headerHeight = document.querySelector(".header__container")?.offsetHeight;
     const tableHeaderHeight = document.querySelector(".servers__table")?.offsetHeight;
     const windowHeight = window.innerHeight;
+    const [showDetails, setShowDetails] = useState([]);
 
     // const togglePasswordVisibility = (index) => {
     //     setPasswordVisibility(prevState => ({
@@ -105,14 +106,13 @@ const ServersPage = ({dataColumn, title, functions}) => {
         }
     }
 
-    const showInfo = (btnId) => {
-        const btn = document.getElementById(`img-title-th__${btnId}`)
-        if (btn.classList.contains("show")) {
-            btn.classList.remove("show")
-        } else {
-            btn.classList.add("show")
-        }
-    }
+    const showInfo = (rowIndex) => {
+        setShowDetails(prevState => {
+            const newState = [...prevState];
+            newState[rowIndex] = !newState[rowIndex];
+            return newState;
+        });
+    };
 
     useEffect(() => {
         setData(null)
@@ -166,12 +166,16 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         {rowData.data?.length > 0 ? (
                                             <>
                                                 <tr style={{backgroundColor: "transparent"}}>
-                                                    <th style={{border: "none"}} colSpan={dataColumn.length + 1}>{""}</th>
+                                                    <th style={{border: "none"}}
+                                                        colSpan={dataColumn.length + 1}>{""}</th>
                                                 </tr>
                                                 <tr key={rowIndex}>
-                                                    <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}} className="title-th">
-                                                        <button onClick={() => showInfo(rowIndex)} className="btn-title-th">
-                                                            <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap" id={`img-title-th__${rowIndex}`}/>
+                                                    <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}}
+                                                        className="title-th">
+                                                        <button onClick={() => showInfo(rowIndex)}
+                                                                className="btn-title-th">
+                                                            <img src="/arrow-sm-up-svgrepo-com.svg" alt="Wrap"
+                                                                 id={`img-title-th__${rowIndex}`}/>
                                                         </button>
                                                         <span>{rowData.name}</span>
                                                     </th>
@@ -179,46 +183,51 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                             </>
                                         ) : null}
                                         {rowData.data.map((rowDataItem, rowDataIndex) => (
-                                            <tr key={rowDataIndex}>
-                                                <td>
-                                                <span className="span__buttons">
-                                                    {title !== 'log' ? (
-                                                        <>
-                                                            <button>
-                                                                <img src="/view-svgrepo-com.svg" alt="Watch"/>
-                                                            </button>
-                                                            <button>
-                                                                <img src="/edit-svgrepo-com.svg" alt="Edit"/>
-                                                            </button>
-                                                        </>
-                                                    ) : null}
-                                                    <button onClick={() => openDeletion(rowDataItem.id)}>
-                                                        <img src="/delete-2-svgrepo-com.svg" alt="Delete"/>
-                                                    </button>
-                                                    <div id={`confirmation-deletion-${rowDataItem.id}`}
-                                                         className="confirmation-deletion">
-                                                        <span>Are you sure you want to delete this {title}<b
-                                                            style={{marginLeft: "4px"}}>{title !== 'log' ? rowDataItem.name : rowDataItem.id}</b>?</span>
-                                                        <div className="confirmation-deletion__btns">
-                                                            <button
-                                                                onClick={() => openDeletion(rowDataItem.id, true)}>Ok</button>
-                                                            <button
-                                                                onClick={() => openDeletion(rowDataItem.id)}>Cancel</button>
-                                                        </div>
-                                                    </div>
-                                                </span>
-                                                </td>
-                                                {dataColumn.map((column, columnIndex) => (
+                                            <>
+                                                {showDetails[rowIndex] && (
+                                                    <tr key={rowDataIndex}>
+                                                        <td>
+                                                            <span className="span__buttons">
+                                                                {title !== 'log' ? (
+                                                                    <>
+                                                                        <button>
+                                                                            <img src="/view-svgrepo-com.svg" alt="Watch"/>
+                                                                        </button>
+                                                                        <button>
+                                                                            <img src="/edit-svgrepo-com.svg" alt="Edit"/>
+                                                                        </button>
+                                                                    </>
+                                                                ) : null}
+                                                                <button onClick={() => openDeletion(rowDataItem.id)}>
+                                                                    <img src="/delete-2-svgrepo-com.svg" alt="Delete"/>
+                                                                </button>
+                                                                <div id={`confirmation-deletion-${rowDataItem.id}`}
+                                                                     className="confirmation-deletion">
+                                                                    <span>Are you sure you want to delete this {title}<b
+                                                                        style={{marginLeft: "4px"}}>{title !== 'log' ? rowDataItem.name : rowDataItem.id}</b>?</span>
+                                                                    <div className="confirmation-deletion__btns">
+                                                                        <button
+                                                                            onClick={() => openDeletion(rowDataItem.id, true)}>Ok</button>
+                                                                        <button
+                                                                            onClick={() => openDeletion(rowDataItem.id)}>Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </span>
+                                                        </td>
+                                                        {dataColumn.map((column, columnIndex) => (
 
-                                                    <td key={columnIndex}>
-                                                        {column.name !== 'date' ? (
-                                                            <span>{rowDataItem[column.name]}</span>
-                                                        ) : (
-                                                            <span>{date_constructor(rowDataItem[column.name])}</span>
-                                                        )}
-                                                    </td>
-                                                ))}
-                                            </tr>
+                                                            <td key={columnIndex}>
+                                                                {column.name !== 'date' ? (
+                                                                    <span>{rowDataItem[column.name]}</span>
+                                                                ) : (
+                                                                    <span>{date_constructor(rowDataItem[column.name])}</span>
+                                                                )}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                )
+                                                }
+                                            </>
                                         ))}
                                     </>
                                 ))
