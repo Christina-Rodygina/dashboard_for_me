@@ -172,7 +172,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         {rowData.data?.length > 0 ? (
                                             <>
                                                 <>
-                                                    <tr key={rowIndex}>
+                                                    <tr key={rowIndex} onClick={() => showInfo(rowIndex)} style={{cursor: "pointer"}}>
                                                         <th colSpan={dataColumn.length + 1}
                                                             style={{fontSize: "20px"}}
                                                             className="title-th">
