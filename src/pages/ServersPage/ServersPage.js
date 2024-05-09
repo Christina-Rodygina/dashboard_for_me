@@ -153,7 +153,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             {data && data.length > 0 ? (
                                 data.map((rowData, rowIndex) => (
                                     <>
-                                    {rowData.data.length > 0 ? (
+                                    {rowData.data?.length > 0 ? (
                                         <tr key={rowIndex}>
                                             <th colSpan={dataColumn.length + 1}>{rowData.name}</th>
                                         </tr>
