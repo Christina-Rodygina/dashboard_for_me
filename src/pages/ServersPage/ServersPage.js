@@ -51,6 +51,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                 } else if (title === "workload") {
                     setData(transformData(response.data))
                     console.log(transformData(response.data))
+                } else {
+                    console.log(data)
                 }
             }
         } catch (error) {
