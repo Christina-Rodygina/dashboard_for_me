@@ -166,12 +166,6 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         {rowData.data?.length > 0 ? (
                                             <>
                                                 <>
-                                                    {!showDetails[rowIndex] && (
-                                                        <tr style={{backgroundColor: "transparent"}}>
-                                                            <th style={{border: "none"}}
-                                                                colSpan={dataColumn.length + 1}>{""}</th>
-                                                        </tr>
-                                                    )}
                                                     <tr key={rowIndex}>
                                                         <th colSpan={dataColumn.length + 1}
                                                             style={{fontSize: "20px"}}
@@ -184,6 +178,12 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                             <span>{rowData.name}</span>
                                                         </th>
                                                     </tr>
+                                                    {!showDetails[rowIndex] && (
+                                                        <tr style={{backgroundColor: "transparent"}}>
+                                                            <th style={{border: "none"}}
+                                                                colSpan={dataColumn.length + 1}>{""}</th>
+                                                        </tr>
+                                                    )}
                                                 </>
                                             </>
                                         ) : null}
