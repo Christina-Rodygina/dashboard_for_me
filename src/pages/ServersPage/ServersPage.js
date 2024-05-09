@@ -43,7 +43,7 @@ const ServersPage = ({dataColumn, title, functions}) => {
             const response = await axios.get(title !== 'log' && title !== "workload" ?
                 `${URL}/${title}/get-${title}` : title === "log" ?
                     `${URL}/${title}/get-${title}?reverse=true` : title === "workload" ? (
-                        `${URL}/${title}/get-${title}`) : null);
+                        `${URL}/${title}/get-${title}?days=1`) : null);
             if (response.status === 200) {
                 if (title === "workload") {
                     setData(response.data)
