@@ -40,13 +40,14 @@ const ServersPage = ({dataColumn, title, functions}) => {
 
     const get_request = async (title) => {
         try {
-            const response = await axios.get(title !== 'log' ?
-                `${URL}/${title}/get-${title}` :
-                `${URL}/${title}/get-${title}?reverse=true`);
+            const response = await axios.get(title !== 'log' && title !== "workload" ?
+                `${URL}/${title}/get-${title}` : title === "log" ?
+                    `${URL}/${title}/get-${title}?reverse=true` : title === "workload" ? (
+                        `${URL}/${title}/get-${title}`) : null);
             if (response.status === 200) {
                 if (title === "workload") {
-                    setData(transformData(response.data))
-                    console.log(transformData(response.data))
+                    setData(response.data)
+                    console.log(response.data)
                 } else {
                     setData(response.data)
                     console.log(response.data)
@@ -153,11 +154,11 @@ const ServersPage = ({dataColumn, title, functions}) => {
                             {data && data.length > 0 ? (
                                 data.map((rowData, rowIndex) => (
                                     <>
-                                    {rowData.data?.length > 0 ? (
-                                        <tr key={rowIndex}>
-                                            <th colSpan={dataColumn.length + 1}>{rowData.name}</th>
-                                        </tr>
-                                    ) : null}
+                                        {rowData.data?.length > 0 ? (
+                                            <tr key={rowIndex}>
+                                                <th colSpan={dataColumn.length + 1}>{rowData.name}</th>
+                                            </tr>
+                                        ) : null}
                                         {rowData.data.map((rowDataItem, rowDataIndex) => (
                                             <tr key={rowDataIndex}>
                                                 <td>
