@@ -157,13 +157,13 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         {rowData.data?.length > 0 ? (
                                             <>
                                                 <tr style={{backgroundColor: "transparent"}}>
-                                                    <th colSpan={dataColumn.length + 1}>{""}</th>
+                                                    <th style={{border: "none"}} colSpan={dataColumn.length + 1}>{""}</th>
                                                 </tr>
                                                 <tr key={rowIndex}>
                                                     <th colSpan={dataColumn.length + 1}>{rowData.name}</th>
                                                 </tr>
                                                 <tr  style={{backgroundColor: "transparent"}}>
-                                                    <th colSpan={dataColumn.length + 1}>{""}</th>
+                                                    <th style={{border: "none"}} colSpan={dataColumn.length + 1}>{""}</th>
                                                 </tr>
                                             </>
                                         ) : null}
