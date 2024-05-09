@@ -184,17 +184,18 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                         ) : null}
                                         {rowData.data.map((rowDataItem, rowDataIndex) => (
                                             <>
-                                                {!showDetails[rowIndex] && (
-                                                    <tr key={rowDataIndex}>
-                                                        <td>
+                                                <tr key={rowDataIndex} style={!showDetails[rowIndex] ? {display: "none", transition: "all .3s ease"} : {display: "block", transition: "all .3s ease"}}>
+                                                    <td>
                                                             <span className="span__buttons">
                                                                 {title !== 'log' ? (
                                                                     <>
                                                                         <button>
-                                                                            <img src="/view-svgrepo-com.svg" alt="Watch"/>
+                                                                            <img src="/view-svgrepo-com.svg"
+                                                                                 alt="Watch"/>
                                                                         </button>
                                                                         <button>
-                                                                            <img src="/edit-svgrepo-com.svg" alt="Edit"/>
+                                                                            <img src="/edit-svgrepo-com.svg"
+                                                                                 alt="Edit"/>
                                                                         </button>
                                                                     </>
                                                                 ) : null}
@@ -213,19 +214,18 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                                     </div>
                                                                 </div>
                                                             </span>
-                                                        </td>
-                                                        {dataColumn.map((column, columnIndex) => (
+                                                    </td>
+                                                    {dataColumn.map((column, columnIndex) => (
 
-                                                            <td key={columnIndex}>
-                                                                {column.name !== 'date' ? (
-                                                                    <span>{rowDataItem[column.name]}</span>
-                                                                ) : (
-                                                                    <span>{date_constructor(rowDataItem[column.name])}</span>
-                                                                )}
-                                                            </td>
-                                                        ))}
-                                                    </tr>
-                                                )}
+                                                        <td key={columnIndex}>
+                                                            {column.name !== 'date' ? (
+                                                                <span>{rowDataItem[column.name]}</span>
+                                                            ) : (
+                                                                <span>{date_constructor(rowDataItem[column.name])}</span>
+                                                            )}
+                                                        </td>
+                                                    ))}
+                                                </tr>
                                             </>
                                         ))}
                                     </>
