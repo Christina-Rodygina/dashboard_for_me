@@ -207,22 +207,9 @@
 
 .btn-title-th img {
     transform: rotate(0);
-    animation: showArrow .3s linear;
+    transition: all .3s linear;
 }
 
 .btn-title-th img.show {
     transform: rotate(180deg);
-    animation: showArrow .3s linear;
-}
-
-@keyframes showArrow {
-    0% {
-        height: 100%;
-    }
-    50% {
-        height: 0;
-    }
-    100% {
-        height: 100%;
-    }
 }
