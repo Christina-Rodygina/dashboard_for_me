@@ -205,10 +205,10 @@
     border-radius: 12px;
 }
 
-.btn-title-th img {
+.img-title-th img {
     transform: rotate(0);
 }
 
-.btn-title-th img.show {
+.img-title-th img.show {
     transform: rotate(180deg);
 }
