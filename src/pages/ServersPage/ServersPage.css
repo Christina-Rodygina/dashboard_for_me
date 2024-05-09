@@ -147,7 +147,7 @@
     padding: 30px 20px 0;
 }
 
-.add-btn {
+.add-btn button {
     align-items: center;
     border-radius: 13px;
     display: flex;
