@@ -48,8 +48,8 @@ const ServersPage = ({dataColumn, title, functions}) => {
                     setData(transformData(response.data))
                     console.log(transformData(response.data))
                 } else {
-                    setData(transformData(response.data))
-                    console.log(transformData(response.data))
+                    setData(response.data)
+                    console.log(response.data)
                 }
             }
         } catch (error) {
