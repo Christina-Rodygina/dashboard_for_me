@@ -190,3 +190,12 @@
     animation: moveX 3.05s linear 0s infinite alternate, moveY 3.4s linear 0s infinite alternate, rotateImage 3.4s infinite;
 }
 
+.title-th {
+    position: relative;
+}
+
+.btn-title-th {
+    position: fixed;
+    left: 0;
+    top: 0;
+}

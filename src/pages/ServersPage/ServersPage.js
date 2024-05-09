@@ -160,10 +160,10 @@ const ServersPage = ({dataColumn, title, functions}) => {
                                                     <th style={{border: "none"}} colSpan={dataColumn.length + 1}>{""}</th>
                                                 </tr>
                                                 <tr key={rowIndex}>
-                                                    <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}}>{rowData.name}</th>
-                                                </tr>
-                                                <tr  style={{backgroundColor: "transparent"}}>
-                                                    <th style={{border: "none"}} colSpan={dataColumn.length + 1}>{""}</th>
+                                                    <th colSpan={dataColumn.length + 1} style={{fontSize: "20px"}} className="title-th">
+                                                        <button className="btn-title-th">{"<"}</button>
+                                                        <span>{rowData.name}</span>
+                                                    </th>
                                                 </tr>
                                             </>
                                         ) : null}
