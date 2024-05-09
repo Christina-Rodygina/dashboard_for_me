@@ -5,7 +5,6 @@ import axios from "axios";
 import {URL} from "../../App";
 
 const DashboardPage = () => {
-
     const [dataWorkload, setDataWorkload] = useState(Array)
 
     const workload_day = async () => {
@@ -41,6 +40,7 @@ const DashboardPage = () => {
         return () => clearInterval(intervalId);
     }, [])
 
+
     return (
         <>
             <div className="homepage">
@@ -48,6 +48,7 @@ const DashboardPage = () => {
                 <div className="container homepage__container">
                     <h2>{''}</h2>
                     <div className="homepage__row">
+                        <span>60 seconds before data update</span>
                         <ul className="servers__list">
                             {dataWorkload.map((item, index) => (
                             <li key={index} className="servers__list-item">
