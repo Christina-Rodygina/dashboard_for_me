@@ -66,8 +66,12 @@
 }
 
 .account__column span {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 20px;
+}
+
+.account__column.left {
+    font-size: 1.5rem;
 }
 
 .account__edit-btn {

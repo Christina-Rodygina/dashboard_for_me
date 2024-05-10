@@ -60,7 +60,7 @@ const AccountPage = () => {
                                     </div>
                                     <div className="account__telegram">
                                         <h4>Telegram Account</h4>
-                                        <span>{telegram}</span>
+                                        <span>{telegram ? telegram : "unspecified"}</span>
                                     </div>
                                     <div className="account__date-reg">
                                         <h4>Date of registration</h4>
