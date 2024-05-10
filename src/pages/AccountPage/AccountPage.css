@@ -67,6 +67,7 @@
 
 .account__column span {
     font-size: 1.3rem;
+    margin-bottom: 20px;
 }
 
 .account__column.left {
@@ -97,6 +98,7 @@
     height: 25px;
     cursor: pointer;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .toggler-wrapper input[type="checkbox"] {
