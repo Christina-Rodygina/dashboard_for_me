@@ -60,7 +60,6 @@ const AccountPage = () => {
                                                 <div className="toggler-knob"></div>
                                             </div>
                                         </label>
-                                        <div className="badge">Style 1</div>
                                     </div>
                                 </div>
 
