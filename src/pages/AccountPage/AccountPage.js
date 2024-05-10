@@ -4,10 +4,10 @@ import axios from "axios";
 import {URL} from "../../App";
 
 const AccountPage = () => {
-    const [email, setEmail] = useState()
-    const [telegram, setTelegram] = useState()
-    const [dateReg, setDateReg] = useState()
-    const [username, setUsername] = useState()
+    const [email, setEmail] = useState(String)
+    const [telegram, setTelegram] = useState(String)
+    const [dateReg, setDateReg] = useState(String)
+    const [username, setUsername] = useState(String)
 
     const me = async () => {
         try {
@@ -28,10 +28,7 @@ const AccountPage = () => {
         const day = String(date.getDate()).padStart(2, "0");
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const year = date.getFullYear();
-        const hours = String(date.getHours()).padStart(2, "0");
-        const minutes = String(date.getMinutes()).padStart(2, "0");
-        const seconds = String(date.getSeconds()).padStart(2, "0");
-        return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+        return `${day}.${month}.${year}`;
     }
 
     useEffect(() => {
@@ -52,6 +49,22 @@ const AccountPage = () => {
                                 <img src="/account-logo.png" alt="Account Logo"
                                      className="account__logo"/>
                                 <span>{username}</span>
+
+
+                                <div className="account__notification">
+                                    <span className="account__ntf-text">Notification</span>
+                                    <div className="">
+                                        <label className="toggler-wrapper style-1">
+                                            <input type="checkbox" />
+                                            <div className="toggler-slider">
+                                                <div className="toggler-knob"></div>
+                                            </div>
+                                        </label>
+                                        <div className="badge">Style 1</div>
+                                    </div>
+                                </div>
+
+
                                 <button className="account__edit-btn">
                                     <img src="/edit-svgrepo-com.svg" alt="Edit"/>
                                 </button>

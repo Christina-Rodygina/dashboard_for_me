@@ -46,13 +46,13 @@ const Header = () => {
                                 <input type="text" placeholder="Search . . ."/>
                             </div>
                         </div>
-                        <button onClick={bellOff} className="header__notifications-btn">
-                            {bell ? (
-                                <img src="/bell-svgrepo-com.svg" alt="Notification"/>
-                            ) : (
-                                <img src="/bell-slash-svgrepo-com.svg" alt="Not notification"/>
-                            )}
-                        </button>
+                        {/*<button onClick={bellOff} className="header__notifications-btn">*/}
+                        {/*    {bell ? (*/}
+                        {/*        <img src="/bell-svgrepo-com.svg" alt="Notification"/>*/}
+                        {/*    ) : (*/}
+                        {/*        <img src="/bell-slash-svgrepo-com.svg" alt="Not notification"/>*/}
+                        {/*    )}*/}
+                        {/*</button>*/}
                         <button onClick={() => window.location.href = "/account"} className="header__account-btn" style={{width: "37px", height: "37px"}}>
                             <img src="/account-circle-svgrepo-com.svg" alt="Account"/>
                         </button>
