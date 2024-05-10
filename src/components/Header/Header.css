@@ -117,3 +117,7 @@
 .header__notifications-btn:hover img {
     animation: notification 1s ease;
 }
+
+.header__account-btn img:hover {
+    scale: 1.1;
+}
