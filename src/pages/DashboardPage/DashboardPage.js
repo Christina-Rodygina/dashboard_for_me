@@ -31,15 +31,16 @@ const DashboardPage = () => {
     }
 
 
-
     useEffect(() => {
         me()
         workload_day()
-        // Установка интервала для выполнения запроса каждые 5 минут
         const intervalId = setInterval(workload_day, 60 * 1000);
-
-        // Очистка интервала при размонтировании компонента
         return () => clearInterval(intervalId);
+    }, [])
+
+    useEffect(() => {
+        const intervalId = setInterval(me, 5 * 60 * 1000);
+        return () => clearInterval(intervalId)
     }, [])
 
     useEffect(() => {
@@ -56,19 +57,19 @@ const DashboardPage = () => {
         <>
             <div className="homepage">
                 {dataWorkload ? (
-                <div className="container homepage__container">
-                    <h2>{''}</h2>
-                    <span>{timer > 0 ? `${timer} seconds before data update` : "Updating data..."}</span>
-                    <div className="homepage__row">
-                        <ul className="servers__list">
-                            {dataWorkload.map((item, index) => (
-                            <li key={index} className="servers__list-item">
-                                <InfoLine title={item.name} id={index+1} dataWorkload={item.data}/>
-                            </li>
-                            ))}
-                        </ul>
+                    <div className="container homepage__container">
+                        <h2>{''}</h2>
+                        <span>{timer > 0 ? `${timer} seconds before data update` : "Updating data..."}</span>
+                        <div className="homepage__row">
+                            <ul className="servers__list">
+                                {dataWorkload.map((item, index) => (
+                                    <li key={index} className="servers__list-item">
+                                        <InfoLine title={item.name} id={index + 1} dataWorkload={item.data}/>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
-                </div>
                 ) : null}
             </div>
         </>

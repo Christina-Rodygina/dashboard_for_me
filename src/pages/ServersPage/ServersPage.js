@@ -120,6 +120,21 @@ const ServersPage = ({dataColumn, title, functions}) => {
         }
     };
 
+    const me = async () => {
+        try {
+            const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
+            if (response.status === 200) {
+            }
+        } catch (error) {
+            window.location.href = '/authorization'
+        }
+    }
+
+    useEffect(() => {
+        const intervalId = setInterval(me, 5 * 60 * 1000);
+        return () => clearInterval(intervalId)
+    }, [])
+
     useEffect(() => {
         setData(null)
         get_request(title)

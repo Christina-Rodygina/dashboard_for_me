@@ -1,7 +1,25 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./ServicesPage.css"
+import axios from "axios";
+import {URL} from "../../App";
 
 const ServicesPage = () => {
+
+    const me = async () => {
+        try {
+            const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
+            if (response.status === 200) {
+            }
+        } catch (error) {
+            window.location.href = '/authorization'
+        }
+    }
+
+    useEffect(() => {
+        const intervalId = setInterval(me, 5 * 60 * 1000);
+        return () => clearInterval(intervalId)
+    }, [])
+
     return (
         <>
             <div className="servers">
