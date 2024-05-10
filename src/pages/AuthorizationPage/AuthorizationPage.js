@@ -54,7 +54,7 @@ const AuthorizationPage = () => {
                             <button onClick={(event) => login(event)}>Login</button>
                         </form>
                         <span>No account?
-                            <span>Create</span>
+                            <span onClick={() => window.location.href = "/registration"}>Create</span>
                         </span>
                     </div>
                 </div>

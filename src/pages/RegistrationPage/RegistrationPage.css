@@ -1,0 +1,25 @@
+.registration {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration__white-container {
+    max-height: none;
+}
+
+.email-reg-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.email-reg-input label {
+    text-align: start;
+    width: 70%;
+    font-size: 18px;
+    margin-bottom: -10px;
+}

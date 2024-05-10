@@ -1,0 +1,83 @@
+.account__container {
+    display: flex;
+    min-height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.account__block {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    height: 500px;
+    border: 2px solid rgba(2,0,36,1);
+}
+
+.account__row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.account__column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+}
+
+.account__column.left {
+    border-right: 2px solid rgba(2,0,36,1);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,68,70,1) 160%);
+}
+
+.account__column.right {
+    align-items: start;
+    justify-content: center;
+    padding: 30px;
+    background: linear-gradient(90deg, rgba(2,0,36,0.5) 0%, rgba(11,68,70,0.5) 160%);
+    max-width: 50%;
+}
+
+.account__column.right h3 {
+    font-size: 26px;
+    margin-bottom: 40px;
+}
+
+.account__column.right h4 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.account__logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 60px;
+    border-radius: 50px;
+    object-fit: cover; /* Изображение заполняет контейнер, сохраняя пропорции */
+    object-position: center;
+}
+
+.account__column span {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.account__edit-btn {
+    width: 24px;
+    margin-top: 20px;
+}
+
+.account__telegram,
+.account__pass,
+.account__email {
+    margin-bottom: 40px;
+}

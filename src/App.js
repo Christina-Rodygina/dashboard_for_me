@@ -57,7 +57,7 @@ function App() {
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                {window.location.pathname !== '/authorization' ? (
+                {window.location.pathname !== '/authorization' && window.location.pathname !== '/registration' ? (
                     <Sidebar meta={meta}/>
                 ) : null}
                 <Routes>

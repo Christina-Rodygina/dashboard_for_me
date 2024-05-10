@@ -3,6 +3,7 @@
 /*green rgba(11,68,70,1)*/
 /*grey 84828A*/
 
+.registration__white-container,
 .authorization__white-container {
     background: var(--background-cocktailTheme-block);
     border: 2px solid;
@@ -10,15 +11,19 @@
     box-shadow: var(--box-shadow-cocktailTheme);
 }
 
+.registration__white-container input,
 .authorization__white-container input {
     background-color: var(--background-cocktailTheme-input);
     color: var(--color-text-cocktailTheme-input);
 }
 
+.registration__white-container button,
 .authorization__white-container button {
     background-color: var(--background-cocktailTheme-btn--orange)
 }
 
+.registration__white-container button:active,
+.registration__white-container button:hover,
 .authorization__white-container button:active,
 .authorization__white-container button:hover {
     background-color: var(--background-cocktailTheme-btn-hover--orange);
