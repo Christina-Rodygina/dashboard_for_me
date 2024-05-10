@@ -14,6 +14,7 @@ import ServerEditPage from "./pages/ServerEditPage/ServerEditPage";
 import ServerInfoPage from "./pages/ServerInfoPage/ServerInfoPage";
 import ServersPage from "./pages/ServersPage/ServersPage";
 import axios from "axios";
+import AccountPage from "./pages/AccountPage/AccountPage";
 
 
 export const URL = 'https://krianse.ru/api'
