@@ -87,7 +87,13 @@
 
 .account__notification {
     display: flex;
+    align-items: center;
     column-gap: 20px;
+    margin: 20px 0;
+}
+
+.account__ntf-text {
+    margin-bottom: 0;
 }
 
 .toggler-wrapper {
