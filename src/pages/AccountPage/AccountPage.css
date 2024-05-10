@@ -65,6 +65,10 @@
     object-position: center;
 }
 
+.account__ntf-text {
+    margin-bottom: 0;
+}
+
 .account__column span {
     font-size: 1.3rem;
     margin-bottom: 20px;
@@ -90,10 +94,6 @@
     align-items: center;
     column-gap: 20px;
     margin: 20px 0;
-}
-
-.account__ntf-text {
-    margin-bottom: 0;
 }
 
 .toggler-wrapper {
