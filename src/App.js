@@ -65,6 +65,7 @@ function App() {
                     <Route path="/edit" element={<ServerEditPage/>}/>
                     <Route path="/whatch" element={<ServerInfoPage/>}/>
                     <Route path="/authorization" element={<AuthorizationPage/>}/>
+                    <Route path="/account" element={<AccountPage/>}/>
                     {tabs_meta()}
                     <Route path="*" element={<div>Error page</div>}/>
                 </Routes>
