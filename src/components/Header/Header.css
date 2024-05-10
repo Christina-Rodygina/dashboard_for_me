@@ -118,6 +118,10 @@
     animation: notification 1s ease;
 }
 
+.header__account-btn img {
+    transition: scale .4s ease;
+}
+
 .header__account-btn img:hover {
     scale: 1.1;
 }
