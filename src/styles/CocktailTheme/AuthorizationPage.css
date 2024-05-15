@@ -17,6 +17,7 @@
     color: var(--color-text-cocktailTheme-input);
 }
 
+.edit-save-input,
 .registration__white-container button,
 .authorization__white-container button {
     background-color: var(--background-cocktailTheme-btn--orange)

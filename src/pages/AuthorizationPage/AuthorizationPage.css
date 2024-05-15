@@ -59,7 +59,7 @@
     margin: 20px 0;
     border-radius: 16px;
 }
-
+.edit-save-input,
 .registration__white-container button,
 .authorization__white-container button {
     /*background-color: rgba(255, 120, 0, 0.27);*/
