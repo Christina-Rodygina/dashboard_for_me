@@ -11,10 +11,9 @@
     box-shadow: var(--box-shadow-cocktailTheme);
 }
 
-
-.email-edit-input,
-.pass-edit-input,
-.telegram-edit-input,
+.account__email input,
+.account__pass input,
+.account__telegram input,
 .registration__white-container input,
 .authorization__white-container input {
     background-color: var(--background-cocktailTheme-input);

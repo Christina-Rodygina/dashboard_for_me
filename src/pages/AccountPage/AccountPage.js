@@ -77,17 +77,17 @@ const AccountPage = () => {
                                 <div className="account__info">
                                     {edit ? (
                                         <>
-                                            <div className="email-edit-input">
-                                                <label className="email-edit-input__label" htmlFor="email">Email</label>
+                                            <div className="account__email">
+                                                <h4>Email</h4>
                                                 <input type="email" autoComplete="email" value={email}/>
                                             </div>
-                                            <div className="pass-edit-input">
-                                                <label className="pass-edit-input__label" htmlFor="password">New
-                                                    Password</label>
+                                            <div className="account__pass">
+                                                <h4>Password</h4>
                                                 <input type="password" autoComplete="off" value="·········"/>
                                             </div>
-                                            <div className="telegram-edit-input">
-                                                <label className="telegram-edit-input__label">Telegram Account</label>
+                                            <div className="account__telegram">
+                                                <h4>Telegram Account</h4>
+                                                {/*<span>{telegram ? telegram : "unspecified"}</span>*/}
                                                 <input type="text" autoComplete="off" value={telegram}/>
                                             </div>
                                             <button className="edit-save-input">Save</button>

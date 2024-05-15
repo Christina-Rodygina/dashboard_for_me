@@ -144,20 +144,11 @@
     background-color: #fff;
 }
 
-.email-edit-input,
-.pass-edit-input,
-.telegram-edit-input {
+.account__email,
+.account__pass,
+.account__telegram {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: center;
-}
-
-.email-edit-input__label,
-.pass-edit-input__label,
-.telegram-edit-input__label {
-    text-align: start;
-    width: 70%;
-    font-size: 18px;
-    margin-bottom: -10px;
 }
