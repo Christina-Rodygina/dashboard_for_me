@@ -49,9 +49,6 @@
     align-items: center;
 }
 
-.account__email input,
-.account__pass input,
-.account__telegram input,
 .registration__white-container input,
 .authorization__white-container input {
     /*background: white;*/
