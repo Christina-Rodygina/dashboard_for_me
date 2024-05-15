@@ -49,6 +49,9 @@
     align-items: center;
 }
 
+.email-edit-input,
+.pass-edit-input,
+.telegram-edit-input,
 .registration__white-container input,
 .authorization__white-container input {
     /*background: white;*/
@@ -74,6 +77,8 @@
     transition: all .1s linear;
 }
 
+.edit-save-input:active,
+.edit-save-input:hover,
 .registration__white-container button:active,
 .registration__white-container button:hover,
 .authorization__white-container button:active,
