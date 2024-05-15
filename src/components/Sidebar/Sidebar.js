@@ -1,6 +1,7 @@
 import "./view"
 import {useEffect, useState} from "react";
 import axios from "axios";
+import {URL} from "../../App";
 // import {URL} from "../../App";
 
 
@@ -28,6 +29,16 @@ const Sidebar = ({meta}) => {
         }
     }
 
+    const logout = async () => {
+        try {
+            const response = await axios.post(`${URL}/user/logout`, {}, {withCredentials: true})
+            if (response.status === 200) {
+                window.location.href = '/authorization'
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <>
@@ -66,12 +77,13 @@ const Sidebar = ({meta}) => {
                                 </li>
                                 {meta.map((item, index) => (
                                     <li key={index}>
-                                        <button className={window.location.pathname === `/${item["table_name"]}` ? 'active' : null}
-                                                onClick={() => window.location.href = `/${item["table_name"]}`}
-                                                style={sideBar ? {
-                                                    padding: '24px 10px',
-                                                    justifyContent: 'start',
-                                                } : {padding: '15px 10px', justifyContent: 'start'}}>
+                                        <button
+                                            className={window.location.pathname === `/${item["table_name"]}` ? 'active' : null}
+                                            onClick={() => window.location.href = `/${item["table_name"]}`}
+                                            style={sideBar ? {
+                                                padding: '24px 10px',
+                                                justifyContent: 'start',
+                                            } : {padding: '15px 10px', justifyContent: 'start'}}>
                                             {item["table_name"] === 'server' ? (
                                                 <>
                                                     <img style={sideBar ? {
@@ -115,10 +127,13 @@ const Sidebar = ({meta}) => {
                             </div>
                             <button
                                 style={sideBar ? {padding: "24px 10px"} : {padding: "15px 10px"}}
-                                onClick={() => window.location.href = '/authorization'}
+                                onClick={logout}
                                 className="sidebar__logout">
                                 <img src="/Frame%201274.svg" alt="Logout"
-                                     style={sideBar ? {marginRight: '10px', marginLeft: "4px"} : {marginRight: 0, marginLeft: "4px"}}/>
+                                     style={sideBar ? {marginRight: '10px', marginLeft: "4px"} : {
+                                         marginRight: 0,
+                                         marginLeft: "4px"
+                                     }}/>
                                 <span style={sideBar ? {maxWidth: '100%'} : {maxWidth: 0}}>Logout</span>
                             </button>
                         </div>
