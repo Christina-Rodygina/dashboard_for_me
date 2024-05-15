@@ -79,6 +79,10 @@
     margin-top: 20px;
 }
 
+.account__edit-btn:hover {
+    scale: 1.1;
+}
+
 .account__telegram,
 .account__pass,
 .account__email {
