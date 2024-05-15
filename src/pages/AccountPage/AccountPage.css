@@ -88,6 +88,11 @@
 .account__email {
     margin-bottom: 40px;
 }
+.account__pass + input,
+.account__email + input,
+.account__telegram + input {
+    margin-bottom: 0;
+}
 
 .account__notification {
     display: flex;
