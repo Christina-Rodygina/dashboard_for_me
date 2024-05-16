@@ -101,7 +101,7 @@ const AccountPage = () => {
                                             <div className="account__email">
                                                 <h4>Email</h4>
                                                 <input type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
-                                                <div className="account__error-container">
+                                                <div className="account__error-email-container">
                                                     <span>{error}</span>
                                                 </div>
                                             </div>
