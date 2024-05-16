@@ -13,7 +13,7 @@ const AccountPage = () => {
     const [password, setPassword] = useState("·········")
     const [edit, setEdit] = useState(false)
     const [error, setError] = useState(String)
-    const forbiddenChars = /[^a-zA-Z0-9@_-]/;
+    const forbiddenChars = /[^a-zA-Z0-9.@_-]/;
 
     const me = async () => {
         try {
