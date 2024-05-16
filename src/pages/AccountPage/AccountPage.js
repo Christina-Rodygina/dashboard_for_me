@@ -13,6 +13,7 @@ const AccountPage = () => {
     const [password, setPassword] = useState("·········")
     const [edit, setEdit] = useState(false)
     const [error, setError] = useState(String)
+    const forbiddenChars = /[^a-zA-Z0-9@_-]/;
 
     const me = async () => {
         try {
@@ -53,6 +54,56 @@ const AccountPage = () => {
         return `${day}.${month}.${year}`;
     }
 
+    const open_error = (type) => {
+        const emailError = document.querySelector(".account__error-email-container")
+        const passError = document.querySelector(".account__error-pass-container")
+        const tgError = document.querySelector(".account__error-tg-container")
+        const unError = document.querySelector(".account__error-un-container")
+        switch (type) {
+            case "email":
+                if (email === "") {
+                    emailError.classList.add("open")
+                    setError("You missed this field")
+                } else if (forbiddenChars.test(email)) {
+                    emailError.classList.add("open")
+                    setError("Email cannot contain forbidden characters")
+                } else if (!email.includes("@")) {
+                    emailError.classList.add("open")
+                    setError("Incorrect Email format")
+                }
+                break;
+            case "password":
+                if (password === "") {
+                    passError.classList.add("open")
+                    setError("You missed this field")
+                } else if (forbiddenChars.test(password)) {
+                    passError.classList.add("open")
+                    setError("Password cannot contain forbidden characters")
+                }
+                break;
+            case "telegram":
+                if (telegram === "") {
+                    tgError.classList.add("open")
+                    setError("You missed this field")
+                } else if (forbiddenChars.test(telegram)) {
+                    tgError.classList.add("open")
+                    setError("The field cannot contain special characters")
+                }
+                break;
+            case "username":
+                if (username === "") {
+                    unError.classList.add("open")
+                    setError("You missed this field")
+                } else if (forbiddenChars.test(username)) {
+                    unError.classList.add("open")
+                    setError("Username cannot contain forbidden characters")
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     useEffect(() => {
         me()
         const intervalId = setInterval(me, 5 * 60 * 1000);
@@ -74,6 +125,9 @@ const AccountPage = () => {
                                     <div className="username-edit-input">
                                         <span>User Name</span>
                                         <input type="text" autoComplete="off" value={username}/>
+                                        <div className="account__error-un-container">
+                                            <span>{error}</span>
+                                        </div>
                                     </div>
                                 ) : (
                                     <span>{username}</span>
@@ -108,11 +162,17 @@ const AccountPage = () => {
                                             <div className="account__pass">
                                                 <h4>Password</h4>
                                                 <input type="password" autoComplete="off" value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                                <div className="account__error-pass-container">
+                                                    <span>{error}</span>
+                                                </div>
                                             </div>
                                             <div className="account__telegram">
                                                 <h4>Telegram Account</h4>
                                                 {/*<span>{telegram ? telegram : "unspecified"}</span>*/}
                                                 <input type="text" autoComplete="off" value={telegram} onChange={(event) => setTelegram(event.target.value)}/>
+                                                <div className="account__error-tg-container">
+                                                    <span>{error}</span>
+                                                </div>
                                             </div>
                                             <button onClick={user_update} className="edit-save-input">Save</button>
                                         </>

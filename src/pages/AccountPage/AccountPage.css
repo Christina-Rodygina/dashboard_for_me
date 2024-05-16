@@ -169,11 +169,31 @@
     border-radius: 8px;
 }
 
+.username-edit-input input:invalid,
+.account__pass input:invalid,
+.account__telegram input:invalid,
+.account__email input:invalid {
+    border: 1px solid red;
+    box-shadow: rgba(255, 0, 0, 0.12) 0 2px 4px 0, rgba(255, 0, 0, 0.32) 0 2px 16px 0;
+}
+
 .account__email {
     position: relative;
 }
 
+.account__error-un-container.open,
+.account__error-tg-container.open,
+.account__error-pass-container.open,
+.account__error-email-container.open {
+    opacity: 1;
+    transition: opacity .3s linear;
+}
+
+.account__error-un-container,
+.account__error-tg-container,
+.account__error-pass-container,
 .account__error-email-container {
+    opacity: 0;
     position: absolute;
     width: 300px;
     right: -320px;
@@ -185,12 +205,18 @@
     border: 3px solid var(--color-text-cocktailTheme-block-red);
 }
 
+.account__error-un-container:before,
+.account__error-tg-container:before,
+.account__error-pass-container:before,
 .account__error-email-container:before {
     content: "◄";
     color: red;
     margin-left: -24px;
 }
 
+.account__error-un-container span,
+.account__error-tg-container span,
+.account__error-pass-container span,
 .account__error-email-container span {
     color: red;
     font-size: 18px;
