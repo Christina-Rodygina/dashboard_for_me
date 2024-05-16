@@ -177,17 +177,18 @@
     position: absolute;
     width: 300px;
     right: -320px;
-    bottom: 18px;
+    bottom: 0;
     /*transform: translateY(-50%);*/
     background-color: white;
     padding: 10px;
     border-radius: 8px;
-    border: 2px solid var(--color-text-cocktailTheme-block-red);
+    border: 3px solid var(--color-text-cocktailTheme-block-red);
 }
 
 .account__error-email-container:before {
     content: "◄";
     color: red;
+    margin-left: -24px;
 }
 
 .account__error-email-container span {
