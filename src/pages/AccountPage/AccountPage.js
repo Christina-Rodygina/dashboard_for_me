@@ -1,5 +1,5 @@
-import "./AccountPage.css"
 import "../../styles/CocktailTheme/common.css"
+import "./AccountPage.css"
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {URL} from "../../App";
