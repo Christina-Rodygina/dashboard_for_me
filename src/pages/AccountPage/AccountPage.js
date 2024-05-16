@@ -135,7 +135,7 @@ const AccountPage = () => {
                                         <span>User Name</span>
                                         <input type="text" autoComplete="off" value={username} onChange={(event) => {
                                             setUsername(event.target.value)
-                                            open_error()
+                                            open_error("username")
                                         }
                                         }/>
                                         <div className="account__error-un-container">
@@ -169,7 +169,7 @@ const AccountPage = () => {
                                                 <h4>Email</h4>
                                                 <input type="email" autoComplete="email" value={email} onChange={(event) => {
                                                     setEmail(event.target.value)
-                                                    open_error()
+                                                    open_error("email")
                                                 }}/>
                                                 <div className="account__error-email-container">
                                                     <span>{error}</span>
@@ -179,7 +179,7 @@ const AccountPage = () => {
                                                 <h4>Password</h4>
                                                 <input type="password" autoComplete="off" value={password} onChange={(event) => {
                                                     setPassword(event.target.value)
-                                                    open_error()
+                                                    open_error("password")
                                                 }}/>
                                                 <div className="account__error-pass-container">
                                                     <span>{error}</span>
@@ -190,7 +190,7 @@ const AccountPage = () => {
                                                 {/*<span>{telegram ? telegram : "unspecified"}</span>*/}
                                                 <input type="text" autoComplete="off" value={telegram} onChange={(event) => {
                                                     setTelegram(event.target.value)
-                                                    open_error()
+                                                    open_error("telegram")
                                                 }}/>
                                                 <div className="account__error-tg-container">
                                                     <span>{error}</span>
