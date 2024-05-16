@@ -31,12 +31,12 @@ const AccountPage = () => {
 
     const user_update = async () => {
         try {
-            const response = await axios.get(`${URL}/user/update`, {withCredentials: true}, {
+            const response = await axios.post(`${URL}/user/update`, {
                 "username": username,
                 "email": email,
                 "telegram_id": telegram,
                 "notifications": notifications,
-            })
+            }, {withCredentials: true})
             if (response.status === 200) {
                 setEdit(false)
                 await me()
