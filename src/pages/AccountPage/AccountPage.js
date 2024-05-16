@@ -56,43 +56,55 @@ const AccountPage = () => {
 
     const open_error = (type) => {
         const emailError = document.querySelector(".account__error-email-container")
+        const emailInput = document.querySelector(".account__email input")
         const passError = document.querySelector(".account__error-pass-container")
+        const passInput = document.querySelector(".account__pass input")
         const tgError = document.querySelector(".account__error-tg-container")
+        const tgInput = document.querySelector(".account__telegram input")
         const unError = document.querySelector(".account__error-un-container")
+        const unInput = document.querySelector(".username-edit-input input")
         switch (type) {
             case "email":
                 if (email === "") {
                     emailError.classList.add("open")
+                    emailInput.classList.add("invalid")
                     setError("You missed this field")
                 } else if (forbiddenChars.test(email)) {
                     emailError.classList.add("open")
+                    emailInput.classList.add("invalid")
                     setError("Email cannot contain forbidden characters")
                 } else if (!email.includes("@")) {
                     emailError.classList.add("open")
+                    emailInput.classList.add("invalid")
                     setError("Incorrect Email format")
                 }
                 break;
             case "password":
                 if (password === "") {
                     passError.classList.add("open")
+                    passInput.classList.add("invalid")
                     setError("You missed this field")
                 } else if (forbiddenChars.test(password)) {
                     passError.classList.add("open")
+                    passInput.classList.add("invalid")
                     setError("Password cannot contain forbidden characters")
                 }
                 break;
             case "telegram":
                 if (forbiddenChars.test(telegram)) {
                     tgError.classList.add("open")
+                    tgInput.classList.add("invalid")
                     setError("The field cannot contain special characters")
                 }
                 break;
             case "username":
                 if (username === "") {
                     unError.classList.add("open")
+                    unInput.classList.add("invalid")
                     setError("You missed this field")
                 } else if (forbiddenChars.test(username)) {
                     unError.classList.add("open")
+                    unInput.classList.add("invalid")
                     setError("Username cannot contain forbidden characters")
                 }
                 break;

@@ -169,10 +169,10 @@
     border-radius: 8px;
 }
 
-.username-edit-input input:invalid,
-.account__pass input:invalid,
-.account__telegram input:invalid,
-.account__email input:invalid {
+.username-edit-input input.invalid,
+.account__pass input.invalid,
+.account__telegram input.invalid,
+.account__email input.invalid {
     border: 1px solid red;
     box-shadow: rgba(255, 0, 0, 0.12) 0 2px 4px 0, rgba(255, 0, 0, 0.32) 0 2px 16px 0;
 }
