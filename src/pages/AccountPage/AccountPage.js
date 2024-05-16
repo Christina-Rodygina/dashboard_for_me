@@ -168,7 +168,7 @@ const AccountPage = () => {
                                             </div>
                                             <div className="account__pass">
                                                 <h4>Password</h4>
-                                                <input type="password" autoComplete="off" value={password} {(event) => {
+                                                <input type="password" autoComplete="off" value={password} onChange={(event) => {
                                                     setPassword(event.target.value)
                                                     open_error()
                                                 }}/>
@@ -179,7 +179,7 @@ const AccountPage = () => {
                                             <div className="account__telegram">
                                                 <h4>Telegram Account</h4>
                                                 {/*<span>{telegram ? telegram : "unspecified"}</span>*/}
-                                                <input type="text" autoComplete="off" value={telegram} {(event) => {
+                                                <input type="text" autoComplete="off" value={telegram} onChange={(event) => {
                                                     setTelegram(event.target.value)
                                                     open_error()
                                                 }}/>
