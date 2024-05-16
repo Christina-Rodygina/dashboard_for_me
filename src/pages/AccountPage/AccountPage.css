@@ -171,9 +171,19 @@
 
 .account__error-container {
     position: absolute;
-    left: 0;
+    width: 300px;
+    right: -320px;
     top: 50%;
     transform: translateY(-50%);
     background-color: white;
     border: 2px solid var(--color-text-cocktailTheme-block-red);
+}
+
+.account__error-container:before {
+    content: "";
+    width: 20px;
+    border: 2px solid red;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
