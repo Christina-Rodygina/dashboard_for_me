@@ -51,7 +51,7 @@ const AccountPage = () => {
                                      className="account__logo"/>
                                 {edit ? (
                                     <div className="username-edit-input">
-                                        <label className="username-edit-input__label">User Name</label>
+                                        <span>User Name</span>
                                         <input type="text" autoComplete="off" value={username}/>
                                     </div>
                                 ) : (
