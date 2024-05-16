@@ -9,6 +9,7 @@ const AccountPage = () => {
     const [telegram, setTelegram] = useState(String)
     const [dateReg, setDateReg] = useState(String)
     const [username, setUsername] = useState(String)
+    const [password, setPassword] = useState("·········")
     const [edit, setEdit] = useState(false)
 
     const me = async () => {
@@ -80,16 +81,16 @@ const AccountPage = () => {
                                         <>
                                             <div className="account__email">
                                                 <h4>Email</h4>
-                                                <input type="email" autoComplete="email" value={email}/>
+                                                <input type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
                                             </div>
                                             <div className="account__pass">
                                                 <h4>Password</h4>
-                                                <input type="password" autoComplete="off" value="·········"/>
+                                                <input type="password" autoComplete="off" value={password} onChange={(event) => setPassword(event.target.value)}/>
                                             </div>
                                             <div className="account__telegram">
                                                 <h4>Telegram Account</h4>
                                                 {/*<span>{telegram ? telegram : "unspecified"}</span>*/}
-                                                <input type="text" autoComplete="off" value={telegram}/>
+                                                <input type="text" autoComplete="off" value={telegram} onChange={(event) => setTelegram(event.target.value)}/>
                                             </div>
                                             <button className="edit-save-input">Save</button>
                                         </>
@@ -101,7 +102,7 @@ const AccountPage = () => {
                                             </div>
                                             <div className="account__pass">
                                                 <h4>Password</h4>
-                                                <span style={{fontSize: "20px"}}>·········</span>
+                                                <span style={{fontSize: "20px"}}>{password}</span>
                                             </div>
                                             <div className="account__telegram">
                                                 <h4>Telegram Account</h4>
