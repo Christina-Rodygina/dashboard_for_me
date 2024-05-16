@@ -13,6 +13,10 @@ const RegistrationPage = () => {
                         <h3>Registration</h3>
                         <form>
                             <div className="email-reg-input">
+                                <label className="email-reg-input__label">User Name</label>
+                                <input type="text" autoComplete="off" required/>
+                            </div>
+                            <div className="email-reg-input">
                                 <label className="email-reg-input__label" htmlFor="email">Email</label>
                                 <input type="email" autoComplete="email" required/>
                             </div>
@@ -25,7 +29,7 @@ const RegistrationPage = () => {
                                 <input type="password" autoComplete="new-password" required/>
                             </div>
                             <div className="email-reg-input">
-                                <label className="email-reg-input__label" htmlFor="password">Telegram Username (not required)</label>
+                                <label className="email-reg-input__label">Telegram Username (not required)</label>
                                 <input placeholder="@Sergey_Zakhar0v" type="text" autoComplete="off"/>
                             </div>
                             <button type="submit">Register</button>
