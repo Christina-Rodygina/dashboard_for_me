@@ -68,7 +68,7 @@ const AccountPage = () => {
                                         </label>
                                     </div>
                                 </div>
-                                <button onClick={() => setEdit(true)} className="account__edit-btn">
+                                <button onClick={() => setEdit(!edit)} className="account__edit-btn">
                                     <img src="/edit-svgrepo-com.svg" alt="Edit"/>
                                 </button>
                             </div>
