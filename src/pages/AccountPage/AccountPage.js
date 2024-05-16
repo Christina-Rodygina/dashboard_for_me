@@ -9,6 +9,7 @@ const AccountPage = () => {
     const [telegram, setTelegram] = useState(String)
     const [dateReg, setDateReg] = useState(String)
     const [username, setUsername] = useState(String)
+    const [notifications, setNotifications] = useState(Boolean)
     const [password, setPassword] = useState("·········")
     const [edit, setEdit] = useState(false)
 
@@ -23,6 +24,21 @@ const AccountPage = () => {
             }
         } catch (error) {
             window.location.href = '/authorization'
+        }
+    }
+
+    const user_update = async () => {
+        try {
+            const response = await axios.get(`${URL}/user/update`, {withCredentials: true}, {
+                "username": username,
+                "email": email,
+                "telegram_id": telegram,
+                "notifications": notifications,
+            })
+            if (response.status === 200) {
+            }
+        } catch (error) {
+
         }
     }
 
@@ -63,7 +79,7 @@ const AccountPage = () => {
                                     <span className="account__ntf-text">Notification</span>
                                     <div className="">
                                         <label className="toggler-wrapper style-1">
-                                            <input type="checkbox"/>
+                                            <input type="checkbox" checked={notifications} onChange={(event) => setNotifications(event.target.checked)}/>
                                             <div className="toggler-slider">
                                                 <div className="toggler-knob"></div>
                                             </div>
