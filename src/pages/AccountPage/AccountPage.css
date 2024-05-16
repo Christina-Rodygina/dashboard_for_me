@@ -144,6 +144,20 @@
     background-color: #fff;
 }
 
+.username-edit-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.username-edit-input span {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.username-edit-input input {
+    font-size: 1.3rem;
+}
+
 .account__email input {
     font-size: 1.3rem;
 }
