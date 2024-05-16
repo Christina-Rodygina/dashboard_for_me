@@ -147,6 +147,7 @@
 .username-edit-input {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .username-edit-input span {

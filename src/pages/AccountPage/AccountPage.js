@@ -1,5 +1,5 @@
 import "../../styles/CocktailTheme/common.css"
-import "./AccountPage.css"
+import "./view"
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {URL} from "../../App";
@@ -16,7 +16,7 @@ const AccountPage = () => {
             const response = await axios.get(`${URL}/user/me`, {withCredentials: true})
             if (response.status === 200) {
                 const data = response.data;
-                setEmail(data.email);
+                setEmail(data["email"]);
                 setDateReg(date_constructor(data['register_at']));
                 setUsername(data.username);
             }
