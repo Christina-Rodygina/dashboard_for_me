@@ -186,12 +186,8 @@
 }
 
 .account__error-email-container:before {
-    content: "";
-    width: 20px;
-    border: 1px solid red;
-    border-left: 0;
-    border-right: 0;
-    left: -20px;
+    content: "◄";
+    color: red;
 }
 
 .account__error-email-container span {
