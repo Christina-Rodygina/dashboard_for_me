@@ -77,6 +77,10 @@ const AccountPage = () => {
                     emailError.classList.add("open")
                     emailInput.classList.add("invalid")
                     setError("Incorrect Email format")
+                } else {
+                    if (emailError.classList.contains("open")) {
+                        emailError.classList.remove("open")
+                    }
                 }
                 break;
             case "password":
@@ -88,6 +92,10 @@ const AccountPage = () => {
                     passError.classList.add("open")
                     passInput.classList.add("invalid")
                     setError("Password cannot contain forbidden characters")
+                } else {
+                    if (passError.classList.contains("open")) {
+                        passError.classList.remove("open")
+                    }
                 }
                 break;
             case "telegram":
@@ -95,6 +103,10 @@ const AccountPage = () => {
                     tgError.classList.add("open")
                     tgInput.classList.add("invalid")
                     setError("The field cannot contain special characters")
+                } else {
+                    if (tgError.classList.contains("open")) {
+                        tgError.classList.remove("open")
+                    }
                 }
                 break;
             case "username":
@@ -106,21 +118,13 @@ const AccountPage = () => {
                     unError.classList.add("open")
                     unInput.classList.add("invalid")
                     setError("Username cannot contain forbidden characters")
+                } else {
+                    if (unError.classList.contains("open")) {
+                        unError.classList.remove("open")
+                    }
                 }
                 break;
             default:
-                if (emailError.classList.contains("open")) {
-                    emailError.classList.remove("open")
-                }
-                if (passError.classList.contains("open")) {
-                    passError.classList.remove("open")
-                }
-                if (tgError.classList.contains("open")) {
-                    tgError.classList.remove("open")
-                }
-                if (unError.classList.contains("open")) {
-                    unError.classList.remove("open")
-                }
                 break;
         }
     }
