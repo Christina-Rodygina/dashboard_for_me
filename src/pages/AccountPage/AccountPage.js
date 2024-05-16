@@ -81,6 +81,9 @@ const AccountPage = () => {
                     if (emailError.classList.contains("open")) {
                         emailError.classList.remove("open")
                     }
+                    if (emailInput.classList.contains("invalid")) {
+                        emailInput.classList.remove("invalid")
+                    }
                 }
                 break;
             case "password":
@@ -96,6 +99,9 @@ const AccountPage = () => {
                     if (passError.classList.contains("open")) {
                         passError.classList.remove("open")
                     }
+                    if (passInput.classList.contains("invalid")) {
+                        passInput.classList.remove("invalid")
+                    }
                 }
                 break;
             case "telegram":
@@ -106,6 +112,9 @@ const AccountPage = () => {
                 } else {
                     if (tgError.classList.contains("open")) {
                         tgError.classList.remove("open")
+                    }
+                    if (tgInput.classList.contains("invalid")) {
+                        tgInput.classList.remove("invalid")
                     }
                 }
                 break;
@@ -121,6 +130,9 @@ const AccountPage = () => {
                 } else {
                     if (unError.classList.contains("open")) {
                         unError.classList.remove("open")
+                    }
+                    if (unInput.classList.contains("invalid")) {
+                        unInput.classList.remove("invalid")
                     }
                 }
                 break;
