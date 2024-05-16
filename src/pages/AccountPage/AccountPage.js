@@ -54,7 +54,7 @@ const AccountPage = () => {
         return `${day}.${month}.${year}`;
     }
 
-    const open_error = (type) => {
+    const open_error = async (type) => {
         const emailError = document.querySelector(".account__error-email-container")
         const emailInput = document.querySelector(".account__email input")
         const passError = document.querySelector(".account__error-pass-container")
