@@ -124,7 +124,11 @@ const AccountPage = () => {
                                 {edit ? (
                                     <div className="username-edit-input">
                                         <span>User Name</span>
-                                        <input type="text" autoComplete="off" value={username}/>
+                                        <input type="text" autoComplete="off" value={username} onChange={(event) => {
+                                            setUsername(event.target.value)
+                                            open_error()
+                                        }
+                                        }/>
                                         <div className="account__error-un-container">
                                             <span>{error}</span>
                                         </div>
@@ -154,14 +158,20 @@ const AccountPage = () => {
                                         <>
                                             <div className="account__email">
                                                 <h4>Email</h4>
-                                                <input type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)}/>
+                                                <input type="email" autoComplete="email" value={email} {(event) => {
+                                                    setEmail(event.target.value)
+                                                    open_error()
+                                                }}/>
                                                 <div className="account__error-email-container">
                                                     <span>{error}</span>
                                                 </div>
                                             </div>
                                             <div className="account__pass">
                                                 <h4>Password</h4>
-                                                <input type="password" autoComplete="off" value={password} onChange={(event) => setPassword(event.target.value)}/>
+                                                <input type="password" autoComplete="off" value={password} {(event) => {
+                                                    setPassword(event.target.value)
+                                                    open_error()
+                                                }}/>
                                                 <div className="account__error-pass-container">
                                                     <span>{error}</span>
                                                 </div>
@@ -169,7 +179,10 @@ const AccountPage = () => {
                                             <div className="account__telegram">
                                                 <h4>Telegram Account</h4>
                                                 {/*<span>{telegram ? telegram : "unspecified"}</span>*/}
-                                                <input type="text" autoComplete="off" value={telegram} onChange={(event) => setTelegram(event.target.value)}/>
+                                                <input type="text" autoComplete="off" value={telegram} {(event) => {
+                                                    setTelegram(event.target.value)
+                                                    open_error()
+                                                }}/>
                                                 <div className="account__error-tg-container">
                                                     <span>{error}</span>
                                                 </div>
