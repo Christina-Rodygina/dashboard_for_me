@@ -11,6 +11,7 @@
     box-shadow: var(--box-shadow-cocktailTheme);
 }
 
+.username-edit-input input,
 .account__email input,
 .account__pass input,
 .account__telegram input,
