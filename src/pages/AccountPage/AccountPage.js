@@ -109,6 +109,18 @@ const AccountPage = () => {
                 }
                 break;
             default:
+                if (emailError.classList.contains("open")) {
+                    emailError.classList.remove("open")
+                }
+                if (passError.classList.contains("open")) {
+                    passError.classList.remove("open")
+                }
+                if (tgError.classList.contains("open")) {
+                    tgError.classList.remove("open")
+                }
+                if (unError.classList.contains("open")) {
+                    unError.classList.remove("open")
+                }
                 break;
         }
     }
@@ -149,7 +161,8 @@ const AccountPage = () => {
                                     <span className="account__ntf-text">Notification</span>
                                     <div className="">
                                         <label className="toggler-wrapper style-1">
-                                            <input type="checkbox" checked={telegram ? notifications : false} onChange={(event) => setNotifications(event.target.checked)}/>
+                                            <input type="checkbox" checked={telegram ? notifications : false}
+                                                   onChange={(event) => setNotifications(event.target.checked)}/>
                                             <div className="toggler-slider">
                                                 <div className="toggler-knob"></div>
                                             </div>
@@ -167,20 +180,22 @@ const AccountPage = () => {
                                         <>
                                             <div className="account__email">
                                                 <h4>Email</h4>
-                                                <input type="email" autoComplete="email" value={email} onChange={(event) => {
-                                                    setEmail(event.target.value)
-                                                    open_error("email")
-                                                }}/>
+                                                <input type="email" autoComplete="email" value={email}
+                                                       onChange={(event) => {
+                                                           setEmail(event.target.value)
+                                                           open_error("email")
+                                                       }}/>
                                                 <div className="account__error-email-container">
                                                     <span>{error}</span>
                                                 </div>
                                             </div>
                                             <div className="account__pass">
                                                 <h4>Password</h4>
-                                                <input type="password" autoComplete="off" value={password} onChange={(event) => {
-                                                    setPassword(event.target.value)
-                                                    open_error("password")
-                                                }}/>
+                                                <input type="password" autoComplete="off" value={password}
+                                                       onChange={(event) => {
+                                                           setPassword(event.target.value)
+                                                           open_error("password")
+                                                       }}/>
                                                 <div className="account__error-pass-container">
                                                     <span>{error}</span>
                                                 </div>
@@ -188,10 +203,11 @@ const AccountPage = () => {
                                             <div className="account__telegram">
                                                 <h4>Telegram Account</h4>
                                                 {/*<span>{telegram ? telegram : "unspecified"}</span>*/}
-                                                <input type="text" autoComplete="off" value={telegram} onChange={(event) => {
-                                                    setTelegram(event.target.value)
-                                                    open_error("telegram")
-                                                }}/>
+                                                <input type="text" autoComplete="off" value={telegram}
+                                                       onChange={(event) => {
+                                                           setTelegram(event.target.value)
+                                                           open_error("telegram")
+                                                       }}/>
                                                 <div className="account__error-tg-container">
                                                     <span>{error}</span>
                                                 </div>
