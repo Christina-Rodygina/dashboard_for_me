@@ -82,10 +82,7 @@ const AccountPage = () => {
                 }
                 break;
             case "telegram":
-                if (telegram === "") {
-                    tgError.classList.add("open")
-                    setError("You missed this field")
-                } else if (forbiddenChars.test(telegram)) {
+                if (forbiddenChars.test(telegram)) {
                     tgError.classList.add("open")
                     setError("The field cannot contain special characters")
                 }
@@ -140,7 +137,7 @@ const AccountPage = () => {
                                     <span className="account__ntf-text">Notification</span>
                                     <div className="">
                                         <label className="toggler-wrapper style-1">
-                                            <input type="checkbox" checked={notifications} onChange={(event) => setNotifications(event.target.checked)}/>
+                                            <input type="checkbox" checked={telegram ? notifications : false} onChange={(event) => setNotifications(event.target.checked)}/>
                                             <div className="toggler-slider">
                                                 <div className="toggler-knob"></div>
                                             </div>
